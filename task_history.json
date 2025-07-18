@@ -1,0 +1,37 @@
+[
+  {
+    "timestamp": "2025-07-19T04:53:59.104658",
+    "user_prompt": "Go to Gmail and check for new emails",
+    "ai_response": "\u274c Task failed: \n\nYou tried to access openai.ChatCompletion, but this is no longer supported in openai>=1.0.0 - see the README at https://github.com/openai/openai-python for the API.\n\nYou can run `openai migrate` to automatically upgrade your codebase to use the 1.0.0 interface. \n\nAlternatively, you can pin your installation to the old version, e.g. `pip install openai==0.28`\n\nA detailed migration guide is available here: https://github.com/openai/openai-python/discussions/742\n\n\nLet me know if you'd like me to try a different approach!",
+    "execution_result": "ExecutionResult(success=False, step_results=[], error_message='\\n\\nYou tried to access openai.ChatCompletion, but this is no longer supported in openai>=1.0.0 - see the README at https://github.com/openai/openai-python for the API.\\n\\nYou can run `openai migrate` to automatically upgrade your codebase to use the 1.0.0 interface. \\n\\nAlternatively, you can pin your installation to the old version, e.g. `pip install openai==0.28`\\n\\nA detailed migration guide is available here: https://github.com/openai/openai-python/discussions/742\\n', screenshots=None, execution_time=4.643549919128418)",
+    "status": "completed"
+  },
+  {
+    "timestamp": "2025-07-19T04:55:18.528157",
+    "user_prompt": "Go to Amazon and search for 'wireless headphones'",
+    "ai_response": "\u274c Task failed: \n\nYou tried to access openai.ChatCompletion, but this is no longer supported in openai>=1.0.0 - see the README at https://github.com/openai/openai-python for the API.\n\nYou can run `openai migrate` to automatically upgrade your codebase to use the 1.0.0 interface. \n\nAlternatively, you can pin your installation to the old version, e.g. `pip install openai==0.28`\n\nA detailed migration guide is available here: https://github.com/openai/openai-python/discussions/742\n\n\nLet me know if you'd like me to try a different approach!",
+    "execution_result": "ExecutionResult(success=False, step_results=[], error_message='\\n\\nYou tried to access openai.ChatCompletion, but this is no longer supported in openai>=1.0.0 - see the README at https://github.com/openai/openai-python for the API.\\n\\nYou can run `openai migrate` to automatically upgrade your codebase to use the 1.0.0 interface. \\n\\nAlternatively, you can pin your installation to the old version, e.g. `pip install openai==0.28`\\n\\nA detailed migration guide is available here: https://github.com/openai/openai-python/discussions/742\\n', screenshots=None, execution_time=0.0019390583038330078)",
+    "status": "completed"
+  },
+  {
+    "timestamp": "2025-07-19T04:55:25.542417",
+    "user_prompt": "Check the current stock price of Apple",
+    "ai_response": "I apologize, but I encountered an error: \n\nYou tried to access openai.ChatCompletion, but this is no longer supported in openai>=1.0.0 - see the README at https://github.com/openai/openai-python for the API.\n\nYou can run `openai migrate` to automatically upgrade your codebase to use the 1.0.0 interface. \n\nAlternatively, you can pin your installation to the old version, e.g. `pip install openai==0.28`\n\nA detailed migration guide is available here: https://github.com/openai/openai-python/discussions/742\n",
+    "execution_result": null,
+    "status": "completed"
+  },
+  {
+    "timestamp": "2025-07-19T04:55:41.459708",
+    "user_prompt": "Go to BBC News and show me the top headlines",
+    "ai_response": "\u274c Task failed: \n\nYou tried to access openai.ChatCompletion, but this is no longer supported in openai>=1.0.0 - see the README at https://github.com/openai/openai-python for the API.\n\nYou can run `openai migrate` to automatically upgrade your codebase to use the 1.0.0 interface. \n\nAlternatively, you can pin your installation to the old version, e.g. `pip install openai==0.28`\n\nA detailed migration guide is available here: https://github.com/openai/openai-python/discussions/742\n\n\nLet me know if you'd like me to try a different approach!",
+    "execution_result": "ExecutionResult(success=False, step_results=[], error_message='\\n\\nYou tried to access openai.ChatCompletion, but this is no longer supported in openai>=1.0.0 - see the README at https://github.com/openai/openai-python for the API.\\n\\nYou can run `openai migrate` to automatically upgrade your codebase to use the 1.0.0 interface. \\n\\nAlternatively, you can pin your installation to the old version, e.g. `pip install openai==0.28`\\n\\nA detailed migration guide is available here: https://github.com/openai/openai-python/discussions/742\\n', screenshots=None, execution_time=0.0008387565612792969)",
+    "status": "completed"
+  },
+  {
+    "timestamp": "2025-07-19T04:56:14.603477",
+    "user_prompt": "hey open https://www.manasai.co/ and give me 1st ttile ypur find out",
+    "ai_response": "\u274c Task failed: \n\nYou tried to access openai.ChatCompletion, but this is no longer supported in openai>=1.0.0 - see the README at https://github.com/openai/openai-python for the API.\n\nYou can run `openai migrate` to automatically upgrade your codebase to use the 1.0.0 interface. \n\nAlternatively, you can pin your installation to the old version, e.g. `pip install openai==0.28`\n\nA detailed migration guide is available here: https://github.com/openai/openai-python/discussions/742\n\n\nLet me know if you'd like me to try a different approach!",
+    "execution_result": "ExecutionResult(success=False, step_results=[], error_message='\\n\\nYou tried to access openai.ChatCompletion, but this is no longer supported in openai>=1.0.0 - see the README at https://github.com/openai/openai-python for the API.\\n\\nYou can run `openai migrate` to automatically upgrade your codebase to use the 1.0.0 interface. \\n\\nAlternatively, you can pin your installation to the old version, e.g. `pip install openai==0.28`\\n\\nA detailed migration guide is available here: https://github.com/openai/openai-python/discussions/742\\n', screenshots=None, execution_time=0.0011680126190185547)",
+    "status": "completed"
+  }
+]

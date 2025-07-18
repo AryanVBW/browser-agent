@@ -1,0 +1,21 @@
+# Minimal requirements for Browser Agent GUI
+# Use this if the full requirements.txt fails
+
+# Core GUI and automation
+customtkinter
+selenium
+webdriver-manager
+beautifulsoup4
+requests
+python-dotenv
+psutil
+colorama
+pillow
+
+# AI providers (add as needed)
+# openai
+# anthropic  
+# google-generativeai
+
+# Optional automation
+# playwright
