@@ -111,7 +111,7 @@ Browser Agent is a next-generation web automation tool that combines the power o
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/brouser-agent.git
+git clone https://github.com/AryanVBW/brouser-agent.git
 cd brouser-agent
 
 # Automatic setup (installs dependencies and checks environment)
@@ -554,7 +554,7 @@ diag.run_full_check()
 ### 🆘 **Getting Help**
 
 1. **Check Logs**: Look in `logs/` directory for detailed error messages
-2. **GitHub Issues**: Report bugs at [GitHub Issues](https://github.com/your-username/brouser-agent/issues)
+2. **GitHub Issues**: Report bugs at [GitHub Issues](https://github.com/AryanVBW/brouser-agent/issues)
 3. **Discussions**: Join community discussions for help and tips
 4. **Documentation**: Full API docs available at [documentation link]
 
@@ -568,7 +568,7 @@ We welcome contributions from the community! Here's how to get started:
 
 ```bash
 # Fork and clone the repository
-git clone https://github.com/your-username/brouser-agent.git
+git clone https://github.com/AryanVBW/brouser-agent.git
 cd brouser-agent
 
 # Create virtual environment
@@ -677,7 +677,7 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 ## 🚀 Ready to Automate?
 
-**[⬇️ Download Now](https://github.com/your-username/brouser-agent/releases)** • **[📖 Read Docs](#documentation)** • **[🎮 Try Demo](#quick-start)**
+**[⬇️ Download Now](https://github.com/AryanVBW/brouser-agent/releases)** • **[📖 Read Docs](#documentation)** • **[🎮 Try Demo](#quick-start)**
 
 ---
 
@@ -685,6 +685,6 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 Made with ❤️ by the Browser Agent team
 
-[⭐ Star us on GitHub](https://github.com/your-username/brouser-agent) • [🐛 Report Issues](https://github.com/your-username/brouser-agent/issues) • [💬 Join Discussion](https://github.com/your-username/brouser-agent/discussions)
+[⭐ Star us on GitHub](https://github.com/AryanVBW/brouser-agent) • [🐛 Report Issues](https://github.com/AryanVBW/brouser-agent/issues) • [💬 Join Discussion](https://github.com/AryanVBW/brouser-agent/discussions)
 
 </div>

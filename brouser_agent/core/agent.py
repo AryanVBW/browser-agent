@@ -8,6 +8,7 @@ from .config import Config
 from .multi_llm_processor import MultiLLMProcessor, TaskPlan, TaskStep
 from ..browsers.manager import BrowserManager
 from ..utils.automation import WebAutomation
+from ..utils.unified_automation import UnifiedAutomation
 from ..utils.logger import setup_logging
 
 
@@ -37,42 +38,54 @@ class BrowserAgent:
             framework=self.config.automation_framework
         )
         self.automation = None
+        self.unified_automation = UnifiedAutomation(config=self.config)
         self.current_task = None
         
     async def execute_task(self, user_prompt: str, browser: str = None) -> ExecutionResult:
         """Execute a task based on user prompt"""
         start_time = time.time()
         browser = browser or self.config.default_browser
+        max_retries = 3
         
-        try:
-            self.logger.info(f"Starting task: {user_prompt}")
-            
-            # Launch browser if not already running
-            if not self.browser_manager.active_driver:
-                driver = self.browser_manager.launch_browser(browser)
-                self.automation = WebAutomation(driver, self.config)
-            
-            # Process user prompt into task plan
-            context = await self._get_current_context()
-            task_plan = await self.ai_processor.process_prompt(user_prompt, context)
-            self.current_task = task_plan
-            
-            self.logger.info(f"Generated plan with {len(task_plan.steps)} steps")
-            
-            # Execute task plan
-            execution_result = await self._execute_task_plan(task_plan)
-            execution_result.execution_time = time.time() - start_time
-            
-            return execution_result
-            
-        except Exception as e:
-            self.logger.error(f"Task execution failed: {e}")
-            return ExecutionResult(
-                success=False,
-                step_results=[],
-                error_message=str(e),
-                execution_time=time.time() - start_time
-            )
+        for attempt in range(max_retries):
+            try:
+                self.logger.info(f"Starting task: {user_prompt}")
+                
+                # Ensure browser session is healthy
+                if not await self._ensure_browser_session(browser):
+                    raise RuntimeError("Failed to establish browser session")
+                
+                # Process user prompt into task plan
+                context = await self._get_current_context()
+                task_plan = await self.ai_processor.process_prompt(user_prompt, context)
+                self.current_task = task_plan
+                
+                self.logger.info(f"Generated plan with {len(task_plan.steps)} steps")
+                
+                # Execute task plan
+                execution_result = await self._execute_task_plan(task_plan)
+                execution_result.execution_time = time.time() - start_time
+                
+                return execution_result
+                
+            except Exception as e:
+                self.logger.error(f"Task execution failed (attempt {attempt + 1}/{max_retries}): {e}")
+                
+                # Try to recover from browser session issues
+                if "session" in str(e).lower() or "chrome" in str(e).lower():
+                    self.logger.info("Attempting browser session recovery...")
+                    await self._recover_browser_session(browser)
+                    
+                    if attempt < max_retries - 1:
+                        await asyncio.sleep(2)  # Wait before retry
+                        continue
+                
+                return ExecutionResult(
+                    success=False,
+                    step_results=[],
+                    error_message=str(e),
+                    execution_time=time.time() - start_time
+                )
     
     async def _execute_task_plan(self, task_plan: TaskPlan) -> ExecutionResult:
         """Execute the task plan step by step"""
@@ -148,51 +161,88 @@ class BrowserAgent:
         )
     
     async def _execute_step(self, step: TaskStep) -> Dict[str, Any]:
-        """Execute a single step"""
+        """Execute a single step using unified automation"""
         try:
-            if step.action == "navigate":
-                return await self.automation.navigate(step.target)
+            # Ensure browser driver is set for unified automation if needed
+            if step.automation_type in ['browser', 'hybrid'] and self.automation:
+                self.unified_automation.set_browser_driver(self.automation.driver)
             
-            elif step.action == "click":
-                return await self.automation.click_element(step.target)
-            
-            elif step.action == "type":
-                return await self.automation.type_text(step.target, step.value)
-            
-            elif step.action == "select":
-                return await self.automation.select_option(step.target, step.value)
-            
-            elif step.action == "scroll":
-                return await self.automation.scroll(step.target, step.value)
-            
-            elif step.action == "wait":
-                return await self.automation.wait_for_element(step.target, step.condition)
-            
-            elif step.action == "screenshot":
-                screenshot_path = await self.automation.take_screenshot(step.value or "manual")
-                return {
-                    'success': True,
-                    'screenshot_path': screenshot_path,
-                    'screenshot_requested': True
+            # Create task for unified automation
+            task = {
+                'type': step.automation_type,
+                'action': step.action,
+                'params': {
+                    'selector': step.target,
+                    'text': step.value,
+                    'option': step.value,
+                    'url': step.target,
+                    'filename': step.value,
+                    'timeout': 10,
+                    'direction': step.target,
+                    'amount': step.value,
+                    **(step.params or {})
                 }
+            }
             
-            elif step.action == "extract":
-                return await self.automation.extract_data(step.target, step.value)
+            # Handle specific parameter mapping based on action
+            if step.action == 'click_coordinates':
+                task['params'].update({
+                    'x': step.params.get('x', 0),
+                    'y': step.params.get('y', 0),
+                    'button': step.params.get('button', 'left'),
+                    'clicks': step.params.get('clicks', 1)
+                })
+            elif step.action == 'click_image':
+                task['params'].update({
+                    'image_path': step.target,
+                    'confidence': step.params.get('confidence', 0.8),
+                    'region': step.params.get('region')
+                })
+            elif step.action == 'press_key':
+                task['params'].update({
+                    'key': step.target or step.params.get('key'),
+                    'presses': step.params.get('presses', 1)
+                })
+            elif step.action == 'drag_drop':
+                task['params'].update({
+                    'start_x': step.params.get('start_x', 0),
+                    'start_y': step.params.get('start_y', 0),
+                    'end_x': step.params.get('end_x', 0),
+                    'end_y': step.params.get('end_y', 0),
+                    'duration': step.params.get('duration', 1.0)
+                })
+            elif step.action == 'open_app':
+                task['params'].update({
+                    'app_name': step.target or step.params.get('app_name')
+                })
+            elif step.action == 'move_mouse':
+                task['params'].update({
+                    'x': step.params.get('x', 0),
+                    'y': step.params.get('y', 0),
+                    'duration': step.params.get('duration', 0.5)
+                })
+            elif step.action == 'wait_for_image':
+                task['params'].update({
+                    'image_path': step.target,
+                    'timeout': step.params.get('timeout', 10),
+                    'confidence': step.params.get('confidence', 0.8)
+                })
             
-            elif step.action == "verify":
-                return await self.automation.verify_condition(step.target, step.value)
+            # Execute the task
+            result = await self.unified_automation.execute_task(task)
             
-            else:
-                return {
-                    'success': False,
-                    'error': f"Unknown action: {step.action}"
-                }
+            # Add screenshot flag if this was a screenshot action
+            if step.action == 'screenshot':
+                result['screenshot_requested'] = True
+            
+            return result
                 
         except Exception as e:
             return {
                 'success': False,
                 'error': str(e),
-                'action': step.action
+                'action': step.action,
+                'automation_type': step.automation_type
             }
     
     async def _handle_step_failure(self, step: TaskStep, result: Dict, step_index: int) -> bool:
@@ -227,6 +277,53 @@ class BrowserAgent:
         
         return True
     
+    async def _ensure_browser_session(self, browser: str) -> bool:
+        """Ensure browser session is healthy and active"""
+        try:
+            # Check if session is active and healthy
+            if self.browser_manager.is_session_active():
+                # Verify automation is working
+                if self.automation:
+                    try:
+                        await self.automation.get_current_url()
+                        return True
+                    except Exception:
+                        self.logger.warning("Automation check failed, recreating session")
+            
+            # Launch new browser session
+            self.logger.info(f"Launching new browser session: {browser}")
+            driver = self.browser_manager.launch_browser(browser)
+            self.automation = WebAutomation(driver, self.config)
+            
+            # Verify session is working
+            await asyncio.sleep(1)
+            return self.browser_manager.is_session_active()
+            
+        except Exception as e:
+            self.logger.error(f"Failed to ensure browser session: {e}")
+            return False
+    
+    async def _recover_browser_session(self, browser: str):
+        """Recover from browser session issues"""
+        try:
+            self.logger.info("Recovering browser session...")
+            
+            # Close existing session
+            if self.browser_manager.active_driver:
+                self.browser_manager.close_browser()
+            
+            # Force cleanup if needed
+            self.browser_manager.force_cleanup()
+            
+            # Wait a bit before relaunching
+            await asyncio.sleep(2)
+            
+            # Try to relaunch
+            await self._ensure_browser_session(browser)
+            
+        except Exception as e:
+            self.logger.error(f"Browser session recovery failed: {e}")
+
     async def _get_current_context(self) -> Dict[str, Any]:
         """Get current browser context for AI processing"""
         if not self.automation:
@@ -241,7 +338,7 @@ class BrowserAgent:
             # Get page content for analysis (limited to avoid token limits)
             page_source = await self.automation.get_page_source()
             if page_source:
-                page_analysis = self.ai_processor.analyze_page_content(
+                page_analysis = await self.ai_processor.analyze_page_content(
                     page_source[:10000],  # Limit content size
                     context['current_url']
                 )

@@ -9,11 +9,13 @@ import json
 from .chat_interface import ChatInterface
 from .settings_tab import SettingsTab
 from .brain_tab import BrainTab
-from .browser_tab import BrowserTab
+from .enhanced_browser_tab import EnhancedBrowserTab
+from .desktop_automation_tab import DesktopAutomationTab
 from .task_log_tab import TaskLogTab
 from ..core.config import Config
 from ..core.agent import BrowserAgent
 from ..core.multi_llm_processor import MultiLLMProcessor, LLMProvider
+from ..browsers.manager import BrowserManager
 
 
 class MainWindow:
@@ -32,6 +34,7 @@ class MainWindow:
         
         # Initialize components
         self.config = Config()
+        self.browser_manager = None
         self.agent = None
         self.llm_processor = None
         self.task_history = []
@@ -134,7 +137,11 @@ class MainWindow:
         
         # Browser Agent Tab
         self.browser_tab = self.tab_view.add("🌐 Browser Agent")
-        self.browser_interface = BrowserTab(self.browser_tab, self)
+        self.browser_interface = EnhancedBrowserTab(self.browser_tab, self)
+        
+        # Desktop Automation Tab
+        self.desktop_tab = self.tab_view.add("🖥️ Desktop Control")
+        self.desktop_interface = DesktopAutomationTab(self.desktop_tab, self)
         
         # Task Log Tab
         self.task_log_tab = self.tab_view.add("📜 Task Log")
@@ -178,11 +185,21 @@ class MainWindow:
         """Initialize the browser agent in background"""
         def init_worker():
             try:
+                self.update_status("Initializing browser manager...")
+                self.browser_manager = BrowserManager(
+                    headless=False,
+                    framework="selenium"
+                )
+                
                 self.update_status("Initializing AI models...")
                 self.llm_processor = MultiLLMProcessor(self.config)
                 
                 self.update_status("Initializing browser agent...")
                 self.agent = BrowserAgent(self.config)
+                
+                # Connect browser manager to agent
+                if self.agent and hasattr(self.agent, 'browser_manager'):
+                    self.agent.browser_manager = self.browser_manager
                 
                 # Update UI
                 self.root.after(0, self.on_agent_initialized)

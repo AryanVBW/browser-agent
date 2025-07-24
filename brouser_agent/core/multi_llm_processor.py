@@ -4,7 +4,7 @@ import asyncio
 from typing import Dict, List, Any, Optional, Union
 from dataclasses import dataclass
 from enum import Enum
-import openai
+from openai import OpenAI
 import anthropic
 import google.generativeai as genai
 
@@ -62,8 +62,7 @@ class MultiLLMProcessor:
         try:
             # OpenAI
             if self.config.openai_api_key:
-                openai.api_key = self.config.openai_api_key
-                self.openai_client = openai
+                self.openai_client = OpenAI(api_key=self.config.openai_api_key)
                 self.logger.info("OpenAI client initialized")
             
             # Claude/Anthropic
@@ -134,11 +133,14 @@ class MultiLLMProcessor:
             {"role": "user", "content": prompt}
         ]
         
-        response = await openai.ChatCompletion.acreate(
-            model=self.current_model,
-            messages=messages,
-            max_tokens=self.config.max_tokens,
-            temperature=self.config.temperature
+        response = await asyncio.get_event_loop().run_in_executor(
+            None,
+            lambda: self.openai_client.chat.completions.create(
+                model=self.current_model,
+                messages=messages,
+                max_tokens=self.config.max_tokens,
+                temperature=self.config.temperature
+            )
         )
         
         content = response.choices[0].message.content
@@ -183,20 +185,38 @@ class MultiLLMProcessor:
     
     def _create_system_prompt(self) -> str:
         """Create system prompt for task planning"""
-        return """You are an intelligent web browser automation agent. Convert natural language instructions into detailed, executable browser automation steps.
+        return """You are an intelligent automation agent capable of both web browser and desktop control. Convert natural language instructions into detailed, executable automation steps.
 
-Available Actions:
+BROWSER AUTOMATION ACTIONS:
 - navigate: Go to a specific URL
-- click: Click on an element (button, link, etc.)
-- type: Enter text into input fields
-- select: Choose from dropdown menus
-- scroll: Scroll the page up/down/to element
-- wait: Wait for elements to load or conditions to be met
-- screenshot: Take a screenshot for verification
-- extract: Extract specific information from the page
-- verify: Check if certain conditions are met
+- click: Click on a web element (button, link, etc.)
+- type: Enter text into web input fields
+- select: Choose from web dropdown menus
+- scroll: Scroll the webpage up/down/to element
+- wait: Wait for web elements to load or conditions to be met
+- screenshot: Take a screenshot of the browser
+- extract: Extract specific information from the webpage
+- verify: Check if certain web conditions are met
 
-Element Targeting Methods:
+DESKTOP AUTOMATION ACTIONS:
+- click_coordinates: Click at specific screen coordinates (x, y)
+- click_image: Find and click an image on screen
+- type: Type text using keyboard (works anywhere on desktop)
+- press_key: Press specific keys or key combinations (ctrl+c, cmd+v, etc.)
+- scroll: Scroll at current mouse position or specific coordinates
+- drag_drop: Drag from one position to another
+- open_app: Open a desktop application by name
+- move_mouse: Move mouse to specific coordinates
+- wait_for_image: Wait for an image to appear on screen
+- get_mouse_position: Get current mouse coordinates
+- get_screen_info: Get screen resolution and information
+
+HYBRID AUTOMATION ACTIONS:
+- browser_to_desktop: Perform browser action then desktop action
+- desktop_to_browser: Perform desktop action then browser action
+- copy_from_browser_to_desktop: Extract text from browser and type in desktop app
+
+Element Targeting Methods (Browser):
 - id: Element ID (id:search-button)
 - class: CSS class name (class:submit-btn)
 - xpath: XPath selector (xpath://button[text()='Submit'])
@@ -210,10 +230,19 @@ Response Format (JSON):
   "steps": [
     {
       "action": "action_name",
-      "target": "element_selector_or_url",
+      "type": "browser|desktop|hybrid",
+      "target": "element_selector_or_coordinates_or_image_path",
       "value": "text_to_enter_or_option_to_select",
       "condition": "wait_condition_if_needed",
-      "description": "Human readable description of this step"
+      "description": "Human readable description of this step",
+      "params": {
+        "x": 100,
+        "y": 200,
+        "button": "left",
+        "app_name": "Calculator",
+        "key": "ctrl+c",
+        "confidence": 0.8
+      }
     }
   ],
   "success_criteria": ["List of conditions that indicate task completion"],
@@ -221,12 +250,16 @@ Response Format (JSON):
 }
 
 Guidelines:
-1. Be specific with element selectors
-2. Include wait conditions for dynamic content
-3. Add verification steps to ensure actions succeeded
-4. Handle potential errors and edge cases
-5. Keep steps atomic and sequential
-6. Use human-like interaction patterns"""
+1. Determine if task requires browser, desktop, or hybrid automation
+2. Use browser automation for web-based tasks
+3. Use desktop automation for system-wide tasks, opening apps, file operations
+4. Use hybrid automation when task spans both browser and desktop
+5. Be specific with selectors and coordinates
+6. Include wait conditions for dynamic content
+7. Add verification steps to ensure actions succeeded
+8. Handle potential errors and edge cases
+9. Keep steps atomic and sequential
+10. Use human-like interaction patterns"""
     
     def _enhance_prompt(self, user_prompt: str, context: Optional[Dict] = None) -> str:
         """Enhance user prompt with context information"""
@@ -258,7 +291,9 @@ Guidelines:
                 target=step_data.get('target'),
                 value=step_data.get('value'),
                 condition=step_data.get('condition'),
-                description=step_data.get('description', '')
+                description=step_data.get('description', ''),
+                automation_type=step_data.get('type', 'browser'),
+                params=step_data.get('params', {})
             )
             steps.append(step)
         
@@ -280,11 +315,14 @@ Guidelines:
                     {"role": "user", "content": prompt}
                 ]
                 
-                response = await openai.ChatCompletion.acreate(
-                    model=self.current_model,
-                    messages=messages,
-                    max_tokens=500,
-                    temperature=0.7
+                response = await asyncio.get_event_loop().run_in_executor(
+                    None,
+                    lambda: self.openai_client.chat.completions.create(
+                        model=self.current_model,
+                        messages=messages,
+                        max_tokens=500,
+                        temperature=0.7
+                    )
                 )
                 
                 return response.choices[0].message.content
@@ -317,3 +355,89 @@ Guidelines:
         except Exception as e:
             self.logger.error(f"Error generating response: {e}")
             return f"I apologize, but I encountered an error: {str(e)}"
+    
+    async def analyze_page_content(self, html_content: str, url: str = "", task_context: Optional[str] = None) -> Dict[str, Any]:
+        """Analyze page content and extract relevant information for automation"""
+        try:
+            prompt = f"""Analyze the following webpage content and extract information useful for browser automation.
+
+URL: {url}
+Task Context: {task_context or 'General analysis'}
+
+HTML Content (truncated):
+{html_content[:5000]}...
+
+Please provide a JSON response with:
+1. Available interactive elements (buttons, links, forms, inputs)
+2. Key information on the page
+3. Suggested automation actions
+4. Element selectors for common actions
+
+Response format:
+{{
+    "title": "page title",
+    "interactive_elements": [
+        {{"type": "button", "text": "button text", "selector": "css or xpath selector"}},
+        {{"type": "input", "placeholder": "input placeholder", "selector": "selector"}},
+        {{"type": "link", "text": "link text", "href": "url", "selector": "selector"}}
+    ],
+    "key_information": ["important info point 1", "info point 2"],
+    "suggested_actions": ["action 1", "action 2"],
+    "page_type": "search/form/product/article/etc"
+}}"""
+
+            if self.current_provider == LLMProvider.OPENAI:
+                messages = [
+                    {"role": "system", "content": "You are an expert at analyzing webpages for browser automation. Always respond with valid JSON."},
+                    {"role": "user", "content": prompt}
+                ]
+                
+                response = await asyncio.get_event_loop().run_in_executor(
+                    None,
+                    lambda: self.openai_client.chat.completions.create(
+                        model=self.current_model,
+                        messages=messages,
+                        max_tokens=1000,
+                        temperature=0.3
+                    )
+                )
+                
+                content = response.choices[0].message.content
+                return json.loads(content)
+            
+            elif self.current_provider == LLMProvider.CLAUDE:
+                full_prompt = f"Human: {prompt}\n\nAssistant:"
+                
+                response = await asyncio.get_event_loop().run_in_executor(
+                    None,
+                    lambda: self.claude_client.completions.create(
+                        model=self.current_model,
+                        prompt=full_prompt,
+                        max_tokens_to_sample=1000,
+                        temperature=0.3
+                    )
+                )
+                
+                content = response.completion.strip()
+                return json.loads(content)
+            
+            elif self.current_provider == LLMProvider.GEMINI:
+                model = self.gemini_client.GenerativeModel(self.current_model)
+                
+                response = await asyncio.get_event_loop().run_in_executor(
+                    None,
+                    lambda: model.generate_content(prompt)
+                )
+                
+                content = response.text
+                return json.loads(content)
+                
+        except Exception as e:
+            self.logger.error(f"Error analyzing page content: {e}")
+            return {
+                "title": "Analysis Failed",
+                "interactive_elements": [],
+                "key_information": [f"Error analyzing page: {str(e)}"],
+                "suggested_actions": [],
+                "page_type": "unknown"
+            }

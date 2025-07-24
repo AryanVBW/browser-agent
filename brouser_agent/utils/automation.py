@@ -232,6 +232,22 @@ class WebAutomation:
             timeout = timeout or self.config.page_load_timeout
             by, value = self._parse_selector(selector)
             
+            # Handle None condition by defaulting to "present"
+            if condition is None:
+                condition = "present"
+            
+            # Handle common condition variations and aliases
+            condition = condition.lower() if condition else "present"
+            
+            # Map common condition aliases
+            condition_map = {
+                "element_to_be_clickable": "clickable",
+                "visibility": "visible",
+                "presence": "present",
+                "exists": "present"
+            }
+            condition = condition_map.get(condition, condition)
+            
             if condition == "present":
                 element = WebDriverWait(self.driver, timeout).until(
                     EC.presence_of_element_located((by, value))
@@ -247,7 +263,7 @@ class WebAutomation:
             else:
                 return {
                     'success': False,
-                    'error': f"Unknown condition: {condition}"
+                    'error': f"Unknown condition: {condition}. Supported conditions: present, visible, clickable"
                 }
             
             return {

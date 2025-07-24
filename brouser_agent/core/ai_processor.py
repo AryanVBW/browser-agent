@@ -1,7 +1,8 @@
 import json
 import logging
+import asyncio
 from typing import Dict, List, Any, Optional
-import openai
+from openai import OpenAI
 from dataclasses import dataclass
 
 from .config import Config
@@ -14,6 +15,8 @@ class TaskStep:
     value: Optional[str] = None
     condition: Optional[str] = None
     description: str = ""
+    automation_type: str = "browser"  # browser, desktop, or hybrid
+    params: Optional[Dict[str, Any]] = None  # Additional parameters for desktop/hybrid actions
 
 
 @dataclass
@@ -34,7 +37,7 @@ class AIProcessor:
         if not config.openai_api_key:
             raise ValueError("OpenAI API key is required")
         
-        openai.api_key = config.openai_api_key
+        self.openai_client = OpenAI(api_key=config.openai_api_key)
         
         self.system_prompt = self._create_system_prompt()
     
@@ -104,11 +107,14 @@ Example selectors:
                 {"role": "user", "content": self._enhance_prompt(user_prompt, context)}
             ]
             
-            response = await openai.ChatCompletion.acreate(
-                model=self.config.ai_model,
-                messages=messages,
-                max_tokens=self.config.max_tokens,
-                temperature=self.config.temperature
+            response = await asyncio.get_event_loop().run_in_executor(
+                None,
+                lambda: self.openai_client.chat.completions.create(
+                    model=self.config.ai_model,
+                    messages=messages,
+                    max_tokens=self.config.max_tokens,
+                    temperature=self.config.temperature
+                )
             )
             
             content = response.choices[0].message.content

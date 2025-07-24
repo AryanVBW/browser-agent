@@ -17,21 +17,22 @@ class AnimatedTextWidget(ctk.CTkTextbox):
         
     def animate_text(self, text: str, delay: float = 0.03, callback=None):
         """Animate text typing effect"""
-        def animate():
-            self.configure(state="normal")
-            
-            for char in text:
-                self.insert("end", char)
+        def animate_char(text_remaining, index=0):
+            if index < len(text):
+                self.configure(state="normal")
+                self.insert("end", text[index])
                 self.see("end")
-                self.update()
-                time.sleep(delay)
-            
-            if callback:
-                callback()
-            
-            self.configure(state="disabled")
+                self.configure(state="disabled")
+                
+                # Schedule next character
+                self.after(int(delay * 1000), lambda: animate_char(text_remaining, index + 1))
+            else:
+                # Animation complete
+                if callback:
+                    callback()
         
-        threading.Thread(target=animate, daemon=True).start()
+        # Start animation on main thread
+        animate_char(text)
     
     def add_message(self, message: str, sender: str = "user", animate: bool = False):
         """Add a message to the chat"""
@@ -180,8 +181,11 @@ class ChatInterface:
             ("🔍 Search Google", "Search Google for 'latest AI news'"),
             ("📧 Open Gmail", "Go to Gmail and check for new emails"),
             ("🛒 Amazon Search", "Go to Amazon and search for 'wireless headphones'"),
-            ("📰 Check News", "Go to BBC News and show me the top headlines"),
+            ("🧮 Open Calculator", "Open Calculator app and calculate 15% tip on $45"),
+            ("📸 Take Screenshot", "Take a screenshot of the current screen"),
+            ("📝 Open TextEdit", "Open TextEdit and type a quick note"),
             ("🌡️ Weather Check", "Check the weather forecast for today"),
+            ("🖱️ Get Mouse Position", "Get the current mouse position coordinates"),
             ("💰 Stock Prices", "Check the current stock price of Apple")
         ]
         
@@ -245,22 +249,39 @@ class ChatInterface:
         """Add welcome message to chat"""
         welcome_text = """Welcome to Browser Agent! 🎉
 
-I'm your AI-powered web automation assistant. I can help you with:
+I'm your AI-powered automation assistant with both browser and desktop control capabilities. I can help you with:
 
-🔍 Web browsing and searching
-📝 Filling out forms automatically
-🛒 E-commerce tasks (searching, comparing prices)
-📧 Email management
-📊 Data extraction from websites
-🔗 Navigating complex web applications
+🌐 **Browser Automation:**
+• Web browsing and searching
+• Filling out forms automatically
+• E-commerce tasks (searching, comparing prices)
+• Email management
+• Data extraction from websites
+• Navigating complex web applications
+
+🖥️ **Desktop Automation:**
+• Opening applications
+• Clicking at specific coordinates
+• Typing text and pressing keys
+• Taking screenshots
+• Finding and clicking images on screen
+• Mouse movement and scrolling
+• Drag and drop operations
+
+🔄 **Hybrid Tasks:**
+• Copy data from browser to desktop apps
+• Switch between browser and desktop seamlessly
+• Automate complex workflows across platforms
 
 Just tell me what you'd like me to do in natural language, and I'll break it down into steps and execute them for you!
 
 Try asking me something like:
 • "Search for Python programming tutorials on YouTube"
-• "Go to Amazon and find the best-rated wireless headphones under $100"
-• "Fill out a contact form with my information"
-• "Compare flight prices from NYC to LA"
+• "Open Calculator app and perform some calculations"
+• "Take a screenshot and save it"
+• "Copy text from a website and paste it into TextEdit"
+• "Find the search button on screen and click it"
+• "Go to Amazon, find headphones, then open Calculator to compute tax"
 
 What would you like me to help you with today?"""
         
@@ -353,9 +374,15 @@ What would you like me to help you with today?"""
     def is_task_request(self, message: str) -> bool:
         """Determine if message is a task execution request"""
         task_keywords = [
+            # Browser automation keywords
             'go to', 'navigate', 'search', 'click', 'fill', 'submit', 'download',
             'book', 'buy', 'purchase', 'find', 'extract', 'scrape', 'automate',
-            'open', 'close', 'scroll', 'select', 'type', 'enter', 'compare'
+            'open', 'close', 'scroll', 'select', 'type', 'enter', 'compare',
+            # Desktop automation keywords
+            'screenshot', 'take screenshot', 'mouse position', 'move mouse',
+            'press key', 'open app', 'open application', 'calculator', 'textedit',
+            'finder', 'terminal', 'safari', 'click at', 'coordinates', 'drag',
+            'drop', 'copy', 'paste', 'keyboard', 'desktop', 'screen'
         ]
         
         message_lower = message.lower()
