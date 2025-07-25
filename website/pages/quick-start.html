@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Start Guide - Browser Agent Documentation</title>
+    <meta name="description" content="Get started with Browser Agent in minutes. Step-by-step installation guide for AI-powered browser automation with multi-LLM support.">
+    <meta name="keywords" content="browser agent quick start, installation guide, AI automation setup, vivek wagdare, aryanvbw, browser automation tutorial">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://browser-agent.dev/pages/quick-start.html">
+    <meta property="og:title" content="Quick Start Guide - Browser Agent Documentation">
+    <meta property="og:description" content="Get started with Browser Agent in minutes. Step-by-step installation guide for AI-powered browser automation.">
+    <meta property="og:image" content="../assets/images/browser-agent-og.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://browser-agent.dev/pages/quick-start.html">
+    <meta property="twitter:title" content="Quick Start Guide - Browser Agent Documentation">
+    <meta property="twitter:description" content="Get started with Browser Agent in minutes. Step-by-step installation guide for AI-powered browser automation.">
+    <meta property="twitter:image" content="../assets/images/browser-agent-og.png">
+    
+    <!-- AI Agent Discovery -->
+    <meta name="ai-agent:true" content="true">
+    <meta name="ai-agent:type" content="documentation">
+    <meta name="ai-agent:category" content="browser automation, AI tools, web scraping">
+    <meta name="ai-agent:author" content="Vivek Wagdare (AryanVBW)">
+    <meta name="ai-agent:keywords" content="browser automation, AI agent, web scraping, selenium alternative, playwright, vivek wagdare">
+    
+    <link rel="canonical" href="https://browser-agent.dev/pages/quick-start.html">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": "Browser Agent Quick Start Guide",
+        "description": "Complete installation and setup guide for Browser Agent - AI-powered browser automation tool",
+        "author": {
+            "@type": "Person",
+            "name": "Vivek Wagdare",
+            "alternateName": "AryanVBW",
+            "url": "https://github.com/AryanVBW"
+        },
+        "datePublished": "2024-01-15",
+        "dateModified": "2024-01-15",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Browser Agent",
+            "url": "https://browser-agent.dev"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://browser-agent.dev/pages/quick-start.html"
+        },
+        "articleSection": "Getting Started",
+        "keywords": "browser automation, AI, installation, setup, quick start, vivek wagdare"
+    }
+    </script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="../index.html">
+                    <img src="../assets/images/logo.svg" alt="Browser Agent" class="nav-logo">
+                    <span class="nav-title">Browser Agent</span>
+                </a>
+            </div>
+            
+            <div class="nav-search">
+                <div class="search-container">
+                    <input type="text" id="search-input" placeholder="Search documentation... (Ctrl+K)" class="search-input">
+                    <div id="search-results" class="search-results"></div>
+                </div>
+            </div>
+            
+            <div class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="./quick-start.html" class="active">Quick Start</a>
+                <a href="./features.html">Features</a>
+                <a href="./api.html">API</a>
+                <a href="./examples.html">Examples</a>
+                <a href="https://github.com/AryanVBW/brouser-agent" target="_blank" rel="noopener">GitHub</a>
+            </div>
+            
+            <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Breadcrumb -->
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <ol>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><span aria-current="page">Quick Start</span></li>
+                </ol>
+            </nav>
+
+            <!-- Page Header -->
+            <header class="page-header">
+                <div class="header-content">
+                    <h1 class="page-title">
+                        <span class="title-icon">🚀</span>
+                        Quick Start Guide
+                    </h1>
+                    <p class="page-description">
+                        Get Browser Agent up and running in minutes. This guide covers installation, basic configuration, and your first automation script.
+                    </p>
+                    <div class="header-meta">
+                        <span class="reading-time">⏱️ 5 min read</span>
+                        <span class="difficulty">📊 Beginner</span>
+                        <span class="last-updated">🔄 Updated Jan 15, 2024</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Table of Contents -->
+            <aside class="toc-sidebar">
+                <div class="toc-container">
+                    <h3>On This Page</h3>
+                    <ul class="toc-list">
+                        <li><a href="#prerequisites">Prerequisites</a></li>
+                        <li><a href="#installation">Installation</a></li>
+                        <li><a href="#configuration">Configuration</a></li>
+                        <li><a href="#first-script">First Script</a></li>
+                        <li><a href="#verification">Verification</a></li>
+                        <li><a href="#next-steps">Next Steps</a></li>
+                    </ul>
+                </div>
+            </aside>
+
+            <!-- Content -->
+            <div class="content-wrapper">
+                <article class="documentation-content">
+                    <!-- Prerequisites Section -->
+                    <section id="prerequisites" class="content-section">
+                        <h2>📋 Prerequisites</h2>
+                        <p>Before installing Browser Agent, ensure you have the following requirements:</p>
+                        
+                        <div class="requirement-grid">
+                            <div class="requirement-card">
+                                <div class="req-icon">🐍</div>
+                                <h3>Python 3.8+</h3>
+                                <p>Python 3.8 or higher is required</p>
+                                <div class="req-check">
+                                    <code>python --version</code>
+                                </div>
+                            </div>
+                            
+                            <div class="requirement-card">
+                                <div class="req-icon">🌐</div>
+                                <h3>Web Browser</h3>
+                                <p>Chrome, Firefox, Safari, or Edge</p>
+                                <div class="req-check">
+                                    <span class="check-mark">✅ Auto-detected</span>
+                                </div>
+                            </div>
+                            
+                            <div class="requirement-card">
+                                <div class="req-icon">🔑</div>
+                                <h3>API Keys (Optional)</h3>
+                                <p>OpenAI, Claude, or Gemini API keys</p>
+                                <div class="req-check">
+                                    <span class="optional">Optional for AI features</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="callout callout-info">
+                            <div class="callout-icon">💡</div>
+                            <div class="callout-content">
+                                <h4>System Compatibility</h4>
+                                <p>Browser Agent supports Windows 10+, macOS 10.14+, and Linux (Ubuntu 18.04+). Docker is available for all platforms.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Installation Section -->
+                    <section id="installation" class="content-section">
+                        <h2>⚡ Installation</h2>
+                        <p>Choose your preferred installation method:</p>
+                        
+                        <div class="installation-tabs">
+                            <div class="tab-buttons">
+                                <button class="tab-button active" data-tab="pip">📦 pip</button>
+                                <button class="tab-button" data-tab="docker">🐳 Docker</button>
+                                <button class="tab-button" data-tab="source">🔧 Source</button>
+                            </div>
+                            
+                            <div class="tab-content">
+                                <!-- pip Installation -->
+                                <div id="pip" class="tab-panel active">
+                                    <h3>Install via pip (Recommended)</h3>
+                                    <div class="code-block">
+                                        <div class="code-header">
+                                            <span class="code-title">Terminal</span>
+                                            <button class="copy-button" data-copy="pip install browser-agent">
+                                                <span class="copy-icon">📋</span>
+                                                <span class="copy-text">Copy</span>
+                                            </button>
+                                        </div>
+                                        <pre><code class="language-bash"># Install Browser Agent
+pip install browser-agent
+
+# Install with AI support
+pip install browser-agent[ai]
+
+# Install with all features
+pip install browser-agent[all]</code></pre>
+                                    </div>
+                                    
+                                    <div class="callout callout-tip">
+                                        <div class="callout-icon">💡</div>
+                                        <div class="callout-content">
+                                            <h4>Virtual Environment Recommended</h4>
+                                            <p>Use a virtual environment to avoid conflicts:</p>
+                                            <code>python -m venv browser-agent-env && source browser-agent-env/bin/activate</code>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Docker Installation -->
+                                <div id="docker" class="tab-panel">
+                                    <h3>Docker Installation</h3>
+                                    <div class="code-block">
+                                        <div class="code-header">
+                                            <span class="code-title">Docker</span>
+                                            <button class="copy-button" data-copy="docker run -it --rm browser-agent/browser-agent">
+                                                <span class="copy-icon">📋</span>
+                                                <span class="copy-text">Copy</span>
+                                            </button>
+                                        </div>
+                                        <pre><code class="language-bash"># Pull and run Browser Agent
+docker run -it --rm browser-agent/browser-agent
+
+# Run with volume mounting
+docker run -it --rm -v $(pwd):/workspace browser-agent/browser-agent
+
+# Run with GUI support (Linux/macOS)
+docker run -it --rm -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix browser-agent/browser-agent</code></pre>
+                                    </div>
+                                    
+                                    <div class="feature-list">
+                                        <h4>Docker Benefits:</h4>
+                                        <ul>
+                                            <li>✅ No local dependencies</li>
+                                            <li>✅ Consistent environment</li>
+                                            <li>✅ Easy deployment</li>
+                                            <li>✅ Isolated execution</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <!-- Source Installation -->
+                                <div id="source" class="tab-panel">
+                                    <h3>Install from Source</h3>
+                                    <div class="code-block">
+                                        <div class="code-header">
+                                            <span class="code-title">Git + pip</span>
+                                            <button class="copy-button" data-copy="git clone https://github.com/AryanVBW/brouser-agent.git">
+                                                <span class="copy-icon">📋</span>
+                                                <span class="copy-text">Copy</span>
+                                            </button>
+                                        </div>
+                                        <pre><code class="language-bash"># Clone the repository
+git clone https://github.com/AryanVBW/brouser-agent.git
+cd brouser-agent
+
+# Install in development mode
+pip install -e .
+
+# Install with development dependencies
+pip install -e ".[dev]"</code></pre>
+                                    </div>
+                                    
+                                    <div class="callout callout-warning">
+                                        <div class="callout-icon">⚠️</div>
+                                        <div class="callout-content">
+                                            <h4>Development Installation</h4>
+                                            <p>Source installation is recommended for contributors and advanced users who want the latest features.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Configuration Section -->
+                    <section id="configuration" class="content-section">
+                        <h2>⚙️ Configuration</h2>
+                        <p>Set up Browser Agent with your preferred settings:</p>
+                        
+                        <div class="config-steps">
+                            <div class="config-step">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <h3>Initialize Configuration</h3>
+                                    <div class="code-block">
+                                        <pre><code class="language-bash"># Create configuration directory
+browser-agent init
+
+# Or manually create config
+mkdir ~/.browser-agent
+touch ~/.browser-agent/config.yaml</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="config-step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <h3>Configure API Keys (Optional)</h3>
+                                    <div class="code-block">
+                                        <div class="code-header">
+                                            <span class="code-title">~/.browser-agent/config.yaml</span>
+                                        </div>
+                                        <pre><code class="language-yaml"># AI Configuration
+ai:
+  providers:
+    openai:
+      api_key: "your-openai-api-key"
+      model: "gpt-4"
+    claude:
+      api_key: "your-claude-api-key"
+      model: "claude-3-sonnet"
+    gemini:
+      api_key: "your-gemini-api-key"
+      model: "gemini-pro"
+
+# Browser Configuration
+browser:
+  default: "chrome"
+  headless: false
+  timeout: 30
+
+# MCP Configuration
+mcp:
+  enabled: true
+  servers:
+    - name: "n8n"
+      enabled: true</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="config-step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <h3>Environment Variables</h3>
+                                    <div class="code-block">
+                                        <div class="code-header">
+                                            <span class="code-title">.env</span>
+                                        </div>
+                                        <pre><code class="language-bash"># API Keys
+OPENAI_API_KEY=your-openai-key
+CLAUDE_API_KEY=your-claude-key
+GEMINI_API_KEY=your-gemini-key
+
+# Browser Agent Settings
+BROWSER_AGENT_DEBUG=true
+BROWSER_AGENT_LOG_LEVEL=INFO</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- First Script Section -->
+                    <section id="first-script" class="content-section">
+                        <h2>🎯 Your First Script</h2>
+                        <p>Let's create a simple automation script to verify everything works:</p>
+                        
+                        <div class="script-example">
+                            <div class="code-block">
+                                <div class="code-header">
+                                    <span class="code-title">first_automation.py</span>
+                                    <button class="copy-button" data-copy="from browser_agent import BrowserAgent">
+                                        <span class="copy-icon">📋</span>
+                                        <span class="copy-text">Copy</span>
+                                    </button>
+                                </div>
+                                <pre><code class="language-python">#!/usr/bin/env python3
+"""
+Browser Agent - First Automation Script
+Created by: Vivek Wagdare (AryanVBW)
+"""
+
+from browser_agent import BrowserAgent
+import asyncio
+
+async def main():
+    # Initialize Browser Agent
+    agent = BrowserAgent(
+        browser="chrome",  # or "firefox", "safari", "edge"
+        headless=False,    # Set to True for headless mode
+        ai_provider="openai"  # Optional: for AI features
+    )
+    
+    try:
+        # Start the browser
+        await agent.start()
+        
+        # Navigate to a website
+        await agent.navigate("https://example.com")
+        
+        # Take a screenshot
+        screenshot_path = await agent.screenshot("first_automation.png")
+        print(f"Screenshot saved: {screenshot_path}")
+        
+        # Get page title
+        title = await agent.get_title()
+        print(f"Page title: {title}")
+        
+        # Find and interact with elements
+        search_box = await agent.find_element("input[type='text']")
+        if search_box:
+            await agent.type(search_box, "Browser Agent Test")
+            print("Text entered successfully!")
+        
+        # AI-powered interaction (if API key configured)
+        if agent.ai_enabled:
+            result = await agent.ai_interact(
+                "Find the main heading on this page and tell me what it says"
+            )
+            print(f"AI Response: {result}")
+        
+        print("✅ First automation completed successfully!")
+        
+    except Exception as e:
+        print(f"❌ Error: {e}")
+    
+    finally:
+        # Clean up
+        await agent.close()
+
+if __name__ == "__main__":
+    asyncio.run(main())</code></pre>
+                            </div>
+                        </div>
+                        
+                        <div class="run-instructions">
+                            <h3>Run Your Script</h3>
+                            <div class="code-block">
+                                <pre><code class="language-bash"># Make the script executable
+chmod +x first_automation.py
+
+# Run the script
+python first_automation.py</code></pre>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Verification Section -->
+                    <section id="verification" class="content-section">
+                        <h2>✅ Verification</h2>
+                        <p>Verify your installation is working correctly:</p>
+                        
+                        <div class="verification-checklist">
+                            <div class="check-item">
+                                <input type="checkbox" id="check1" class="check-input">
+                                <label for="check1" class="check-label">
+                                    <span class="check-icon">✅</span>
+                                    Browser Agent installed successfully
+                                </label>
+                                <div class="check-command">
+                                    <code>browser-agent --version</code>
+                                </div>
+                            </div>
+                            
+                            <div class="check-item">
+                                <input type="checkbox" id="check2" class="check-input">
+                                <label for="check2" class="check-label">
+                                    <span class="check-icon">✅</span>
+                                    Browser drivers detected
+                                </label>
+                                <div class="check-command">
+                                    <code>browser-agent check-drivers</code>
+                                </div>
+                            </div>
+                            
+                            <div class="check-item">
+                                <input type="checkbox" id="check3" class="check-input">
+                                <label for="check3" class="check-label">
+                                    <span class="check-icon">✅</span>
+                                    Configuration file created
+                                </label>
+                                <div class="check-command">
+                                    <code>ls ~/.browser-agent/config.yaml</code>
+                                </div>
+                            </div>
+                            
+                            <div class="check-item">
+                                <input type="checkbox" id="check4" class="check-input">
+                                <label for="check4" class="check-label">
+                                    <span class="check-icon">✅</span>
+                                    First script runs without errors
+                                </label>
+                                <div class="check-command">
+                                    <code>python first_automation.py</code>
+                                </div>
+                            </div>
+                            
+                            <div class="check-item">
+                                <input type="checkbox" id="check5" class="check-input">
+                                <label for="check5" class="check-label">
+                                    <span class="check-icon">✅</span>
+                                    AI features working (if configured)
+                                </label>
+                                <div class="check-command">
+                                    <code>browser-agent test-ai</code>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="callout callout-success">
+                            <div class="callout-icon">🎉</div>
+                            <div class="callout-content">
+                                <h4>Installation Complete!</h4>
+                                <p>Congratulations! Browser Agent is now ready to use. You can start building powerful automation scripts with AI capabilities.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Next Steps Section -->
+                    <section id="next-steps" class="content-section">
+                        <h2>🚀 Next Steps</h2>
+                        <p>Now that you have Browser Agent installed, explore these resources:</p>
+                        
+                        <div class="next-steps-grid">
+                            <div class="next-step-card">
+                                <div class="step-icon">📚</div>
+                                <h3>Explore Features</h3>
+                                <p>Learn about all the powerful features Browser Agent offers</p>
+                                <a href="./features.html" class="step-link">View Features →</a>
+                            </div>
+                            
+                            <div class="next-step-card">
+                                <div class="step-icon">🔌</div>
+                                <h3>MCP Integration</h3>
+                                <p>Connect with external tools and services using MCP</p>
+                                <a href="./mcp-integration.html" class="step-link">Setup MCP →</a>
+                            </div>
+                            
+                            <div class="next-step-card">
+                                <div class="step-icon">🤖</div>
+                                <h3>AI Integration</h3>
+                                <p>Configure AI providers for natural language automation</p>
+                                <a href="./ai-integration.html" class="step-link">Setup AI →</a>
+                            </div>
+                            
+                            <div class="next-step-card">
+                                <div class="step-icon">💡</div>
+                                <h3>Examples</h3>
+                                <p>Browse real-world examples and use cases</p>
+                                <a href="./examples.html" class="step-link">View Examples →</a>
+                            </div>
+                            
+                            <div class="next-step-card">
+                                <div class="step-icon">📖</div>
+                                <h3>API Reference</h3>
+                                <p>Complete API documentation and method reference</p>
+                                <a href="./api.html" class="step-link">API Docs →</a>
+                            </div>
+                            
+                            <div class="next-step-card">
+                                <div class="step-icon">❓</div>
+                                <h3>Get Help</h3>
+                                <p>Join our community and get support</p>
+                                <a href="./faq.html" class="step-link">FAQ & Support →</a>
+                            </div>
+                        </div>
+                    </section>
+                </article>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Browser Agent</h3>
+                    <p>AI-powered browser automation for the modern web</p>
+                    <div class="social-links">
+                        <a href="https://github.com/AryanVBW/brouser-agent" target="_blank" rel="noopener" aria-label="GitHub">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </a>
+                        <a href="https://twitter.com/AryanVBW" target="_blank" rel="noopener" aria-label="Twitter">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Documentation</h4>
+                    <ul>
+                        <li><a href="./quick-start.html">Quick Start</a></li>
+                        <li><a href="./installation.html">Installation</a></li>
+                        <li><a href="./features.html">Features</a></li>
+                        <li><a href="./api.html">API Reference</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="./examples.html">Examples</a></li>
+                        <li><a href="./faq.html">FAQ</a></li>
+                        <li><a href="./contributing.html">Contributing</a></li>
+                        <li><a href="https://github.com/AryanVBW/brouser-agent/discussions" target="_blank" rel="noopener">Discussions</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="./changelog.html">Changelog</a></li>
+                        <li><a href="https://github.com/AryanVBW/brouser-agent/releases" target="_blank" rel="noopener">Releases</a></li>
+                        <li><a href="https://github.com/AryanVBW/brouser-agent/issues" target="_blank" rel="noopener">Issues</a></li>
+                        <li><a href="mailto:contact@browser-agent.dev">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Browser Agent. Created by <a href="https://github.com/AryanVBW" target="_blank" rel="noopener">Vivek Wagdare (AryanVBW)</a>. Open source under MIT License.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/search.js"></script>
+    <script>
+        // Tab functionality for installation methods
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabPanels = document.querySelectorAll('.tab-panel');
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const targetTab = this.getAttribute('data-tab');
+                    
+                    // Remove active class from all buttons and panels
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabPanels.forEach(panel => panel.classList.remove('active'));
+                    
+                    // Add active class to clicked button and corresponding panel
+                    this.classList.add('active');
+                    document.getElementById(targetTab).classList.add('active');
+                });
+            });
+            
+            // Copy button functionality
+            const copyButtons = document.querySelectorAll('.copy-button');
+            copyButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const textToCopy = this.getAttribute('data-copy') || 
+                                     this.closest('.code-block').querySelector('code').textContent;
+                    
+                    navigator.clipboard.writeText(textToCopy).then(() => {
+                        const copyText = this.querySelector('.copy-text');
+                        const originalText = copyText.textContent;
+                        copyText.textContent = 'Copied!';
+                        
+                        setTimeout(() => {
+                            copyText.textContent = originalText;
+                        }, 2000);
+                    });
+                });
+            });
+            
+            // Checklist functionality
+            const checkInputs = document.querySelectorAll('.check-input');
+            checkInputs.forEach(input => {
+                input.addEventListener('change', function() {
+                    const checkItem = this.closest('.check-item');
+                    if (this.checked) {
+                        checkItem.classList.add('completed');
+                    } else {
+                        checkItem.classList.remove('completed');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

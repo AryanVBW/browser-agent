@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Troubleshooting & Debugging - Browser Agent Documentation</title>
+    <meta name="description" content="Troubleshooting guide for Browser Agent. Debug common issues, performance problems, and configuration errors with step-by-step solutions.">
+    <meta name="keywords" content="browser agent troubleshooting, debugging, vivek wagdare, aryanvbw, browser automation issues, error solutions">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://browser-agent.dev/pages/troubleshooting.html">
+    <meta property="og:title" content="Troubleshooting & Debugging - Browser Agent Documentation">
+    <meta property="og:description" content="Comprehensive troubleshooting guide for Browser Agent with solutions to common issues.">
+    <meta property="og:image" content="../assets/images/browser-agent-troubleshooting.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://browser-agent.dev/pages/troubleshooting.html">
+    <meta property="twitter:title" content="Troubleshooting & Debugging - Browser Agent Documentation">
+    <meta property="twitter:description" content="Comprehensive troubleshooting guide for Browser Agent with solutions to common issues.">
+    <meta property="twitter:image" content="../assets/images/browser-agent-troubleshooting.png">
+    
+    <!-- AI Agent Discovery -->
+    <meta name="ai-agent:true" content="true">
+    <meta name="ai-agent:type" content="documentation">
+    <meta name="ai-agent:category" content="troubleshooting, debugging, browser automation">
+    <meta name="ai-agent:author" content="Vivek Wagdare (AryanVBW)">
+    <meta name="ai-agent:keywords" content="browser automation troubleshooting, debugging guide, vivek wagdare">
+    
+    <link rel="canonical" href="https://browser-agent.dev/pages/troubleshooting.html">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": "Browser Agent Troubleshooting & Debugging Guide",
+        "description": "Comprehensive troubleshooting guide for Browser Agent with solutions to common issues, performance problems, and configuration errors",
+        "author": {
+            "@type": "Person",
+            "name": "Vivek Wagdare",
+            "alternateName": "AryanVBW",
+            "url": "https://github.com/AryanVBW"
+        },
+        "datePublished": "2024-01-15",
+        "dateModified": "2024-01-15",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Browser Agent",
+            "url": "https://browser-agent.dev"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://browser-agent.dev/pages/troubleshooting.html"
+        },
+        "articleSection": "Troubleshooting",
+        "keywords": "browser automation troubleshooting, debugging, error solutions, vivek wagdare"
+    }
+    </script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="../index.html">
+                    <img src="../assets/images/logo.svg" alt="Browser Agent" class="nav-logo">
+                    <span class="nav-title">Browser Agent</span>
+                </a>
+            </div>
+            
+            <div class="nav-search">
+                <div class="search-container">
+                    <input type="text" id="search-input" placeholder="Search documentation... (Ctrl+K)" class="search-input">
+                    <div id="search-results" class="search-results"></div>
+                </div>
+            </div>
+            
+            <div class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="./quick-start.html">Quick Start</a>
+                <a href="./features.html">Features</a>
+                <a href="./api.html">API</a>
+                <a href="./examples.html">Examples</a>
+                <a href="./troubleshooting.html" class="active">Troubleshooting</a>
+                <a href="https://github.com/AryanVBW/brouser-agent" target="_blank" rel="noopener">GitHub</a>
+            </div>
+            
+            <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Breadcrumb -->
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <ol>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><span aria-current="page">Troubleshooting</span></li>
+                </ol>
+            </nav>
+
+            <!-- Page Header -->
+            <header class="page-header">
+                <div class="header-content">
+                    <h1 class="page-title">
+                        <span class="title-icon">🔧</span>
+                        Troubleshooting & Debugging
+                    </h1>
+                    <p class="page-description">
+                        Comprehensive guide to diagnose and resolve common issues with Browser Agent.
+                    </p>
+                    <div class="header-meta">
+                        <span class="reading-time">⏱️ 15 min read</span>
+                        <span class="difficulty">📊 All Levels</span>
+                        <span class="last-updated">🔄 Updated Jan 15, 2024</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Quick Diagnostic Tool -->
+            <section class="diagnostic-tool">
+                <div class="tool-header">
+                    <h2>🩺 Quick Diagnostic Tool</h2>
+                    <p>Run a quick check to identify potential issues with your Browser Agent setup.</p>
+                </div>
+                <div class="diagnostic-form">
+                    <div class="form-group">
+                        <label for="os-select">Operating System:</label>
+                        <select id="os-select">
+                            <option value="">Select your OS</option>
+                            <option value="windows">Windows</option>
+                            <option value="macos">macOS</option>
+                            <option value="linux">Linux</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="python-version">Python Version:</label>
+                        <input type="text" id="python-version" placeholder="e.g., 3.9.7">
+                    </div>
+                    <div class="form-group">
+                        <label for="browser-select">Browser:</label>
+                        <select id="browser-select">
+                            <option value="">Select browser</option>
+                            <option value="chrome">Chrome</option>
+                            <option value="firefox">Firefox</option>
+                            <option value="safari">Safari</option>
+                            <option value="edge">Edge</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="error-message">Error Message (optional):</label>
+                        <textarea id="error-message" placeholder="Paste your error message here..."></textarea>
+                    </div>
+                    <button id="run-diagnostic" class="btn btn-primary">Run Diagnostic</button>
+                </div>
+                <div id="diagnostic-results" class="diagnostic-results" style="display: none;"></div>
+            </section>
+
+            <!-- Table of Contents -->
+            <aside class="toc-sidebar">
+                <div class="toc-container">
+                    <h3>Contents</h3>
+                    <ul class="toc-list">
+                        <li><a href="#common-issues">Common Issues</a>
+                            <ul>
+                                <li><a href="#installation-issues">Installation</a></li>
+                                <li><a href="#browser-issues">Browser Problems</a></li>
+                                <li><a href="#connection-issues">Connection Issues</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#performance-issues">Performance Issues</a>
+                            <ul>
+                                <li><a href="#slow-execution">Slow Execution</a></li>
+                                <li><a href="#memory-issues">Memory Problems</a></li>
+                                <li><a href="#timeout-issues">Timeouts</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#ai-issues">AI Integration Issues</a>
+                            <ul>
+                                <li><a href="#api-key-issues">API Key Problems</a></li>
+                                <li><a href="#model-issues">Model Issues</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#debugging-tools">Debugging Tools</a></li>
+                        <li><a href="#logging">Logging & Monitoring</a></li>
+                        <li><a href="#getting-help">Getting Help</a></li>
+                    </ul>
+                </div>
+            </aside>
+
+            <!-- Content -->
+            <div class="content-wrapper">
+                <article class="documentation-content">
+                    <!-- Common Issues -->
+                    <section id="common-issues">
+                        <h2>🚨 Common Issues</h2>
+                        <p>Most Browser Agent issues fall into these categories. Find your problem and follow the solution steps.</p>
+                        
+                        <!-- Installation Issues -->
+                        <div id="installation-issues" class="issue-category">
+                            <h3>📦 Installation Issues</h3>
+                            
+                            <div class="issue-item">
+                                <div class="issue-header">
+                                    <h4>❌ "pip install browser-agent" fails</h4>
+                                    <span class="severity high">High</span>
+                                </div>
+                                <div class="issue-content">
+                                    <div class="symptoms">
+                                        <h5>Symptoms:</h5>
+                                        <ul>
+                                            <li>Package not found error</li>
+                                            <li>Permission denied errors</li>
+                                            <li>Build failures on Windows</li>
+                                        </ul>
+                                    </div>
+                                    <div class="solutions">
+                                        <h5>Solutions:</h5>
+                                        <div class="solution-steps">
+                                            <div class="step">
+                                                <h6>1. Update pip and setuptools</h6>
+                                                <div class="code-block">
+                                                    <div class="code-header">
+                                                        <span class="code-title">Terminal</span>
+                                                        <button class="copy-button">
+                                                            <span class="copy-icon">📋</span>
+                                                            <span class="copy-text">Copy</span>
+                                                        </button>
+                                                    </div>
+                                                    <pre><code class="language-bash">pip install --upgrade pip setuptools wheel</code></pre>
+                                                </div>
+                                            </div>
+                                            <div class="step">
+                                                <h6>2. Use virtual environment</h6>
+                                                <div class="code-block">
+                                                    <div class="code-header">
+                                                        <span class="code-title">Terminal</span>
+                                                        <button class="copy-button">
+                                                            <span class="copy-icon">📋</span>
+                                                            <span class="copy-text">Copy</span>
+                                                        </button>
+                                                    </div>
+                                                    <pre><code class="language-bash"># Create virtual environment
+python -m venv browser_agent_env
+
+# Activate (Windows)
+browser_agent_env\Scripts\activate
+
+# Activate (macOS/Linux)
+source browser_agent_env/bin/activate
+
+# Install
+pip install browser-agent</code></pre>
+                                                </div>
+                                            </div>
+                                            <div class="step">
+                                                <h6>3. Install from source (if package not available)</h6>
+                                                <div class="code-block">
+                                                    <div class="code-header">
+                                                        <span class="code-title">Terminal</span>
+                                                        <button class="copy-button">
+                                                            <span class="copy-icon">📋</span>
+                                                            <span class="copy-text">Copy</span>
+                                                        </button>
+                                                    </div>
+                                                    <pre><code class="language-bash">git clone https://github.com/AryanVBW/brouser-agent.git
+cd brouser-agent
+pip install -e .</code></pre>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="issue-item">
+                                <div class="issue-header">
+                                    <h4>❌ Import errors after installation</h4>
+                                    <span class="severity medium">Medium</span>
+                                </div>
+                                <div class="issue-content">
+                                    <div class="symptoms">
+                                        <h5>Symptoms:</h5>
+                                        <ul>
+                                            <li><code>ModuleNotFoundError: No module named 'browser_agent'</code></li>
+                                            <li><code>ImportError: cannot import name 'BrowserAgent'</code></li>
+                                        </ul>
+                                    </div>
+                                    <div class="solutions">
+                                        <h5>Solutions:</h5>
+                                        <div class="solution-steps">
+                                            <div class="step">
+                                                <h6>1. Verify installation</h6>
+                                                <div class="code-block">
+                                                    <div class="code-header">
+                                                        <span class="code-title">Python</span>
+                                                        <button class="copy-button">
+                                                            <span class="copy-icon">📋</span>
+                                                            <span class="copy-text">Copy</span>
+                                                        </button>
+                                                    </div>
+                                                    <pre><code class="language-python">import sys
+print(sys.path)
+
+# Check if package is installed
+import pkg_resources
+installed_packages = [d.project_name for d in pkg_resources.working_set]
+print('browser-agent' in installed_packages)</code></pre>
+                                                </div>
+                                            </div>
+                                            <div class="step">
+                                                <h6>2. Check Python environment</h6>
+                                                <div class="code-block">
+                                                    <div class="code-header">
+                                                        <span class="code-title">Terminal</span>
+                                                        <button class="copy-button">
+                                                            <span class="copy-icon">📋</span>
+                                                            <span class="copy-text">Copy</span>
+                                                        </button>
+                                                    </div>
+                                                    <pre><code class="language-bash"># Check which Python you're using
+which python
+python --version
+
+# Check pip list
+pip list | grep browser</code></pre>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Browser Issues -->
+                        <div id="browser-issues" class="issue-category">
+                            <h3>🌐 Browser Issues</h3>
+                            
+                            <div class="issue-item">
+                                <div class="issue-header">
+                                    <h4>❌ Browser fails to start</h4>
+                                    <span class="severity high">High</span>
+                                </div>
+                                <div class="issue-content">
+                                    <div class="symptoms">
+                                        <h5>Symptoms:</h5>
+                                        <ul>
+                                            <li><code>WebDriverException: Message: 'chromedriver' executable needs to be in PATH</code></li>
+                                            <li><code>SessionNotCreatedException: session not created</code></li>
+                                            <li>Browser window doesn't appear</li>
+                                        </ul>
+                                    </div>
+                                    <div class="solutions">
+                                        <h5>Solutions:</h5>
+                                        <div class="solution-steps">
+                                            <div class="step">
+                                                <h6>1. Install browser drivers automatically</h6>
+                                                <div class="code-block">
+                                                    <div class="code-header">
+                                                        <span class="code-title">Python</span>
+                                                        <button class="copy-button">
+                                                            <span class="copy-icon">📋</span>
+                                                            <span class="copy-text">Copy</span>
+                                                        </button>
+                                                    </div>
+                                                    <pre><code class="language-python">from browser_agent import BrowserAgent
+
+# Browser Agent automatically manages drivers
+agent = BrowserAgent(
+    browser="chrome",
+    auto_install_driver=True  # This is default
+)
+
+# Or manually install drivers
+from browser_agent.utils import install_drivers
+install_drivers()</code></pre>
+                                                </div>
+                                            </div>
+                                            <div class="step">
+                                                <h6>2. Check browser installation</h6>
+                                                <div class="code-block">
+                                                    <div class="code-header">
+                                                        <span class="code-title">Terminal</span>
+                                                        <button class="copy-button">
+                                                            <span class="copy-icon">📋</span>
+                                                            <span class="copy-text">Copy</span>
+                                                        </button>
+                                                    </div>
+                                                    <pre><code class="language-bash"># Check Chrome installation
+chrome --version  # Linux
+
+# Check if Chrome is in Applications (macOS)
+ls /Applications/Google\ Chrome.app
+
+# Windows - check Program Files
+dir "C:\Program Files\Google\Chrome\Application"</code></pre>
+                                                </div>
+                                            </div>
+                                            <div class="step">
+                                                <h6>3. Use alternative browser</h6>
+                                                <div class="code-block">
+                                                    <div class="code-header">
+                                                        <span class="code-title">Python</span>
+                                                        <button class="copy-button">
+                                                            <span class="copy-icon">📋</span>
+                                                            <span class="copy-text">Copy</span>
+                                                        </button>
+                                                    </div>
+                                                    <pre><code class="language-python"># Try Firefox if Chrome fails
+agent = BrowserAgent(browser="firefox")
+
+# Or Edge on Windows
+agent = BrowserAgent(browser="edge")
+
+# Safari on macOS
+agent = BrowserAgent(browser="safari")</code></pre>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="issue-item">
+                                <div class="issue-header">
+                                    <h4>❌ Browser crashes or becomes unresponsive</h4>
+                                    <span class="severity medium">Medium</span>
+                                </div>
+                                <div class="issue-content">
+                                    <div class="symptoms">
+                                        <h5>Symptoms:</h5>
+                                        <ul>
+                                            <li>Browser window freezes</li>
+                                            <li>Commands timeout</li>
+                                            <li>"Browser has stopped responding" errors</li>
+                                        </ul>
+                                    </div>
+                                    <div class="solutions">
+                                        <h5>Solutions:</h5>
+                                        <div class="solution-steps">
+                                            <div class="step">
+                                                <h6>1. Increase timeouts</h6>
+                                                <div class="code-block">
+                                                    <div class="code-header">
+                                                        <span class="code-title">Python</span>
+                                                        <button class="copy-button">
+                                                            <span class="copy-icon">📋</span>
+                                                            <span class="copy-text">Copy</span>
+                                                        </button>
+                                                    </div>
+                                                    <pre><code class="language-python">agent = BrowserAgent(
+    browser="chrome",
+    page_load_timeout=30,  # Increase from default 10s
+    implicit_wait=10,      # Wait for elements
+    script_timeout=30      # For JavaScript execution
+)</code></pre>
+                                                </div>
+                                            </div>
+                                            <div class="step">
+                                                <h6>2. Use headless mode for stability</h6>
+                                                <div class="code-block">
+                                                    <div class="code-header">
+                                                        <span class="code-title">Python</span>
+                                                        <button class="copy-button">
+                                                            <span class="copy-icon">📋</span>
+                                                            <span class="copy-text">Copy</span>
+                                                        </button>
+                                                    </div>
+                                                    <pre><code class="language-python">agent = BrowserAgent(
+    browser="chrome",
+    headless=True,  # More stable for automation
+    disable_gpu=True,
+    no_sandbox=True  # For Docker/CI environments
+)</code></pre>
+                                                </div>
+                                            </div>
+                                            <div class="step">
+                                                <h6>3. Implement proper cleanup</h6>
+                                                <div class="code-block">
+                                                    <div class="code-header">
+                                                        <span class="code-title">Python</span>
+                                                        <button class="copy-button">
+                                                            <span class="copy-icon">📋</span>
+                                                            <span class="copy-text">Copy</span>
+                                                        </button>
+                                                    </div>
+                                                    <pre><code class="language-python">import asyncio
+from browser_agent import BrowserAgent
+
+async def safe_automation():
+    agent = None
+    try:
+        agent = BrowserAgent()
+        await agent.start()
+        
+        # Your automation code here
+        await agent.navigate("https://example.com")
+        
+    except Exception as e:
+        print(f"Error: {e}")
+    finally:
+        if agent:
+            await agent.close()  # Always cleanup
+
+# Use context manager for automatic cleanup
+async def with_context_manager():
+    async with BrowserAgent() as agent:
+        await agent.navigate("https://example.com")
+        # Automatically closed when exiting context</code></pre>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Connection Issues -->
+                        <div id="connection-issues" class="issue-category">
+                            <h3>🌍 Connection Issues</h3>
+                            
+                            <div class="issue-item">
+                                <div class="issue-header">
+                                    <h4>❌ Network timeouts and connection errors</h4>
+                                    <span class="severity medium">Medium</span>
+                                </div>
+                                <div class="issue-content">
+                                    <div class="symptoms">
+                                        <h5>Symptoms:</h5>
+                                        <ul>
+                                            <li><code>TimeoutException: Message: timeout</code></li>
+                                            <li><code>WebDriverException: net::ERR_CONNECTION_TIMED_OUT</code></li>
+                                            <li>Pages fail to load</li>
+                                        </ul>
+                                    </div>
+                                    <div class="solutions">
+                                        <h5>Solutions:</h5>
+                                        <div class="solution-steps">
+                                            <div class="step">
+                                                <h6>1. Configure proxy settings</h6>
+                                                <div class="code-block">
+                                                    <div class="code-header">
+                                                        <span class="code-title">Python</span>
+                                                        <button class="copy-button">
+                                                            <span class="copy-icon">📋</span>
+                                                            <span class="copy-text">Copy</span>
+                                                        </button>
+                                                    </div>
+                                                    <pre><code class="language-python">agent = BrowserAgent(
+    browser="chrome",
+    proxy={
+        "http": "http://proxy.company.com:8080",
+        "https": "https://proxy.company.com:8080"
+    }
+)
+
+# Or disable proxy
+agent = BrowserAgent(
+    browser="chrome",
+    no_proxy=True
+)</code></pre>
+                                                </div>
+                                            </div>
+                                            <div class="step">
+                                                <h6>2. Implement retry logic</h6>
+                                                <div class="code-block">
+                                                    <div class="code-header">
+                                                        <span class="code-title">Python</span>
+                                                        <button class="copy-button">
+                                                            <span class="copy-icon">📋</span>
+                                                            <span class="copy-text">Copy</span>
+                                                        </button>
+                                                    </div>
+                                                    <pre><code class="language-python">import asyncio
+from browser_agent import BrowserAgent
+from browser_agent.exceptions import TimeoutException
+
+async def navigate_with_retry(agent, url, max_retries=3):
+    for attempt in range(max_retries):
+        try:
+            await agent.navigate(url)
+            return True
+        except TimeoutException:
+            if attempt < max_retries - 1:
+                print(f"Attempt {attempt + 1} failed, retrying...")
+                await asyncio.sleep(2 ** attempt)  # Exponential backoff
+            else:
+                raise
+    return False</code></pre>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Performance Issues -->
+                    <section id="performance-issues">
+                        <h2>⚡ Performance Issues</h2>
+                        <p>Optimize Browser Agent performance and resolve speed-related problems.</p>
+                        
+                        <!-- Slow Execution -->
+                        <div id="slow-execution" class="issue-category">
+                            <h3>🐌 Slow Execution</h3>
+                            
+                            <div class="issue-item">
+                                <div class="issue-header">
+                                    <h4>❌ Scripts run slower than expected</h4>
+                                    <span class="severity low">Low</span>
+                                </div>
+                                <div class="issue-content">
+                                    <div class="solutions">
+                                        <h5>Optimization Strategies:</h5>
+                                        <div class="solution-steps">
+                                            <div class="step">
+                                                <h6>1. Use headless mode</h6>
+                                                <div class="code-block">
+                                                    <div class="code-header">
+                                                        <span class="code-title">Python</span>
+                                                        <button class="copy-button">
+                                                            <span class="copy-icon">📋</span>
+                                                            <span class="copy-text">Copy</span>
+                                                        </button>
+                                                    </div>
+                                                    <pre><code class="language-python"># Headless mode is faster
+agent = BrowserAgent(
+    browser="chrome",
+    headless=True,
+    disable_images=True,  # Skip image loading
+    disable_css=True,     # Skip CSS loading
+    disable_javascript=False  # Keep JS for functionality
+)</code></pre>
+                                                </div>
+                                            </div>
+                                            <div class="step">
+                                                <h6>2. Optimize wait strategies</h6>
+                                                <div class="code-block">
+                                                    <div class="code-header">
+                                                        <span class="code-title">Python</span>
+                                                        <button class="copy-button">
+                                                            <span class="copy-icon">📋</span>
+                                                            <span class="copy-text">Copy</span>
+                                                        </button>
+                                                    </div>
+                                                    <pre><code class="language-python"># Use explicit waits instead of sleep
+from browser_agent.wait import WebDriverWait, expected_conditions as EC
+
+# Bad - fixed delay
+await asyncio.sleep(5)
+
+# Good - wait for specific condition
+await agent.wait_for_selector(".content", timeout=10)
+
+# Even better - wait for element to be clickable
+element = await agent.wait_for_element_clickable(".button", timeout=10)</code></pre>
+                                                </div>
+                                            </div>
+                                            <div class="step">
+                                                <h6>3. Batch operations</h6>
+                                                <div class="code-block">
+                                                    <div class="code-header">
+                                                        <span class="code-title">Python</span>
+                                                        <button class="copy-button">
+                                                            <span class="copy-icon">📋</span>
+                                                            <span class="copy-text">Copy</span>
+                                                        </button>
+                                                    </div>
+                                                    <pre><code class="language-python"># Batch multiple operations
+results = await agent.execute_script("""
+    // Get multiple elements at once
+    return {
+        title: document.title,
+        url: window.location.href,
+        links: Array.from(document.querySelectorAll('a')).map(a => a.href),
+        text: document.body.innerText
+    };
+""")</code></pre>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Memory Issues -->
+                        <div id="memory-issues" class="issue-category">
+                            <h3>🧠 Memory Issues</h3>
+                            
+                            <div class="issue-item">
+                                <div class="issue-header">
+                                    <h4>❌ High memory usage or memory leaks</h4>
+                                    <span class="severity medium">Medium</span>
+                                </div>
+                                <div class="issue-content">
+                                    <div class="solutions">
+                                        <h5>Memory Management:</h5>
+                                        <div class="solution-steps">
+                                            <div class="step">
+                                                <h6>1. Proper resource cleanup</h6>
+                                                <div class="code-block">
+                                                    <div class="code-header">
+                                                        <span class="code-title">Python</span>
+                                                        <button class="copy-button">
+                                                            <span class="copy-icon">📋</span>
+                                                            <span class="copy-text">Copy</span>
+                                                        </button>
+                                                    </div>
+                                                    <pre><code class="language-python"># Always close browser instances
+async def process_urls(urls):
+    for url in urls:
+        agent = BrowserAgent()
+        try:
+            await agent.start()
+            await agent.navigate(url)
+            # Process page
+        finally:
+            await agent.close()  # Critical!
+
+# Better - reuse browser instance
+async def process_urls_efficiently(urls):
+    agent = BrowserAgent()
+    try:
+        await agent.start()
+        for url in urls:
+            await agent.navigate(url)
+            # Process page
+    finally:
+        await agent.close()</code></pre>
+                                                </div>
+                                            </div>
+                                            <div class="step">
+                                                <h6>2. Configure browser memory limits</h6>
+                                                <div class="code-block">
+                                                    <div class="code-header">
+                                                        <span class="code-title">Python</span>
+                                                        <button class="copy-button">
+                                                            <span class="copy-icon">📋</span>
+                                                            <span class="copy-text">Copy</span>
+                                                        </button>
+                                                    </div>
+                                                    <pre><code class="language-python">agent = BrowserAgent(
+    browser="chrome",
+    browser_args=[
+        "--memory-pressure-off",
+        "--max_old_space_size=4096",  # Limit to 4GB
+        "--disable-background-timer-throttling",
+        "--disable-renderer-backgrounding",
+        "--disable-backgrounding-occluded-windows"
+    ]
+)</code></pre>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- AI Integration Issues -->
+                    <section id="ai-issues">
+                        <h2>🤖 AI Integration Issues</h2>
+                        <p>Troubleshoot AI-powered features and API integrations.</p>
+                        
+                        <!-- API Key Issues -->
+                        <div id="api-key-issues" class="issue-category">
+                            <h3>🔑 API Key Issues</h3>
+                            
+                            <div class="issue-item">
+                                <div class="issue-header">
+                                    <h4>❌ AI features not working</h4>
+                                    <span class="severity high">High</span>
+                                </div>
+                                <div class="issue-content">
+                                    <div class="symptoms">
+                                        <h5>Symptoms:</h5>
+                                        <ul>
+                                            <li><code>AuthenticationError: Invalid API key</code></li>
+                                            <li><code>RateLimitError: Rate limit exceeded</code></li>
+                                            <li>AI methods return empty results</li>
+                                        </ul>
+                                    </div>
+                                    <div class="solutions">
+                                        <h5>Solutions:</h5>
+                                        <div class="solution-steps">
+                                            <div class="step">
+                                                <h6>1. Verify API key configuration</h6>
+                                                <div class="code-block">
+                                                    <div class="code-header">
+                                                        <span class="code-title">Python</span>
+                                                        <button class="copy-button">
+                                                            <span class="copy-icon">📋</span>
+                                                            <span class="copy-text">Copy</span>
+                                                        </button>
+                                                    </div>
+                                                    <pre><code class="language-python"># Check environment variables
+import os
+print("OpenAI API Key:", os.getenv("OPENAI_API_KEY", "Not set"))
+print("Claude API Key:", os.getenv("ANTHROPIC_API_KEY", "Not set"))
+
+# Test API connection
+from browser_agent.ai import test_ai_connection
+
+result = await test_ai_connection("openai")
+print(f"OpenAI connection: {result}")
+
+result = await test_ai_connection("claude")
+print(f"Claude connection: {result}")</code></pre>
+                                                </div>
+                                            </div>
+                                            <div class="step">
+                                                <h6>2. Set up environment variables</h6>
+                                                <div class="code-block">
+                                                    <div class="code-header">
+                                                        <span class="code-title">.env file</span>
+                                                        <button class="copy-button">
+                                                            <span class="copy-icon">📋</span>
+                                                            <span class="copy-text">Copy</span>
+                                                        </button>
+                                                    </div>
+                                                    <pre><code class="language-bash"># Create .env file in your project root
+OPENAI_API_KEY=your_openai_api_key_here
+ANTHROPIC_API_KEY=your_claude_api_key_here
+GOOGLE_API_KEY=your_gemini_api_key_here
+
+# Load in Python
+from dotenv import load_dotenv
+load_dotenv()</code></pre>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Debugging Tools -->
+                    <section id="debugging-tools">
+                        <h2>🔍 Debugging Tools</h2>
+                        <p>Use these tools to diagnose and debug Browser Agent issues.</p>
+                        
+                        <div class="tool-grid">
+                            <div class="tool-card">
+                                <h3>🩺 Health Check</h3>
+                                <p>Run a comprehensive health check of your Browser Agent installation.</p>
+                                <div class="code-block">
+                                    <div class="code-header">
+                                        <span class="code-title">Python</span>
+                                        <button class="copy-button">
+                                            <span class="copy-icon">📋</span>
+                                            <span class="copy-text">Copy</span>
+                                        </button>
+                                    </div>
+                                    <pre><code class="language-python">from browser_agent.diagnostics import run_health_check
+
+# Run comprehensive health check
+results = await run_health_check()
+print(results)</code></pre>
+                                </div>
+                            </div>
+                            
+                            <div class="tool-card">
+                                <h3>📊 Performance Monitor</h3>
+                                <p>Monitor performance metrics during automation.</p>
+                                <div class="code-block">
+                                    <div class="code-header">
+                                        <span class="code-title">Python</span>
+                                        <button class="copy-button">
+                                            <span class="copy-icon">📋</span>
+                                            <span class="copy-text">Copy</span>
+                                        </button>
+                                    </div>
+                                    <pre><code class="language-python">from browser_agent.monitoring import PerformanceMonitor
+
+with PerformanceMonitor() as monitor:
+    agent = BrowserAgent()
+    await agent.start()
+    await agent.navigate("https://example.com")
+    
+    # Get performance metrics
+    metrics = monitor.get_metrics()
+    print(f"Page load time: {metrics['page_load_time']}s")
+    print(f"Memory usage: {metrics['memory_usage']}MB")</code></pre>
+                                </div>
+                            </div>
+                            
+                            <div class="tool-card">
+                                <h3>📝 Debug Logger</h3>
+                                <p>Enable detailed logging for troubleshooting.</p>
+                                <div class="code-block">
+                                    <div class="code-header">
+                                        <span class="code-title">Python</span>
+                                        <button class="copy-button">
+                                            <span class="copy-icon">📋</span>
+                                            <span class="copy-text">Copy</span>
+                                        </button>
+                                    </div>
+                                    <pre><code class="language-python">import logging
+from browser_agent import BrowserAgent
+
+# Enable debug logging
+logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger('browser_agent')
+
+# Create agent with debug mode
+agent = BrowserAgent(
+    debug=True,
+    log_level="DEBUG",
+    save_screenshots_on_error=True
+)</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Logging & Monitoring -->
+                    <section id="logging">
+                        <h2>📋 Logging & Monitoring</h2>
+                        <p>Set up comprehensive logging and monitoring for production environments.</p>
+                        
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span class="code-title">logging_config.py</span>
+                                <button class="copy-button">
+                                    <span class="copy-icon">📋</span>
+                                    <span class="copy-text">Copy</span>
+                                </button>
+                            </div>
+                            <pre><code class="language-python">import logging
+import sys
+from datetime import datetime
+from pathlib import Path
+
+def setup_logging(log_level="INFO", log_file=None):
+    """Setup comprehensive logging configuration."""
+    
+    # Create logs directory
+    log_dir = Path("logs")
+    log_dir.mkdir(exist_ok=True)
+    
+    # Default log file with timestamp
+    if log_file is None:
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        log_file = log_dir / f"browser_agent_{timestamp}.log"
+    
+    # Configure logging
+    logging.basicConfig(
+        level=getattr(logging, log_level.upper()),
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+        handlers=[
+            logging.FileHandler(log_file),
+            logging.StreamHandler(sys.stdout)
+        ]
+    )
+    
+    # Set specific logger levels
+    logging.getLogger('browser_agent').setLevel(logging.DEBUG)
+    logging.getLogger('selenium').setLevel(logging.WARNING)
+    logging.getLogger('urllib3').setLevel(logging.WARNING)
+    
+    return logging.getLogger('browser_agent')
+
+# Usage
+logger = setup_logging("DEBUG", "logs/debug.log")
+logger.info("Logging configured successfully")</code></pre>
+                        </div>
+                    </section>
+
+                    <!-- Getting Help -->
+                    <section id="getting-help">
+                        <h2>🆘 Getting Help</h2>
+                        <p>When you need additional support beyond this troubleshooting guide.</p>
+                        
+                        <div class="help-options">
+                            <div class="help-card">
+                                <div class="help-icon">📚</div>
+                                <h3>Documentation</h3>
+                                <p>Check our comprehensive documentation for detailed guides and examples.</p>
+                                <a href="../index.html" class="help-link">Browse Docs →</a>
+                            </div>
+                            
+                            <div class="help-card">
+                                <div class="help-icon">💬</div>
+                                <h3>GitHub Discussions</h3>
+                                <p>Join the community discussion for questions and sharing experiences.</p>
+                                <a href="https://github.com/AryanVBW/brouser-agent/discussions" class="help-link" target="_blank" rel="noopener">Join Discussion →</a>
+                            </div>
+                            
+                            <div class="help-card">
+                                <div class="help-icon">🐛</div>
+                                <h3>Report Issues</h3>
+                                <p>Found a bug? Report it on GitHub with detailed information.</p>
+                                <a href="https://github.com/AryanVBW/brouser-agent/issues" class="help-link" target="_blank" rel="noopener">Report Issue →</a>
+                            </div>
+                            
+                            <div class="help-card">
+                                <div class="help-icon">📧</div>
+                                <h3>Contact Author</h3>
+                                <p>Reach out to the project maintainer for direct support.</p>
+                                <a href="https://github.com/AryanVBW" class="help-link" target="_blank" rel="noopener">Contact Vivek →</a>
+                            </div>
+                        </div>
+                        
+                        <div class="issue-template">
+                            <h3>📝 Issue Report Template</h3>
+                            <p>When reporting issues, please include the following information:</p>
+                            <div class="code-block">
+                                <div class="code-header">
+                                    <span class="code-title">Issue Template</span>
+                                    <button class="copy-button">
+                                        <span class="copy-icon">📋</span>
+                                        <span class="copy-text">Copy</span>
+                                    </button>
+                                </div>
+                                <pre><code class="language-markdown">## Bug Report
+
+**Environment:**
+- OS: [e.g., Windows 10, macOS 12.0, Ubuntu 20.04]
+- Python Version: [e.g., 3.9.7]
+- Browser Agent Version: [e.g., 1.0.0]
+- Browser: [e.g., Chrome 96.0.4664.110]
+
+**Description:**
+A clear and concise description of what the bug is.
+
+**Steps to Reproduce:**
+1. Go to '...'
+2. Click on '....'
+3. Scroll down to '....'
+4. See error
+
+**Expected Behavior:**
+A clear and concise description of what you expected to happen.
+
+**Actual Behavior:**
+A clear and concise description of what actually happened.
+
+**Error Messages:**
+```
+Paste any error messages here
+```
+
+**Code Sample:**
+```python
+# Minimal code sample that reproduces the issue
+```
+
+**Screenshots:**
+If applicable, add screenshots to help explain your problem.
+
+**Additional Context:**
+Add any other context about the problem here.</code></pre>
+                            </div>
+                        </div>
+                    </section>
+                </article>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Browser Agent</h3>
+                    <p>AI-powered browser automation for the modern web.</p>
+                    <div class="social-links">
+                        <a href="https://github.com/AryanVBW/brouser-agent" target="_blank" rel="noopener" aria-label="GitHub">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Documentation</h4>
+                    <ul>
+                        <li><a href="./quick-start.html">Quick Start</a></li>
+                        <li><a href="./features.html">Features</a></li>
+                        <li><a href="./api.html">API Reference</a></li>
+                        <li><a href="./examples.html">Examples</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="https://github.com/AryanVBW/brouser-agent" target="_blank" rel="noopener">GitHub</a></li>
+                        <li><a href="https://github.com/AryanVBW/brouser-agent/issues" target="_blank" rel="noopener">Issues</a></li>
+                        <li><a href="https://github.com/AryanVBW/brouser-agent/discussions" target="_blank" rel="noopener">Discussions</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="https://github.com/AryanVBW" target="_blank" rel="noopener">Author</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Browser Agent. Created by <a href="https://github.com/AryanVBW" target="_blank" rel="noopener">Vivek Wagdare (AryanVBW)</a>.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/search.js"></script>
+    <script>
+        // Troubleshooting-specific functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Diagnostic tool functionality
+            const diagnosticForm = document.querySelector('.diagnostic-form');
+            const runDiagnosticBtn = document.getElementById('run-diagnostic');
+            const diagnosticResults = document.getElementById('diagnostic-results');
+            
+            runDiagnosticBtn.addEventListener('click', function() {
+                const os = document.getElementById('os-select').value;
+                const pythonVersion = document.getElementById('python-version').value;
+                const browser = document.getElementById('browser-select').value;
+                const errorMessage = document.getElementById('error-message').value;
+                
+                // Simple diagnostic logic
+                let issues = [];
+                let recommendations = [];
+                
+                if (!os) {
+                    issues.push('Operating system not specified');
+                }
+                
+                if (!pythonVersion) {
+                    issues.push('Python version not specified');
+                } else {
+                    const version = parseFloat(pythonVersion);
+                    if (version < 3.8) {
+                        issues.push('Python version too old (requires 3.8+)');
+                        recommendations.push('Upgrade to Python 3.8 or newer');
+                    }
+                }
+                
+                if (!browser) {
+                    issues.push('Browser not specified');
+                    recommendations.push('Try Chrome for best compatibility');
+                }
+                
+                if (errorMessage.toLowerCase().includes('chromedriver')) {
+                    issues.push('ChromeDriver issue detected');
+                    recommendations.push('Enable auto_install_driver=True in BrowserAgent');
+                }
+                
+                if (errorMessage.toLowerCase().includes('timeout')) {
+                    issues.push('Timeout issue detected');
+                    recommendations.push('Increase timeout values or check network connection');
+                }
+                
+                // Display results
+                let resultsHTML = '<h3>Diagnostic Results</h3>';
+                
+                if (issues.length === 0) {
+                    resultsHTML += '<div class="diagnostic-success">✅ No obvious issues detected. Your setup looks good!</div>';
+                } else {
+                    resultsHTML += '<div class="diagnostic-issues"><h4>Issues Found:</h4><ul>';
+                    issues.forEach(issue => {
+                        resultsHTML += `<li>❌ ${issue}</li>`;
+                    });
+                    resultsHTML += '</ul></div>';
+                }
+                
+                if (recommendations.length > 0) {
+                    resultsHTML += '<div class="diagnostic-recommendations"><h4>Recommendations:</h4><ul>';
+                    recommendations.forEach(rec => {
+                        resultsHTML += `<li>💡 ${rec}</li>`;
+                    });
+                    resultsHTML += '</ul></div>';
+                }
+                
+                diagnosticResults.innerHTML = resultsHTML;
+                diagnosticResults.style.display = 'block';
+            });
+            
+            // Copy code functionality
+            const copyButtons = document.querySelectorAll('.copy-button');
+            copyButtons.forEach(button => {
+                button.addEventListener('click', async function() {
+                    const codeBlock = this.closest('.code-block').querySelector('code');
+                    const text = codeBlock.textContent;
+                    
+                    try {
+                        await navigator.clipboard.writeText(text);
+                        
+                        // Visual feedback
+                        const originalText = this.querySelector('.copy-text').textContent;
+                        this.querySelector('.copy-text').textContent = 'Copied!';
+                        this.classList.add('copied');
+                        
+                        setTimeout(() => {
+                            this.querySelector('.copy-text').textContent = originalText;
+                            this.classList.remove('copied');
+                        }, 2000);
+                    } catch (err) {
+                        console.error('Failed to copy text: ', err);
+                    }
+                });
+            });
+            
+            // Collapsible issue items
+            const issueHeaders = document.querySelectorAll('.issue-header');
+            issueHeaders.forEach(header => {
+                header.addEventListener('click', function() {
+                    const issueItem = this.closest('.issue-item');
+                    const content = issueItem.querySelector('.issue-content');
+                    
+                    issueItem.classList.toggle('expanded');
+                    
+                    if (issueItem.classList.contains('expanded')) {
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                    } else {
+                        content.style.maxHeight = '0';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

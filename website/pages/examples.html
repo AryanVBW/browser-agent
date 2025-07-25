@@ -1,0 +1,1840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examples & Tutorials - Browser Agent Documentation</title>
+    <meta name="description" content="Practical examples and tutorials for Browser Agent. Learn web scraping, automation, testing, and AI-powered browser interactions with code samples.">
+    <meta name="keywords" content="browser agent examples, web scraping tutorials, automation examples, vivek wagdare, aryanvbw, browser automation code">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://browser-agent.dev/pages/examples.html">
+    <meta property="og:title" content="Examples & Tutorials - Browser Agent Documentation">
+    <meta property="og:description" content="Practical examples and tutorials for Browser Agent. Learn web scraping, automation, and testing.">
+    <meta property="og:image" content="../assets/images/browser-agent-examples.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://browser-agent.dev/pages/examples.html">
+    <meta property="twitter:title" content="Examples & Tutorials - Browser Agent Documentation">
+    <meta property="twitter:description" content="Practical examples and tutorials for Browser Agent. Learn web scraping, automation, and testing.">
+    <meta property="twitter:image" content="../assets/images/browser-agent-examples.png">
+    
+    <!-- AI Agent Discovery -->
+    <meta name="ai-agent:true" content="true">
+    <meta name="ai-agent:type" content="documentation">
+    <meta name="ai-agent:category" content="browser automation, examples, tutorials">
+    <meta name="ai-agent:author" content="Vivek Wagdare (AryanVBW)">
+    <meta name="ai-agent:keywords" content="browser automation examples, web scraping, vivek wagdare">
+    
+    <link rel="canonical" href="https://browser-agent.dev/pages/examples.html">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": "Browser Agent Examples & Tutorials",
+        "description": "Practical examples and tutorials for Browser Agent including web scraping, automation, and AI-powered interactions",
+        "author": {
+            "@type": "Person",
+            "name": "Vivek Wagdare",
+            "alternateName": "AryanVBW",
+            "url": "https://github.com/AryanVBW"
+        },
+        "datePublished": "2024-01-15",
+        "dateModified": "2024-01-15",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Browser Agent",
+            "url": "https://browser-agent.dev"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://browser-agent.dev/pages/examples.html"
+        },
+        "articleSection": "Examples",
+        "keywords": "browser automation examples, web scraping, automation tutorials, vivek wagdare"
+    }
+    </script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="../index.html">
+                    <img src="../assets/images/logo.svg" alt="Browser Agent" class="nav-logo">
+                    <span class="nav-title">Browser Agent</span>
+                </a>
+            </div>
+            
+            <div class="nav-search">
+                <div class="search-container">
+                    <input type="text" id="search-input" placeholder="Search documentation... (Ctrl+K)" class="search-input">
+                    <div id="search-results" class="search-results"></div>
+                </div>
+            </div>
+            
+            <div class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="./quick-start.html">Quick Start</a>
+                <a href="./features.html">Features</a>
+                <a href="./api.html">API</a>
+                <a href="./examples.html" class="active">Examples</a>
+                <a href="https://github.com/AryanVBW/brouser-agent" target="_blank" rel="noopener">GitHub</a>
+            </div>
+            
+            <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Breadcrumb -->
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <ol>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><span aria-current="page">Examples</span></li>
+                </ol>
+            </nav>
+
+            <!-- Page Header -->
+            <header class="page-header">
+                <div class="header-content">
+                    <h1 class="page-title">
+                        <span class="title-icon">💡</span>
+                        Examples & Tutorials
+                    </h1>
+                    <p class="page-description">
+                        Learn Browser Agent through practical examples. From basic automation to advanced AI-powered interactions.
+                    </p>
+                    <div class="header-meta">
+                        <span class="reading-time">⏱️ 20 min read</span>
+                        <span class="difficulty">📊 All Levels</span>
+                        <span class="last-updated">🔄 Updated Jan 15, 2024</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Example Categories -->
+            <div class="example-categories">
+                <div class="category-nav">
+                    <button class="category-btn active" data-category="all">🌟 All Examples</button>
+                    <button class="category-btn" data-category="basic">🚀 Basic</button>
+                    <button class="category-btn" data-category="scraping">🕷️ Web Scraping</button>
+                    <button class="category-btn" data-category="testing">🧪 Testing</button>
+                    <button class="category-btn" data-category="ai">🤖 AI-Powered</button>
+                    <button class="category-btn" data-category="advanced">⚡ Advanced</button>
+                </div>
+            </div>
+
+            <!-- Table of Contents -->
+            <aside class="toc-sidebar">
+                <div class="toc-container">
+                    <h3>Examples</h3>
+                    <ul class="toc-list">
+                        <li><a href="#basic-examples">Basic Examples</a>
+                            <ul>
+                                <li><a href="#hello-world">Hello World</a></li>
+                                <li><a href="#form-filling">Form Filling</a></li>
+                                <li><a href="#screenshot">Screenshots</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#scraping-examples">Web Scraping</a>
+                            <ul>
+                                <li><a href="#product-scraping">Product Data</a></li>
+                                <li><a href="#news-scraping">News Articles</a></li>
+                                <li><a href="#table-extraction">Table Data</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#testing-examples">Testing</a>
+                            <ul>
+                                <li><a href="#login-testing">Login Flow</a></li>
+                                <li><a href="#e2e-testing">E2E Testing</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#ai-examples">AI-Powered</a>
+                            <ul>
+                                <li><a href="#natural-language">Natural Language</a></li>
+                                <li><a href="#smart-extraction">Smart Extraction</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#advanced-examples">Advanced</a>
+                            <ul>
+                                <li><a href="#parallel-automation">Parallel Automation</a></li>
+                                <li><a href="#plugin-development">Plugin Development</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+
+            <!-- Content -->
+            <div class="content-wrapper">
+                <article class="documentation-content">
+                    <!-- Basic Examples -->
+                    <section id="basic-examples" class="example-section" data-category="basic">
+                        <h2>🚀 Basic Examples</h2>
+                        <p>Start with these fundamental examples to understand Browser Agent basics.</p>
+                        
+                        <!-- Hello World -->
+                        <div id="hello-world" class="example-card">
+                            <div class="example-header">
+                                <h3>Hello World - Your First Automation</h3>
+                                <div class="example-meta">
+                                    <span class="difficulty beginner">Beginner</span>
+                                    <span class="time">2 min</span>
+                                </div>
+                            </div>
+                            <div class="example-description">
+                                <p>A simple example that opens a webpage and extracts the title.</p>
+                            </div>
+                            <div class="code-block">
+                                <div class="code-header">
+                                    <span class="code-title">hello_world.py</span>
+                                    <button class="copy-button">
+                                        <span class="copy-icon">📋</span>
+                                        <span class="copy-text">Copy</span>
+                                    </button>
+                                </div>
+                                <pre><code class="language-python">import asyncio
+from browser_agent import BrowserAgent
+
+async def hello_world():
+    """Simple hello world example."""
+    # Initialize the browser agent
+    agent = BrowserAgent(browser="chrome")
+    
+    try:
+        # Start the browser
+        await agent.start()
+        print("Browser started successfully!")
+        
+        # Navigate to a webpage
+        await agent.navigate("https://example.com")
+        print("Navigated to example.com")
+        
+        # Get the page title
+        title = await agent.get_title()
+        print(f"Page title: {title}")
+        
+        # Get the current URL
+        url = await agent.get_url()
+        print(f"Current URL: {url}")
+        
+        # Take a screenshot
+        screenshot_path = await agent.screenshot("hello_world.png")
+        print(f"Screenshot saved: {screenshot_path}")
+        
+    finally:
+        # Always close the browser
+        await agent.close()
+        print("Browser closed")
+
+if __name__ == "__main__":
+    asyncio.run(hello_world())</code></pre>
+                            </div>
+                            <div class="example-output">
+                                <h4>Expected Output:</h4>
+                                <div class="output-block">
+                                    <pre>Browser started successfully!
+Navigated to example.com
+Page title: Example Domain
+Current URL: https://example.com/
+Screenshot saved: /path/to/hello_world.png
+Browser closed</pre>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Form Filling -->
+                        <div id="form-filling" class="example-card">
+                            <div class="example-header">
+                                <h3>Form Filling Automation</h3>
+                                <div class="example-meta">
+                                    <span class="difficulty beginner">Beginner</span>
+                                    <span class="time">5 min</span>
+                                </div>
+                            </div>
+                            <div class="example-description">
+                                <p>Automate form filling with text inputs, dropdowns, and checkboxes.</p>
+                            </div>
+                            <div class="code-block">
+                                <div class="code-header">
+                                    <span class="code-title">form_filling.py</span>
+                                    <button class="copy-button">
+                                        <span class="copy-icon">📋</span>
+                                        <span class="copy-text">Copy</span>
+                                    </button>
+                                </div>
+                                <pre><code class="language-python">import asyncio
+from browser_agent import BrowserAgent
+
+async def fill_contact_form():
+    """Example of filling a contact form."""
+    agent = BrowserAgent()
+    
+    try:
+        await agent.start()
+        
+        # Navigate to a form page
+        await agent.navigate("https://httpbin.org/forms/post")
+        
+        # Fill text inputs
+        await agent.type("input[name='custname']", "John Doe")
+        await agent.type("input[name='custtel']", "+1-555-123-4567")
+        await agent.type("input[name='custemail']", "john@example.com")
+        
+        # Select from dropdown
+        await agent.select("select[name='size']", "large")
+        
+        # Handle checkboxes
+        await agent.check("input[name='topping'][value='bacon']")
+        await agent.check("input[name='topping'][value='cheese']")
+        
+        # Fill textarea
+        await agent.type("textarea[name='comments']", 
+                        "This is an automated test message.")
+        
+        # Submit the form
+        await agent.click("input[type='submit']")
+        
+        # Wait for response and verify
+        await agent.wait_for_selector(".result", timeout=10)
+        
+        # Get the result
+        result = await agent.get_text(".result")
+        print(f"Form submission result: {result}")
+        
+    except Exception as e:
+        print(f"Error: {e}")
+    finally:
+        await agent.close()
+
+if __name__ == "__main__":
+    asyncio.run(fill_contact_form())</code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- Screenshot Example -->
+                        <div id="screenshot" class="example-card">
+                            <div class="example-header">
+                                <h3>Advanced Screenshot Capture</h3>
+                                <div class="example-meta">
+                                    <span class="difficulty beginner">Beginner</span>
+                                    <span class="time">3 min</span>
+                                </div>
+                            </div>
+                            <div class="example-description">
+                                <p>Capture screenshots with different options and element-specific captures.</p>
+                            </div>
+                            <div class="code-block">
+                                <div class="code-header">
+                                    <span class="code-title">screenshots.py</span>
+                                    <button class="copy-button">
+                                        <span class="copy-icon">📋</span>
+                                        <span class="copy-text">Copy</span>
+                                    </button>
+                                </div>
+                                <pre><code class="language-python">import asyncio
+from browser_agent import BrowserAgent
+from datetime import datetime
+
+async def capture_screenshots():
+    """Demonstrate different screenshot options."""
+    agent = BrowserAgent()
+    
+    try:
+        await agent.start()
+        await agent.navigate("https://github.com/AryanVBW/brouser-agent")
+        
+        # Full page screenshot
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        full_page = await agent.screenshot(
+            f"full_page_{timestamp}.png",
+            full_page=True
+        )
+        print(f"Full page screenshot: {full_page}")
+        
+        # Viewport screenshot
+        viewport = await agent.screenshot(
+            f"viewport_{timestamp}.png",
+            full_page=False
+        )
+        print(f"Viewport screenshot: {viewport}")
+        
+        # Element screenshot
+        readme_element = await agent.find_element("#readme")
+        if readme_element:
+            element_shot = await agent.screenshot_element(
+                readme_element,
+                f"readme_{timestamp}.png"
+            )
+            print(f"Element screenshot: {element_shot}")
+        
+        # Mobile viewport screenshot
+        await agent.set_viewport_size(375, 667)  # iPhone size
+        mobile = await agent.screenshot(
+            f"mobile_{timestamp}.png",
+            full_page=True
+        )
+        print(f"Mobile screenshot: {mobile}")
+        
+    finally:
+        await agent.close()
+
+if __name__ == "__main__":
+    asyncio.run(capture_screenshots())</code></pre>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Web Scraping Examples -->
+                    <section id="scraping-examples" class="example-section" data-category="scraping">
+                        <h2>🕷️ Web Scraping Examples</h2>
+                        <p>Extract data from websites efficiently with these scraping examples.</p>
+                        
+                        <!-- Product Scraping -->
+                        <div id="product-scraping" class="example-card">
+                            <div class="example-header">
+                                <h3>E-commerce Product Scraping</h3>
+                                <div class="example-meta">
+                                    <span class="difficulty intermediate">Intermediate</span>
+                                    <span class="time">10 min</span>
+                                </div>
+                            </div>
+                            <div class="example-description">
+                                <p>Scrape product information from an e-commerce website including prices, descriptions, and reviews.</p>
+                            </div>
+                            <div class="code-block">
+                                <div class="code-header">
+                                    <span class="code-title">product_scraper.py</span>
+                                    <button class="copy-button">
+                                        <span class="copy-icon">📋</span>
+                                        <span class="copy-text">Copy</span>
+                                    </button>
+                                </div>
+                                <pre><code class="language-python">import asyncio
+import json
+from browser_agent import BrowserAgent
+
+class ProductScraper:
+    def __init__(self):
+        self.agent = BrowserAgent(headless=True)
+        self.products = []
+    
+    async def scrape_product_page(self, url):
+        """Scrape a single product page."""
+        await self.agent.navigate(url)
+        
+        # Wait for product content to load
+        await self.agent.wait_for_selector(".product-title", timeout=10)
+        
+        # Extract product information
+        product = {
+            "url": url,
+            "title": await self.get_text_safe(".product-title"),
+            "price": await self.get_text_safe(".price"),
+            "description": await self.get_text_safe(".product-description"),
+            "rating": await self.get_rating(),
+            "availability": await self.get_text_safe(".availability"),
+            "images": await self.get_product_images(),
+            "specifications": await self.get_specifications()
+        }
+        
+        return product
+    
+    async def get_text_safe(self, selector):
+        """Safely get text from an element."""
+        try:
+            element = await self.agent.find_element(selector)
+            return await element.get_text() if element else None
+        except:
+            return None
+    
+    async def get_rating(self):
+        """Extract product rating."""
+        try:
+            # Look for star rating
+            stars = await self.agent.find_elements(".star.filled")
+            if stars:
+                return len(stars)
+            
+            # Look for numeric rating
+            rating_text = await self.get_text_safe(".rating-number")
+            if rating_text:
+                return float(rating_text.split()[0])
+            
+            return None
+        except:
+            return None
+    
+    async def get_product_images(self):
+        """Extract product image URLs."""
+        try:
+            images = await self.agent.find_elements(".product-image img")
+            urls = []
+            for img in images:
+                src = await img.get_attribute("src")
+                if src:
+                    urls.append(src)
+            return urls
+        except:
+            return []
+    
+    async def get_specifications(self):
+        """Extract product specifications."""
+        try:
+            specs = {}
+            spec_rows = await self.agent.find_elements(".specs-table tr")
+            
+            for row in spec_rows:
+                cells = await row.find_elements("td")
+                if len(cells) >= 2:
+                    key = await cells[0].get_text()
+                    value = await cells[1].get_text()
+                    specs[key.strip()] = value.strip()
+            
+            return specs
+        except:
+            return {}
+    
+    async def scrape_search_results(self, search_url, max_products=10):
+        """Scrape products from search results."""
+        await self.agent.navigate(search_url)
+        
+        # Wait for search results
+        await self.agent.wait_for_selector(".product-item", timeout=10)
+        
+        # Get product links
+        product_links = await self.agent.find_elements(".product-item a")
+        urls = []
+        
+        for link in product_links[:max_products]:
+            href = await link.get_attribute("href")
+            if href:
+                urls.append(href)
+        
+        # Scrape each product
+        for url in urls:
+            try:
+                product = await self.scrape_product_page(url)
+                self.products.append(product)
+                print(f"Scraped: {product['title']}")
+                
+                # Be respectful - add delay
+                await asyncio.sleep(2)
+                
+            except Exception as e:
+                print(f"Error scraping {url}: {e}")
+    
+    async def save_results(self, filename="products.json"):
+        """Save scraped products to JSON file."""
+        with open(filename, 'w', encoding='utf-8') as f:
+            json.dump(self.products, f, indent=2, ensure_ascii=False)
+        print(f"Saved {len(self.products)} products to {filename}")
+    
+    async def start(self):
+        await self.agent.start()
+    
+    async def close(self):
+        await self.agent.close()
+
+async def main():
+    scraper = ProductScraper()
+    
+    try:
+        await scraper.start()
+        
+        # Example: scrape laptop search results
+        search_url = "https://example-store.com/search?q=laptop"
+        await scraper.scrape_search_results(search_url, max_products=5)
+        
+        # Save results
+        await scraper.save_results("laptops.json")
+        
+    finally:
+        await scraper.close()
+
+if __name__ == "__main__":
+    asyncio.run(main())</code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- News Scraping -->
+                        <div id="news-scraping" class="example-card">
+                            <div class="example-header">
+                                <h3>News Article Scraping</h3>
+                                <div class="example-meta">
+                                    <span class="difficulty intermediate">Intermediate</span>
+                                    <span class="time">8 min</span>
+                                </div>
+                            </div>
+                            <div class="example-description">
+                                <p>Extract news articles with headlines, content, authors, and publication dates.</p>
+                            </div>
+                            <div class="code-block">
+                                <div class="code-header">
+                                    <span class="code-title">news_scraper.py</span>
+                                    <button class="copy-button">
+                                        <span class="copy-icon">📋</span>
+                                        <span class="copy-text">Copy</span>
+                                    </button>
+                                </div>
+                                <pre><code class="language-python">import asyncio
+import json
+from datetime import datetime
+from browser_agent import BrowserAgent
+
+class NewsScraper:
+    def __init__(self):
+        self.agent = BrowserAgent(headless=True)
+        self.articles = []
+    
+    async def scrape_article(self, url):
+        """Scrape a single news article."""
+        await self.agent.navigate(url)
+        
+        # Wait for article content
+        await self.agent.wait_for_selector("article, .article-content", timeout=10)
+        
+        article = {
+            "url": url,
+            "headline": await self.get_headline(),
+            "author": await self.get_author(),
+            "publish_date": await self.get_publish_date(),
+            "content": await self.get_content(),
+            "tags": await self.get_tags(),
+            "image_url": await self.get_featured_image(),
+            "scraped_at": datetime.now().isoformat()
+        }
+        
+        return article
+    
+    async def get_headline(self):
+        """Extract article headline."""
+        selectors = [
+            "h1.headline",
+            "h1.article-title",
+            "h1.entry-title",
+            "article h1",
+            "h1"
+        ]
+        
+        for selector in selectors:
+            try:
+                element = await self.agent.find_element(selector)
+                if element:
+                    text = await element.get_text()
+                    if text and len(text.strip()) > 10:
+                        return text.strip()
+            except:
+                continue
+        
+        return None
+    
+    async def get_author(self):
+        """Extract article author."""
+        selectors = [
+            ".author-name",
+            ".byline",
+            "[rel='author']",
+            ".article-author",
+            ".post-author"
+        ]
+        
+        for selector in selectors:
+            try:
+                element = await self.agent.find_element(selector)
+                if element:
+                    return (await element.get_text()).strip()
+            except:
+                continue
+        
+        return None
+    
+    async def get_publish_date(self):
+        """Extract publication date."""
+        selectors = [
+            "time[datetime]",
+            ".publish-date",
+            ".article-date",
+            ".post-date",
+            "[data-testid='timestamp']"
+        ]
+        
+        for selector in selectors:
+            try:
+                element = await self.agent.find_element(selector)
+                if element:
+                    # Try to get datetime attribute first
+                    datetime_attr = await element.get_attribute("datetime")
+                    if datetime_attr:
+                        return datetime_attr
+                    
+                    # Fall back to text content
+                    text = await element.get_text()
+                    if text:
+                        return text.strip()
+            except:
+                continue
+        
+        return None
+    
+    async def get_content(self):
+        """Extract article content."""
+        selectors = [
+            ".article-content",
+            ".entry-content",
+            ".post-content",
+            "article .content",
+            ".story-body"
+        ]
+        
+        for selector in selectors:
+            try:
+                element = await self.agent.find_element(selector)
+                if element:
+                    # Get all paragraph text
+                    paragraphs = await element.find_elements("p")
+                    content_parts = []
+                    
+                    for p in paragraphs:
+                        text = await p.get_text()
+                        if text and len(text.strip()) > 20:
+                            content_parts.append(text.strip())
+                    
+                    if content_parts:
+                        return "\n\n".join(content_parts)
+            except:
+                continue
+        
+        return None
+    
+    async def get_tags(self):
+        """Extract article tags/categories."""
+        selectors = [
+            ".tags a",
+            ".categories a",
+            ".article-tags a",
+            "[data-testid='tag']"
+        ]
+        
+        tags = []
+        for selector in selectors:
+            try:
+                elements = await self.agent.find_elements(selector)
+                for element in elements:
+                    tag = await element.get_text()
+                    if tag and tag.strip() not in tags:
+                        tags.append(tag.strip())
+            except:
+                continue
+        
+        return tags
+    
+    async def get_featured_image(self):
+        """Extract featured image URL."""
+        selectors = [
+            ".featured-image img",
+            ".article-image img",
+            "article img",
+            ".hero-image img"
+        ]
+        
+        for selector in selectors:
+            try:
+                element = await self.agent.find_element(selector)
+                if element:
+                    src = await element.get_attribute("src")
+                    if src and src.startswith("http"):
+                        return src
+            except:
+                continue
+        
+        return None
+    
+    async def scrape_news_feed(self, feed_url, max_articles=10):
+        """Scrape articles from a news feed page."""
+        await self.agent.navigate(feed_url)
+        
+        # Wait for articles to load
+        await self.agent.wait_for_selector("article, .article-item", timeout=10)
+        
+        # Find article links
+        link_selectors = [
+            "article a",
+            ".article-item a",
+            ".headline a",
+            ".story-link"
+        ]
+        
+        article_urls = set()
+        for selector in link_selectors:
+            try:
+                links = await self.agent.find_elements(selector)
+                for link in links[:max_articles]:
+                    href = await link.get_attribute("href")
+                    if href and href.startswith("http"):
+                        article_urls.add(href)
+                        if len(article_urls) >= max_articles:
+                            break
+            except:
+                continue
+            
+            if len(article_urls) >= max_articles:
+                break
+        
+        # Scrape each article
+        for url in list(article_urls)[:max_articles]:
+            try:
+                article = await self.scrape_article(url)
+                if article["headline"] and article["content"]:
+                    self.articles.append(article)
+                    print(f"Scraped: {article['headline'][:50]}...")
+                
+                # Be respectful - add delay
+                await asyncio.sleep(3)
+                
+            except Exception as e:
+                print(f"Error scraping {url}: {e}")
+    
+    async def save_articles(self, filename="news_articles.json"):
+        """Save scraped articles to JSON file."""
+        with open(filename, 'w', encoding='utf-8') as f:
+            json.dump(self.articles, f, indent=2, ensure_ascii=False)
+        print(f"Saved {len(self.articles)} articles to {filename}")
+    
+    async def start(self):
+        await self.agent.start()
+    
+    async def close(self):
+        await self.agent.close()
+
+async def main():
+    scraper = NewsScraper()
+    
+    try:
+        await scraper.start()
+        
+        # Example: scrape tech news
+        await scraper.scrape_news_feed(
+            "https://example-news.com/technology",
+            max_articles=5
+        )
+        
+        # Save results
+        await scraper.save_articles("tech_news.json")
+        
+    finally:
+        await scraper.close()
+
+if __name__ == "__main__":
+    asyncio.run(main())</code></pre>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Testing Examples -->
+                    <section id="testing-examples" class="example-section" data-category="testing">
+                        <h2>🧪 Testing Examples</h2>
+                        <p>Automate testing workflows with these comprehensive examples.</p>
+                        
+                        <!-- Login Testing -->
+                        <div id="login-testing" class="example-card">
+                            <div class="example-header">
+                                <h3>Login Flow Testing</h3>
+                                <div class="example-meta">
+                                    <span class="difficulty intermediate">Intermediate</span>
+                                    <span class="time">7 min</span>
+                                </div>
+                            </div>
+                            <div class="example-description">
+                                <p>Test login functionality with multiple scenarios including success, failure, and edge cases.</p>
+                            </div>
+                            <div class="code-block">
+                                <div class="code-header">
+                                    <span class="code-title">login_test.py</span>
+                                    <button class="copy-button">
+                                        <span class="copy-icon">📋</span>
+                                        <span class="copy-text">Copy</span>
+                                    </button>
+                                </div>
+                                <pre><code class="language-python">import asyncio
+import pytest
+from browser_agent import BrowserAgent
+
+class LoginTester:
+    def __init__(self, base_url):
+        self.base_url = base_url
+        self.agent = BrowserAgent()
+        self.test_results = []
+    
+    async def setup(self):
+        """Setup test environment."""
+        await self.agent.start()
+        await self.agent.navigate(f"{self.base_url}/login")
+    
+    async def teardown(self):
+        """Cleanup after tests."""
+        await self.agent.close()
+    
+    async def test_valid_login(self, username, password):
+        """Test login with valid credentials."""
+        test_name = "Valid Login Test"
+        print(f"Running: {test_name}")
+        
+        try:
+            # Clear any existing data
+            await self.agent.clear_input("#username")
+            await self.agent.clear_input("#password")
+            
+            # Enter credentials
+            await self.agent.type("#username", username)
+            await self.agent.type("#password", password)
+            
+            # Submit form
+            await self.agent.click("#login-button")
+            
+            # Wait for redirect or success message
+            try:
+                await self.agent.wait_for_selector(".dashboard, .welcome-message", timeout=10)
+                result = "PASS"
+                message = "Successfully logged in"
+            except:
+                # Check for error messages
+                error_element = await self.agent.find_element(".error-message")
+                if error_element:
+                    error_text = await error_element.get_text()
+                    result = "FAIL"
+                    message = f"Login failed: {error_text}"
+                else:
+                    result = "FAIL"
+                    message = "Login failed: No success or error indicator found"
+            
+            self.test_results.append({
+                "test": test_name,
+                "result": result,
+                "message": message,
+                "username": username
+            })
+            
+            print(f"  Result: {result} - {message}")
+            return result == "PASS"
+            
+        except Exception as e:
+            self.test_results.append({
+                "test": test_name,
+                "result": "ERROR",
+                "message": str(e),
+                "username": username
+            })
+            print(f"  Result: ERROR - {e}")
+            return False
+    
+    async def test_invalid_login(self, username, password, expected_error=None):
+        """Test login with invalid credentials."""
+        test_name = f"Invalid Login Test ({username})"
+        print(f"Running: {test_name}")
+        
+        try:
+            # Navigate back to login if needed
+            current_url = await self.agent.get_url()
+            if "login" not in current_url:
+                await self.agent.navigate(f"{self.base_url}/login")
+            
+            # Clear and enter credentials
+            await self.agent.clear_input("#username")
+            await self.agent.clear_input("#password")
+            await self.agent.type("#username", username)
+            await self.agent.type("#password", password)
+            
+            # Submit form
+            await self.agent.click("#login-button")
+            
+            # Wait for error message
+            try:
+                await self.agent.wait_for_selector(".error-message, .alert-danger", timeout=5)
+                error_element = await self.agent.find_element(".error-message, .alert-danger")
+                error_text = await error_element.get_text()
+                
+                # Check if expected error message appears
+                if expected_error and expected_error.lower() in error_text.lower():
+                    result = "PASS"
+                    message = f"Expected error displayed: {error_text}"
+                elif not expected_error:
+                    result = "PASS"
+                    message = f"Error message displayed: {error_text}"
+                else:
+                    result = "FAIL"
+                    message = f"Unexpected error: {error_text}"
+                
+            except:
+                # Check if user was incorrectly logged in
+                dashboard = await self.agent.find_element(".dashboard")
+                if dashboard:
+                    result = "FAIL"
+                    message = "User was incorrectly logged in with invalid credentials"
+                else:
+                    result = "FAIL"
+                    message = "No error message displayed for invalid login"
+            
+            self.test_results.append({
+                "test": test_name,
+                "result": result,
+                "message": message,
+                "username": username
+            })
+            
+            print(f"  Result: {result} - {message}")
+            return result == "PASS"
+            
+        except Exception as e:
+            self.test_results.append({
+                "test": test_name,
+                "result": "ERROR",
+                "message": str(e),
+                "username": username
+            })
+            print(f"  Result: ERROR - {e}")
+            return False
+    
+    async def test_empty_fields(self):
+        """Test login with empty fields."""
+        test_name = "Empty Fields Test"
+        print(f"Running: {test_name}")
+        
+        try:
+            # Navigate to login
+            await self.agent.navigate(f"{self.base_url}/login")
+            
+            # Clear fields and try to submit
+            await self.agent.clear_input("#username")
+            await self.agent.clear_input("#password")
+            await self.agent.click("#login-button")
+            
+            # Check for validation messages
+            validation_messages = await self.agent.find_elements(".validation-error, .field-error")
+            
+            if validation_messages:
+                result = "PASS"
+                message = "Validation errors displayed for empty fields"
+            else:
+                # Check if form was submitted anyway
+                error_element = await self.agent.find_element(".error-message")
+                if error_element:
+                    result = "PASS"
+                    message = "Server-side validation caught empty fields"
+                else:
+                    result = "FAIL"
+                    message = "No validation for empty fields"
+            
+            self.test_results.append({
+                "test": test_name,
+                "result": result,
+                "message": message
+            })
+            
+            print(f"  Result: {result} - {message}")
+            return result == "PASS"
+            
+        except Exception as e:
+            self.test_results.append({
+                "test": test_name,
+                "result": "ERROR",
+                "message": str(e)
+            })
+            print(f"  Result: ERROR - {e}")
+            return False
+    
+    async def test_password_visibility_toggle(self):
+        """Test password visibility toggle functionality."""
+        test_name = "Password Visibility Toggle Test"
+        print(f"Running: {test_name}")
+        
+        try:
+            await self.agent.navigate(f"{self.base_url}/login")
+            
+            # Enter password
+            await self.agent.type("#password", "testpassword")
+            
+            # Check initial password field type
+            password_field = await self.agent.find_element("#password")
+            initial_type = await password_field.get_attribute("type")
+            
+            # Look for toggle button
+            toggle_button = await self.agent.find_element(".password-toggle, .show-password")
+            
+            if toggle_button:
+                # Click toggle
+                await self.agent.click(toggle_button)
+                
+                # Check if type changed
+                new_type = await password_field.get_attribute("type")
+                
+                if initial_type != new_type:
+                    result = "PASS"
+                    message = f"Password visibility toggled: {initial_type} -> {new_type}"
+                else:
+                    result = "FAIL"
+                    message = "Password visibility toggle did not work"
+            else:
+                result = "SKIP"
+                message = "No password visibility toggle found"
+            
+            self.test_results.append({
+                "test": test_name,
+                "result": result,
+                "message": message
+            })
+            
+            print(f"  Result: {result} - {message}")
+            return result in ["PASS", "SKIP"]
+            
+        except Exception as e:
+            self.test_results.append({
+                "test": test_name,
+                "result": "ERROR",
+                "message": str(e)
+            })
+            print(f"  Result: ERROR - {e}")
+            return False
+    
+    async def run_all_tests(self):
+        """Run all login tests."""
+        print("Starting Login Flow Tests\n")
+        
+        # Test scenarios
+        test_cases = [
+            # Valid login
+            ("test_valid_login", ["testuser@example.com", "correctpassword"]),
+            
+            # Invalid credentials
+            ("test_invalid_login", ["testuser@example.com", "wrongpassword", "invalid"]),
+            ("test_invalid_login", ["nonexistent@example.com", "anypassword", "user not found"]),
+            
+            # Edge cases
+            ("test_empty_fields", []),
+            ("test_password_visibility_toggle", []),
+        ]
+        
+        passed = 0
+        total = len(test_cases)
+        
+        for test_method, args in test_cases:
+            method = getattr(self, test_method)
+            success = await method(*args)
+            if success:
+                passed += 1
+            print()  # Add spacing between tests
+        
+        print(f"\nTest Summary: {passed}/{total} tests passed")
+        return self.test_results
+
+async def main():
+    # Initialize tester
+    tester = LoginTester("https://example-app.com")
+    
+    try:
+        await tester.setup()
+        results = await tester.run_all_tests()
+        
+        # Print detailed results
+        print("\nDetailed Results:")
+        for result in results:
+            print(f"  {result['test']}: {result['result']} - {result['message']}")
+        
+    finally:
+        await tester.teardown()
+
+if __name__ == "__main__":
+    asyncio.run(main())</code></pre>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- AI-Powered Examples -->
+                    <section id="ai-examples" class="example-section" data-category="ai">
+                        <h2>🤖 AI-Powered Examples</h2>
+                        <p>Leverage AI capabilities for intelligent automation and data extraction.</p>
+                        
+                        <!-- Natural Language Automation -->
+                        <div id="natural-language" class="example-card">
+                            <div class="example-header">
+                                <h3>Natural Language Automation</h3>
+                                <div class="example-meta">
+                                    <span class="difficulty advanced">Advanced</span>
+                                    <span class="time">12 min</span>
+                                </div>
+                            </div>
+                            <div class="example-description">
+                                <p>Use natural language instructions to perform complex automation tasks.</p>
+                            </div>
+                            <div class="code-block">
+                                <div class="code-header">
+                                    <span class="code-title">ai_automation.py</span>
+                                    <button class="copy-button">
+                                        <span class="copy-icon">📋</span>
+                                        <span class="copy-text">Copy</span>
+                                    </button>
+                                </div>
+                                <pre><code class="language-python">import asyncio
+from browser_agent import BrowserAgent
+
+class AIAutomationDemo:
+    def __init__(self):
+        self.agent = BrowserAgent(
+            ai_provider="openai",  # or "claude", "gemini"
+            headless=False  # Set to True for production
+        )
+    
+    async def natural_language_shopping(self):
+        """Demonstrate shopping automation using natural language."""
+        print("Starting AI-powered shopping automation...")
+        
+        await self.agent.navigate("https://example-store.com")
+        
+        # Use natural language to find and add products
+        instructions = [
+            "Search for wireless headphones under $100",
+            "Find the product with the best rating",
+            "Add it to the shopping cart",
+            "Go to the cart and proceed to checkout",
+            "Fill in the shipping information with test data"
+        ]
+        
+        for instruction in instructions:
+            print(f"\nExecuting: {instruction}")
+            
+            try:
+                result = await self.agent.ai_interact(instruction)
+                print(f"Result: {result.get('status', 'completed')}")
+                
+                if result.get('actions'):
+                    print(f"Actions taken: {', '.join(result['actions'])}")
+                
+                # Add delay between instructions
+                await asyncio.sleep(2)
+                
+            except Exception as e:
+                print(f"Error: {e}")
+                break
+    
+    async def smart_form_filling(self):
+        """Demonstrate intelligent form filling."""
+        print("\nStarting smart form filling...")
+        
+        await self.agent.navigate("https://example-forms.com/contact")
+        
+        # AI can understand context and fill forms appropriately
+        instruction = """
+        Fill out this contact form with realistic test data:
+        - Use a professional tone
+        - Make it about requesting a product demo
+        - Include relevant business information
+        - Select appropriate options from dropdowns
+        """
+        
+        try:
+            result = await self.agent.ai_interact(instruction)
+            print(f"Form filling result: {result}")
+            
+            # Take screenshot of filled form
+            await self.agent.screenshot("filled_form.png")
+            print("Screenshot saved: filled_form.png")
+            
+        except Exception as e:
+            print(f"Error in form filling: {e}")
+    
+    async def intelligent_data_extraction(self):
+        """Extract structured data using AI understanding."""
+        print("\nStarting intelligent data extraction...")
+        
+        await self.agent.navigate("https://example-news.com")
+        
+        # AI can understand what constitutes relevant information
+        extraction_request = """
+        Extract the following information from this news website:
+        1. Top 5 headlines with their summaries
+        2. Publication dates and authors
+        3. Categories or tags for each article
+        4. Any trending topics mentioned
+        
+        Format the response as structured JSON.
+        """
+        
+        try:
+            extracted_data = await self.agent.ai_extract(extraction_request)
+            print("Extracted data:")
+            print(json.dumps(extracted_data, indent=2))
+            
+            # Save extracted data
+            with open("extracted_news.json", "w") as f:
+                json.dump(extracted_data, f, indent=2)
+            print("Data saved to: extracted_news.json")
+            
+        except Exception as e:
+            print(f"Error in data extraction: {e}")
+    
+    async def adaptive_navigation(self):
+        """Demonstrate adaptive navigation based on page content."""
+        print("\nStarting adaptive navigation...")
+        
+        await self.agent.navigate("https://example-site.com")
+        
+        # AI can adapt to different website layouts and structures
+        navigation_tasks = [
+            "Find and click on the 'About Us' or 'About' section",
+            "Look for contact information and extract it",
+            "Find the main navigation menu and list all available sections",
+            "Locate any social media links and extract the URLs"
+        ]
+        
+        results = {}
+        
+        for task in navigation_tasks:
+            print(f"\nTask: {task}")
+            
+            try:
+                result = await self.agent.ai_interact(task)
+                results[task] = result
+                print(f"Completed: {result.get('summary', 'Task completed')}")
+                
+            except Exception as e:
+                print(f"Error: {e}")
+                results[task] = {"error": str(e)}
+        
+        return results
+    
+    async def contextual_testing(self):
+        """Perform testing with AI understanding of context."""
+        print("\nStarting contextual testing...")
+        
+        await self.agent.navigate("https://example-app.com/login")
+        
+        # AI can understand testing scenarios and adapt
+        test_scenarios = [
+            """
+            Test the login functionality:
+            1. Try logging in with valid credentials
+            2. Test with invalid credentials
+            3. Check if error messages are appropriate
+            4. Verify password field security (masked input)
+            5. Test any 'forgot password' functionality
+            """,
+            """
+            Test the user registration process:
+            1. Fill out the registration form with valid data
+            2. Test password strength requirements
+            3. Verify email validation
+            4. Check for duplicate account handling
+            """
+        ]
+        
+        test_results = []
+        
+        for i, scenario in enumerate(test_scenarios, 1):
+            print(f"\nRunning test scenario {i}...")
+            
+            try:
+                result = await self.agent.ai_interact(scenario)
+                test_results.append({
+                    "scenario": i,
+                    "result": result,
+                    "status": "completed"
+                })
+                print(f"Scenario {i} completed")
+                
+            except Exception as e:
+                test_results.append({
+                    "scenario": i,
+                    "error": str(e),
+                    "status": "failed"
+                })
+                print(f"Scenario {i} failed: {e}")
+        
+        return test_results
+    
+    async def run_all_demos(self):
+        """Run all AI automation demonstrations."""
+        demos = [
+            ("Shopping Automation", self.natural_language_shopping),
+            ("Smart Form Filling", self.smart_form_filling),
+            ("Data Extraction", self.intelligent_data_extraction),
+            ("Adaptive Navigation", self.adaptive_navigation),
+            ("Contextual Testing", self.contextual_testing)
+        ]
+        
+        results = {}
+        
+        for demo_name, demo_func in demos:
+            print(f"\n{'='*50}")
+            print(f"Running: {demo_name}")
+            print(f"{'='*50}")
+            
+            try:
+                result = await demo_func()
+                results[demo_name] = result
+                print(f"\n{demo_name} completed successfully")
+                
+            except Exception as e:
+                print(f"\n{demo_name} failed: {e}")
+                results[demo_name] = {"error": str(e)}
+            
+            # Pause between demos
+            await asyncio.sleep(3)
+        
+        return results
+    
+    async def start(self):
+        await self.agent.start()
+    
+    async def close(self):
+        await self.agent.close()
+
+async def main():
+    demo = AIAutomationDemo()
+    
+    try:
+        await demo.start()
+        results = await demo.run_all_demos()
+        
+        print("\n" + "="*60)
+        print("AI AUTOMATION DEMO SUMMARY")
+        print("="*60)
+        
+        for demo_name, result in results.items():
+            status = "✅ SUCCESS" if "error" not in result else "❌ FAILED"
+            print(f"{demo_name}: {status}")
+        
+    finally:
+        await demo.close()
+
+if __name__ == "__main__":
+    asyncio.run(main())</code></pre>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Advanced Examples -->
+                    <section id="advanced-examples" class="example-section" data-category="advanced">
+                        <h2>⚡ Advanced Examples</h2>
+                        <p>Complex automation scenarios for power users and enterprise applications.</p>
+                        
+                        <!-- Parallel Automation -->
+                        <div id="parallel-automation" class="example-card">
+                            <div class="example-header">
+                                <h3>Parallel Browser Automation</h3>
+                                <div class="example-meta">
+                                    <span class="difficulty advanced">Advanced</span>
+                                    <span class="time">15 min</span>
+                                </div>
+                            </div>
+                            <div class="example-description">
+                                <p>Run multiple browser instances in parallel for high-performance automation.</p>
+                            </div>
+                            <div class="code-block">
+                                <div class="code-header">
+                                    <span class="code-title">parallel_automation.py</span>
+                                    <button class="copy-button">
+                                        <span class="copy-icon">📋</span>
+                                        <span class="copy-text">Copy</span>
+                                    </button>
+                                </div>
+                                <pre><code class="language-python">import asyncio
+import json
+from datetime import datetime
+from browser_agent import BrowserAgent
+from concurrent.futures import ThreadPoolExecutor
+
+class ParallelAutomation:
+    def __init__(self, max_workers=5):
+        self.max_workers = max_workers
+        self.results = []
+        self.semaphore = asyncio.Semaphore(max_workers)
+    
+    async def create_agent(self, agent_id):
+        """Create a browser agent with unique configuration."""
+        agent = BrowserAgent(
+            browser="chrome",
+            headless=True,
+            user_data_dir=f"./browser_data/agent_{agent_id}"
+        )
+        await agent.start()
+        return agent
+    
+    async def scrape_product_parallel(self, agent_id, product_url):
+        """Scrape a single product using dedicated agent."""
+        async with self.semaphore:
+            agent = None
+            try:
+                print(f"Agent {agent_id}: Starting product scrape for {product_url}")
+                
+                agent = await self.create_agent(agent_id)
+                await agent.navigate(product_url)
+                
+                # Wait for product page to load
+                await agent.wait_for_selector(".product-title, h1", timeout=15)
+                
+                # Extract product data
+                product_data = {
+                    "agent_id": agent_id,
+                    "url": product_url,
+                    "title": await self.safe_get_text(agent, ".product-title, h1"),
+                    "price": await self.safe_get_text(agent, ".price, .product-price"),
+                    "description": await self.safe_get_text(agent, ".description, .product-description"),
+                    "rating": await self.extract_rating(agent),
+                    "availability": await self.safe_get_text(agent, ".availability, .stock-status"),
+                    "images": await self.extract_images(agent),
+                    "scraped_at": datetime.now().isoformat()
+                }
+                
+                print(f"Agent {agent_id}: Completed scraping {product_data['title'][:30]}...")
+                return product_data
+                
+            except Exception as e:
+                print(f"Agent {agent_id}: Error scraping {product_url}: {e}")
+                return {
+                    "agent_id": agent_id,
+                    "url": product_url,
+                    "error": str(e),
+                    "scraped_at": datetime.now().isoformat()
+                }
+                
+            finally:
+                if agent:
+                    await agent.close()
+    
+    async def safe_get_text(self, agent, selector):
+        """Safely extract text from element."""
+        try:
+            element = await agent.find_element(selector)
+            return await element.get_text() if element else None
+        except:
+            return None
+    
+    async def extract_rating(self, agent):
+        """Extract product rating."""
+        try:
+            # Try different rating selectors
+            selectors = [".rating", ".stars", "[data-rating]", ".review-score"]
+            for selector in selectors:
+                element = await agent.find_element(selector)
+                if element:
+                    text = await element.get_text()
+                    # Extract numeric rating
+                    import re
+                    match = re.search(r'(\d+\.?\d*)', text)
+                    if match:
+                        return float(match.group(1))
+            return None
+        except:
+            return None
+    
+    async def extract_images(self, agent):
+        """Extract product image URLs."""
+        try:
+            images = await agent.find_elements(".product-image img, .gallery img")
+            urls = []
+            for img in images[:5]:  # Limit to 5 images
+                src = await img.get_attribute("src")
+                if src and src.startswith("http"):
+                    urls.append(src)
+            return urls
+        except:
+            return []
+    
+    async def parallel_product_scraping(self, product_urls):
+        """Scrape multiple products in parallel."""
+        print(f"Starting parallel scraping of {len(product_urls)} products...")
+        
+        # Create tasks for parallel execution
+        tasks = []
+        for i, url in enumerate(product_urls):
+            task = asyncio.create_task(
+                self.scrape_product_parallel(i + 1, url)
+            )
+            tasks.append(task)
+        
+        # Execute all tasks concurrently
+        results = await asyncio.gather(*tasks, return_exceptions=True)
+        
+        # Process results
+        successful = [r for r in results if isinstance(r, dict) and "error" not in r]
+        failed = [r for r in results if isinstance(r, dict) and "error" in r]
+        errors = [r for r in results if isinstance(r, Exception)]
+        
+        print(f"Scraping completed: {len(successful)} successful, {len(failed)} failed, {len(errors)} errors")
+        
+        return {
+            "successful": successful,
+            "failed": failed,
+            "errors": [str(e) for e in errors],
+            "total_processed": len(product_urls)
+        }
+    
+    async def parallel_testing(self, test_urls):
+        """Run tests on multiple URLs in parallel."""
+        print(f"Starting parallel testing on {len(test_urls)} URLs...")
+        
+        async def test_single_url(agent_id, url):
+            async with self.semaphore:
+                agent = None
+                try:
+                    agent = await self.create_agent(agent_id)
+                    await agent.navigate(url)
+                    
+                    # Basic performance and functionality tests
+                    start_time = datetime.now()
+                    
+                    # Test page load
+                    await agent.wait_for_selector("body", timeout=10)
+                    load_time = (datetime.now() - start_time).total_seconds()
+                    
+                    # Test basic functionality
+                    title = await agent.get_title()
+                    has_forms = bool(await agent.find_elements("form"))
+                    has_links = bool(await agent.find_elements("a"))
+                    has_images = bool(await agent.find_elements("img"))
+                    
+                    # Test responsiveness
+                    await agent.set_viewport_size(375, 667)  # Mobile
+                    mobile_title = await agent.get_title()
+                    
+                    return {
+                        "agent_id": agent_id,
+                        "url": url,
+                        "load_time": load_time,
+                        "title": title,
+                        "has_forms": has_forms,
+                        "has_links": has_links,
+                        "has_images": has_images,
+                        "mobile_responsive": mobile_title == title,
+                        "status": "success"
+                    }
+                    
+                except Exception as e:
+                    return {
+                        "agent_id": agent_id,
+                        "url": url,
+                        "error": str(e),
+                        "status": "failed"
+                    }
+                finally:
+                    if agent:
+                        await agent.close()
+        
+        # Create and execute tasks
+        tasks = [
+            asyncio.create_task(test_single_url(i + 1, url))
+            for i, url in enumerate(test_urls)
+        ]
+        
+        results = await asyncio.gather(*tasks, return_exceptions=True)
+        
+        return {
+            "results": [r for r in results if isinstance(r, dict)],
+            "exceptions": [str(e) for e in results if isinstance(e, Exception)]
+        }
+
+async def main():
+    # Example usage
+    automation = ParallelAutomation(max_workers=3)
+    
+    # Test URLs for parallel processing
+    product_urls = [
+        "https://example-store.com/product/1",
+        "https://example-store.com/product/2",
+        "https://example-store.com/product/3",
+        "https://example-store.com/product/4",
+        "https://example-store.com/product/5"
+    ]
+    
+    test_urls = [
+        "https://example.com",
+        "https://httpbin.org",
+        "https://github.com",
+        "https://stackoverflow.com"
+    ]
+    
+    try:
+        # Run parallel product scraping
+        print("=" * 50)
+        print("PARALLEL PRODUCT SCRAPING")
+        print("=" * 50)
+        
+        scraping_results = await automation.parallel_product_scraping(product_urls)
+        
+        # Save results
+        with open("parallel_scraping_results.json", "w") as f:
+            json.dump(scraping_results, f, indent=2)
+        
+        print(f"\nScraping results saved to parallel_scraping_results.json")
+        
+        # Run parallel testing
+        print("\n" + "=" * 50)
+        print("PARALLEL TESTING")
+        print("=" * 50)
+        
+        testing_results = await automation.parallel_testing(test_urls)
+        
+        # Save results
+        with open("parallel_testing_results.json", "w") as f:
+            json.dump(testing_results, f, indent=2)
+        
+        print(f"\nTesting results saved to parallel_testing_results.json")
+        
+    except Exception as e:
+        print(f"Error in parallel automation: {e}")
+
+if __name__ == "__main__":
+    asyncio.run(main())</code></pre>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Next Steps -->
+                    <section class="next-steps">
+                        <h2>🚀 Next Steps</h2>
+                        <div class="steps-grid">
+                            <div class="step-card">
+                                <div class="step-icon">📚</div>
+                                <h3>Explore API Reference</h3>
+                                <p>Dive deeper into Browser Agent's API documentation for advanced features.</p>
+                                <a href="./api.html" class="step-link">View API Docs →</a>
+                            </div>
+                            <div class="step-card">
+                                <div class="step-icon">🔧</div>
+                                <h3>Build Custom Plugins</h3>
+                                <p>Extend Browser Agent with custom plugins for your specific use cases.</p>
+                                <a href="./api.html#plugin-development" class="step-link">Plugin Guide →</a>
+                            </div>
+                            <div class="step-card">
+                                <div class="step-icon">🤝</div>
+                                <h3>Join Community</h3>
+                                <p>Connect with other developers and share your automation experiences.</p>
+                                <a href="https://github.com/AryanVBW/brouser-agent/discussions" class="step-link" target="_blank" rel="noopener">Join Discussion →</a>
+                            </div>
+                        </div>
+                    </section>
+                </article>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Browser Agent</h3>
+                    <p>AI-powered browser automation for the modern web.</p>
+                    <div class="social-links">
+                        <a href="https://github.com/AryanVBW/brouser-agent" target="_blank" rel="noopener" aria-label="GitHub">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Documentation</h4>
+                    <ul>
+                        <li><a href="./quick-start.html">Quick Start</a></li>
+                        <li><a href="./features.html">Features</a></li>
+                        <li><a href="./api.html">API Reference</a></li>
+                        <li><a href="./examples.html">Examples</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="https://github.com/AryanVBW/brouser-agent" target="_blank" rel="noopener">GitHub</a></li>
+                        <li><a href="https://github.com/AryanVBW/brouser-agent/issues" target="_blank" rel="noopener">Issues</a></li>
+                        <li><a href="https://github.com/AryanVBW/brouser-agent/discussions" target="_blank" rel="noopener">Discussions</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="https://github.com/AryanVBW" target="_blank" rel="noopener">Author</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Browser Agent. Created by <a href="https://github.com/AryanVBW" target="_blank" rel="noopener">Vivek Wagdare (AryanVBW)</a>.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/search.js"></script>
+    <script>
+        // Example-specific functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Category filtering
+            const categoryButtons = document.querySelectorAll('.category-btn');
+            const exampleSections = document.querySelectorAll('.example-section');
+            
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const category = this.dataset.category;
+                    
+                    // Update active button
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Filter sections
+                    exampleSections.forEach(section => {
+                        if (category === 'all' || section.dataset.category === category) {
+                            section.style.display = 'block';
+                        } else {
+                            section.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Copy code functionality
+            const copyButtons = document.querySelectorAll('.copy-button');
+            copyButtons.forEach(button => {
+                button.addEventListener('click', async function() {
+                    const codeBlock = this.closest('.code-block').querySelector('code');
+                    const text = codeBlock.textContent;
+                    
+                    try {
+                        await navigator.clipboard.writeText(text);
+                        
+                        // Visual feedback
+                        const originalText = this.querySelector('.copy-text').textContent;
+                        this.querySelector('.copy-text').textContent = 'Copied!';
+                        this.classList.add('copied');
+                        
+                        setTimeout(() => {
+                            this.querySelector('.copy-text').textContent = originalText;
+                            this.classList.remove('copied');
+                        }, 2000);
+                    } catch (err) {
+                        console.error('Failed to copy text: ', err);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browser Agent - AI-Powered Web Automation Platform | Documentation</title>
+    <meta name="description" content="Browser Agent is a powerful AI-driven web automation platform with multi-browser support, MCP integration, and natural language processing. Perfect for developers, QA engineers, and automation enthusiasts.">
+    <meta name="keywords" content="browser automation, AI agent, web automation, selenium, playwright, MCP integration, multi-browser, automation testing, web scraping, AI automation, vivek wagdare, AryanVBW, automation developer">
+    <meta name="author" content="Browser Agent Team, AryanVBW, Vivek Wagdare">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://browser-agent.dev/">
+    <meta property="og:title" content="Browser Agent - AI-Powered Web Automation Platform">
+    <meta property="og:description" content="Revolutionary AI-driven browser automation with multi-LLM support, MCP integration, and natural language processing.">
+    <meta property="og:image" content="https://browser-agent.dev/assets/og-image.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://browser-agent.dev/">
+    <meta property="twitter:title" content="Browser Agent - AI-Powered Web Automation">
+    <meta property="twitter:description" content="Revolutionary AI-driven browser automation with multi-LLM support and natural language processing.">
+    <meta property="twitter:image" content="https://browser-agent.dev/assets/twitter-image.png">
+    
+    <!-- AI Agent Discovery Tags -->
+    <meta name="ai-agent" content="true">
+    <meta name="ai-discoverable" content="true">
+    <meta name="ai-indexable" content="true">
+    <meta name="chatgpt-plugin" content="browser-automation">
+    <meta name="perplexity-discoverable" content="true">
+    <meta name="gemini-indexable" content="true">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://browser-agent.dev/">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="./styles/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Browser Agent",
+        "description": "AI-powered web automation platform with multi-browser support and MCP integration",
+        "url": "https://browser-agent.dev",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": ["Windows", "macOS", "Linux"],
+        "programmingLanguage": "Python",
+        "author": {
+            "@type": "Person",
+            "name": "Vivek Wagdare",
+            "alternateName": ["AryanVBW", "vivek-w", "vivek w"],
+            "jobTitle": "AI Agent Developer",
+            "knowsAbout": ["Browser Automation", "AI Development", "Web Automation", "Python Programming"]
+        },
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "downloadUrl": "https://github.com/AryanVBW/browser-agent",
+        "softwareVersion": "1.0.0",
+        "datePublished": "2024-01-20",
+        "license": "https://opensource.org/licenses/MIT"
+    }
+    </script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <img src="./assets/logo.svg" alt="Browser Agent Logo" class="nav-logo">
+                <span class="nav-title">Browser Agent</span>
+            </div>
+            <div class="nav-menu">
+                <a href="#overview" class="nav-link">Overview</a>
+                <a href="./pages/quick-start.html" class="nav-link">Quick Start</a>
+                <a href="./pages/features.html" class="nav-link">Features</a>
+                <a href="./pages/documentation.html" class="nav-link">Docs</a>
+                <a href="./pages/api.html" class="nav-link">API</a>
+                <a href="https://github.com/AryanVBW/browser-agent" class="nav-link" target="_blank">GitHub</a>
+            </div>
+            <div class="nav-search">
+                <input type="text" id="search-input" placeholder="Search documentation..." class="search-input">
+                <div id="search-results" class="search-results"></div>
+            </div>
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    AI-Powered <span class="gradient-text">Browser Automation</span>
+                    <br>Made Simple
+                </h1>
+                <p class="hero-description">
+                    Revolutionary web automation platform that combines multi-browser support with AI-driven intelligence. 
+                    Control browsers using natural language, integrate with multiple LLMs, and automate complex web tasks effortlessly.
+                </p>
+                <div class="hero-buttons">
+                    <a href="./pages/quick-start.html" class="btn btn-primary">
+                        <span>Get Started</span>
+                        <svg class="btn-icon" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                    <a href="./pages/demo.html" class="btn btn-secondary">
+                        <span>View Demo</span>
+                        <svg class="btn-icon" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                            <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">4+</span>
+                        <span class="stat-label">Browsers Supported</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">3+</span>
+                        <span class="stat-label">AI Models</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Open Source</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-animation">
+                    <div class="browser-window">
+                        <div class="browser-header">
+                            <div class="browser-controls">
+                                <span class="control red"></span>
+                                <span class="control yellow"></span>
+                                <span class="control green"></span>
+                            </div>
+                            <div class="browser-url">https://example.com</div>
+                        </div>
+                        <div class="browser-content">
+                            <div class="ai-cursor"></div>
+                            <div class="automation-lines"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Overview -->
+    <section id="overview" class="features-overview">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Why Choose Browser Agent?</h2>
+                <p class="section-description">
+                    Built for developers, QA engineers, and automation enthusiasts who need reliable, scalable web automation solutions.
+                </p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M9 12l2 2 4-4"/>
+                            <path d="M21 12c-1 0-3-1-3-3s2-3 3-3 3 1 3 3-2 3-3 3"/>
+                            <path d="M3 12c1 0 3-1 3-3s-2-3-3-3-3 1-3 3 2 3 3 3"/>
+                            <path d="M12 3c0 1-1 3-3 3s-3-2-3-3 1-3 3-3 3 2 3 3"/>
+                            <path d="M12 21c0-1 1-3 3-3s3 2 3 3-1 3-3 3-3-2-3-3"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Multi-Browser Support</h3>
+                    <p class="feature-description">
+                        Unified API for Chrome, Firefox, Safari, and Edge. Switch between browsers seamlessly without changing your code.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                            <path d="M2 17l10 5 10-5"/>
+                            <path d="M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">AI-Powered Intelligence</h3>
+                    <p class="feature-description">
+                        Natural language processing with OpenAI GPT, Claude, and Gemini. Tell the AI what you want, and it handles the rest.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">MCP Integration</h3>
+                    <p class="feature-description">
+                        Model Context Protocol support for enhanced AI capabilities. Connect to external tools and services seamlessly.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <path d="M22 6l-10 7L2 6"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Dual Interface</h3>
+                    <p class="feature-description">
+                        Modern GUI for visual interaction and powerful CLI for automation scripts. Choose the interface that fits your workflow.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M20 7h-9"/>
+                            <path d="M14 17H5"/>
+                            <circle cx="17" cy="17" r="3"/>
+                            <circle cx="7" cy="7" r="3"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Plugin Architecture</h3>
+                    <p class="feature-description">
+                        Extensible system with custom plugins. Build your own extensions or use community-developed plugins.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Cloud Ready</h3>
+                    <p class="feature-description">
+                        Docker and Kubernetes deployment support. Scale your automation across multiple environments effortlessly.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Start Preview -->
+    <section class="quick-start-preview">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Get Started in Minutes</h2>
+                <p class="section-description">
+                    Three simple ways to start automating with Browser Agent
+                </p>
+            </div>
+            <div class="install-options">
+                <div class="install-option">
+                    <h3>Local Installation</h3>
+                    <div class="code-block">
+                        <pre><code>git clone https://github.com/AryanVBW/browser-agent.git
+cd browser-agent
+make install
+make run</code></pre>
+                    </div>
+                </div>
+                <div class="install-option">
+                    <h3>Docker (Recommended)</h3>
+                    <div class="code-block">
+                        <pre><code>docker-compose -f deployment/docker-compose.yml up -d</code></pre>
+                    </div>
+                </div>
+                <div class="install-option">
+                    <h3>Development Setup</h3>
+                    <div class="code-block">
+                        <pre><code>make dev-install
+make dev-setup
+make test</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Documentation Links -->
+    <section class="documentation-links">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Comprehensive Documentation</h2>
+                <p class="section-description">
+                    Everything you need to master Browser Agent
+                </p>
+            </div>
+            <div class="docs-grid">
+                <a href="./pages/quick-start.html" class="doc-card">
+                    <div class="doc-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                        </svg>
+                    </div>
+                    <h3>Quick Start Guide</h3>
+                    <p>Get up and running in minutes with our step-by-step guide</p>
+                </a>
+                <a href="./pages/installation.html" class="doc-card">
+                    <div class="doc-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                            <polyline points="3.27,6.96 12,12.01 20.73,6.96"/>
+                            <line x1="12" y1="22.08" x2="12" y2="12"/>
+                        </svg>
+                    </div>
+                    <h3>Installation & Setup</h3>
+                    <p>Complete installation guide for all platforms and environments</p>
+                </a>
+                <a href="./pages/features.html" class="doc-card">
+                    <div class="doc-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                    </div>
+                    <h3>Features & Use Cases</h3>
+                    <p>Explore all features and real-world automation scenarios</p>
+                </a>
+                <a href="./pages/mcp-integration.html" class="doc-card">
+                    <div class="doc-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                    </div>
+                    <h3>MCP Integration</h3>
+                    <p>Model Context Protocol integration and external tool connections</p>
+                </a>
+                <a href="./pages/troubleshooting.html" class="doc-card">
+                    <div class="doc-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 17h.01"/>
+                        </svg>
+                    </div>
+                    <h3>Troubleshooting</h3>
+                    <p>Common issues, debugging tips, and solutions</p>
+                </a>
+                <a href="./pages/api.html" class="doc-card">
+                    <div class="doc-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
+                            <rect x="8" y="2" width="8" height="4" rx="1" ry="1"/>
+                        </svg>
+                    </div>
+                    <h3>API Reference</h3>
+                    <p>Complete API documentation and plugin development guide</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <img src="./assets/logo.svg" alt="Browser Agent Logo" class="footer-logo">
+                        <span class="footer-title">Browser Agent</span>
+                    </div>
+                    <p class="footer-description">
+                        AI-powered web automation platform built for developers, QA engineers, and automation enthusiasts.
+                    </p>
+                    <div class="footer-social">
+                        <a href="https://github.com/AryanVBW/browser-agent" target="_blank" class="social-link">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-heading">Documentation</h4>
+                    <ul class="footer-links">
+                        <li><a href="./pages/quick-start.html">Quick Start</a></li>
+                        <li><a href="./pages/installation.html">Installation</a></li>
+                        <li><a href="./pages/features.html">Features</a></li>
+                        <li><a href="./pages/api.html">API Reference</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-heading">Community</h4>
+                    <ul class="footer-links">
+                        <li><a href="https://github.com/AryanVBW/browser-agent/issues">Issues</a></li>
+                        <li><a href="https://github.com/AryanVBW/browser-agent/discussions">Discussions</a></li>
+                        <li><a href="./pages/contributing.html">Contributing</a></li>
+                        <li><a href="./pages/faq.html">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-heading">Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="./pages/examples.html">Examples</a></li>
+                        <li><a href="./pages/troubleshooting.html">Troubleshooting</a></li>
+                        <li><a href="./pages/changelog.html">Changelog</a></li>
+                        <li><a href="./pages/contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Browser Agent Team. Built with ❤️ by <a href="https://github.com/AryanVBW" target="_blank">AryanVBW (Vivek Wagdare)</a>. Licensed under MIT.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="./scripts/main.js"></script>
+    <script src="./scripts/search.js"></script>
+</body>
+</html>

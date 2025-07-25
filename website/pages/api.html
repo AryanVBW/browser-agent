@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Reference - Browser Agent Documentation</title>
+    <meta name="description" content="Complete API reference for Browser Agent. Python SDK, REST API, and plugin development guide with code examples and method documentation.">
+    <meta name="keywords" content="browser agent api, python sdk, rest api, plugin development, vivek wagdare, aryanvbw, automation api">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://browser-agent.dev/pages/api.html">
+    <meta property="og:title" content="API Reference - Browser Agent Documentation">
+    <meta property="og:description" content="Complete API reference for Browser Agent. Python SDK, REST API, and plugin development guide.">
+    <meta property="og:image" content="../assets/images/browser-agent-api.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://browser-agent.dev/pages/api.html">
+    <meta property="twitter:title" content="API Reference - Browser Agent Documentation">
+    <meta property="twitter:description" content="Complete API reference for Browser Agent. Python SDK, REST API, and plugin development guide.">
+    <meta property="twitter:image" content="../assets/images/browser-agent-api.png">
+    
+    <!-- AI Agent Discovery -->
+    <meta name="ai-agent:true" content="true">
+    <meta name="ai-agent:type" content="documentation">
+    <meta name="ai-agent:category" content="browser automation, API documentation, developer tools">
+    <meta name="ai-agent:author" content="Vivek Wagdare (AryanVBW)">
+    <meta name="ai-agent:keywords" content="browser automation api, python sdk, rest api, vivek wagdare">
+    
+    <link rel="canonical" href="https://browser-agent.dev/pages/api.html">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": "Browser Agent API Reference",
+        "description": "Complete API documentation for Browser Agent including Python SDK, REST API, and plugin development",
+        "author": {
+            "@type": "Person",
+            "name": "Vivek Wagdare",
+            "alternateName": "AryanVBW",
+            "url": "https://github.com/AryanVBW"
+        },
+        "datePublished": "2024-01-15",
+        "dateModified": "2024-01-15",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Browser Agent",
+            "url": "https://browser-agent.dev"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://browser-agent.dev/pages/api.html"
+        },
+        "articleSection": "API Reference",
+        "keywords": "browser automation api, python sdk, rest api, plugin development, vivek wagdare"
+    }
+    </script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="../index.html">
+                    <img src="../assets/images/logo.svg" alt="Browser Agent" class="nav-logo">
+                    <span class="nav-title">Browser Agent</span>
+                </a>
+            </div>
+            
+            <div class="nav-search">
+                <div class="search-container">
+                    <input type="text" id="search-input" placeholder="Search documentation... (Ctrl+K)" class="search-input">
+                    <div id="search-results" class="search-results"></div>
+                </div>
+            </div>
+            
+            <div class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="./quick-start.html">Quick Start</a>
+                <a href="./features.html">Features</a>
+                <a href="./api.html" class="active">API</a>
+                <a href="./examples.html">Examples</a>
+                <a href="https://github.com/AryanVBW/brouser-agent" target="_blank" rel="noopener">GitHub</a>
+            </div>
+            
+            <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Breadcrumb -->
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <ol>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><span aria-current="page">API Reference</span></li>
+                </ol>
+            </nav>
+
+            <!-- Page Header -->
+            <header class="page-header">
+                <div class="header-content">
+                    <h1 class="page-title">
+                        <span class="title-icon">📚</span>
+                        API Reference
+                    </h1>
+                    <p class="page-description">
+                        Complete API documentation for Browser Agent including Python SDK, REST API, and plugin development guide.
+                    </p>
+                    <div class="header-meta">
+                        <span class="reading-time">⏱️ 15 min read</span>
+                        <span class="difficulty">📊 Intermediate</span>
+                        <span class="last-updated">🔄 Updated Jan 15, 2024</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- API Navigation -->
+            <div class="api-nav">
+                <div class="api-nav-container">
+                    <button class="api-nav-item active" data-section="python-sdk">🐍 Python SDK</button>
+                    <button class="api-nav-item" data-section="rest-api">🌐 REST API</button>
+                    <button class="api-nav-item" data-section="cli">⌨️ CLI</button>
+                    <button class="api-nav-item" data-section="plugins">🔧 Plugins</button>
+                </div>
+            </div>
+
+            <!-- Table of Contents -->
+            <aside class="toc-sidebar">
+                <div class="toc-container">
+                    <h3>On This Page</h3>
+                    <ul class="toc-list">
+                        <li><a href="#python-sdk">Python SDK</a>
+                            <ul>
+                                <li><a href="#browser-agent-class">BrowserAgent Class</a></li>
+                                <li><a href="#navigation-methods">Navigation</a></li>
+                                <li><a href="#element-methods">Elements</a></li>
+                                <li><a href="#ai-methods">AI Methods</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#rest-api">REST API</a></li>
+                        <li><a href="#cli">CLI Reference</a></li>
+                        <li><a href="#plugins">Plugin Development</a></li>
+                    </ul>
+                </div>
+            </aside>
+
+            <!-- Content -->
+            <div class="content-wrapper">
+                <article class="documentation-content">
+                    <!-- Python SDK Section -->
+                    <section id="python-sdk" class="api-section active">
+                        <h2>🐍 Python SDK</h2>
+                        <p>The Python SDK provides a comprehensive interface for browser automation with AI capabilities.</p>
+                        
+                        <!-- BrowserAgent Class -->
+                        <div id="browser-agent-class" class="api-group">
+                            <h3>BrowserAgent Class</h3>
+                            <p>The main class for browser automation operations.</p>
+                            
+                            <div class="method-card">
+                                <div class="method-header">
+                                    <h4 class="method-name">__init__()</h4>
+                                    <span class="method-type">Constructor</span>
+                                </div>
+                                <div class="method-signature">
+                                    <code class="language-python">BrowserAgent(browser="chrome", headless=False, ai_provider=None, **kwargs)</code>
+                                </div>
+                                <div class="method-description">
+                                    <p>Initialize a new Browser Agent instance.</p>
+                                </div>
+                                <div class="method-params">
+                                    <h5>Parameters:</h5>
+                                    <table class="params-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Parameter</th>
+                                                <th>Type</th>
+                                                <th>Default</th>
+                                                <th>Description</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><code>browser</code></td>
+                                                <td><code>str</code></td>
+                                                <td><code>"chrome"</code></td>
+                                                <td>Browser to use: "chrome", "firefox", "safari", "edge"</td>
+                                            </tr>
+                                            <tr>
+                                                <td><code>headless</code></td>
+                                                <td><code>bool</code></td>
+                                                <td><code>False</code></td>
+                                                <td>Run browser in headless mode</td>
+                                            </tr>
+                                            <tr>
+                                                <td><code>ai_provider</code></td>
+                                                <td><code>str</code></td>
+                                                <td><code>None</code></td>
+                                                <td>AI provider: "openai", "claude", "gemini"</td>
+                                            </tr>
+                                            <tr>
+                                                <td><code>timeout</code></td>
+                                                <td><code>int</code></td>
+                                                <td><code>30</code></td>
+                                                <td>Default timeout in seconds</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="method-example">
+                                    <h5>Example:</h5>
+                                    <div class="code-block">
+                                        <pre><code class="language-python">from browser_agent import BrowserAgent
+
+# Basic initialization
+agent = BrowserAgent()
+
+# With AI support
+agent = BrowserAgent(
+    browser="chrome",
+    headless=True,
+    ai_provider="openai",
+    timeout=60
+)</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="method-card">
+                                <div class="method-header">
+                                    <h4 class="method-name">start()</h4>
+                                    <span class="method-type">async</span>
+                                </div>
+                                <div class="method-signature">
+                                    <code class="language-python">await agent.start()</code>
+                                </div>
+                                <div class="method-description">
+                                    <p>Start the browser instance and initialize the automation session.</p>
+                                </div>
+                                <div class="method-returns">
+                                    <h5>Returns:</h5>
+                                    <p><code>None</code></p>
+                                </div>
+                                <div class="method-example">
+                                    <h5>Example:</h5>
+                                    <div class="code-block">
+                                        <pre><code class="language-python">agent = BrowserAgent()
+await agent.start()
+print("Browser started successfully")</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="method-card">
+                                <div class="method-header">
+                                    <h4 class="method-name">close()</h4>
+                                    <span class="method-type">async</span>
+                                </div>
+                                <div class="method-signature">
+                                    <code class="language-python">await agent.close()</code>
+                                </div>
+                                <div class="method-description">
+                                    <p>Close the browser instance and clean up resources.</p>
+                                </div>
+                                <div class="method-example">
+                                    <h5>Example:</h5>
+                                    <div class="code-block">
+                                        <pre><code class="language-python">try:
+    await agent.start()
+    # Your automation code here
+finally:
+    await agent.close()</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Navigation Methods -->
+                        <div id="navigation-methods" class="api-group">
+                            <h3>Navigation Methods</h3>
+                            <p>Methods for navigating and controlling the browser.</p>
+                            
+                            <div class="method-card">
+                                <div class="method-header">
+                                    <h4 class="method-name">navigate()</h4>
+                                    <span class="method-type">async</span>
+                                </div>
+                                <div class="method-signature">
+                                    <code class="language-python">await agent.navigate(url, wait_for="load")</code>
+                                </div>
+                                <div class="method-description">
+                                    <p>Navigate to a specific URL.</p>
+                                </div>
+                                <div class="method-params">
+                                    <h5>Parameters:</h5>
+                                    <table class="params-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Parameter</th>
+                                                <th>Type</th>
+                                                <th>Description</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><code>url</code></td>
+                                                <td><code>str</code></td>
+                                                <td>URL to navigate to</td>
+                                            </tr>
+                                            <tr>
+                                                <td><code>wait_for</code></td>
+                                                <td><code>str</code></td>
+                                                <td>Wait condition: "load", "domcontentloaded", "networkidle"</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="method-example">
+                                    <h5>Example:</h5>
+                                    <div class="code-block">
+                                        <pre><code class="language-python"># Basic navigation
+await agent.navigate("https://example.com")
+
+# Wait for network idle
+await agent.navigate("https://spa-app.com", wait_for="networkidle")</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="method-card">
+                                <div class="method-header">
+                                    <h4 class="method-name">get_title()</h4>
+                                    <span class="method-type">async</span>
+                                </div>
+                                <div class="method-signature">
+                                    <code class="language-python">title = await agent.get_title()</code>
+                                </div>
+                                <div class="method-description">
+                                    <p>Get the current page title.</p>
+                                </div>
+                                <div class="method-returns">
+                                    <h5>Returns:</h5>
+                                    <p><code>str</code> - The page title</p>
+                                </div>
+                            </div>
+                            
+                            <div class="method-card">
+                                <div class="method-header">
+                                    <h4 class="method-name">get_url()</h4>
+                                    <span class="method-type">async</span>
+                                </div>
+                                <div class="method-signature">
+                                    <code class="language-python">url = await agent.get_url()</code>
+                                </div>
+                                <div class="method-description">
+                                    <p>Get the current page URL.</p>
+                                </div>
+                                <div class="method-returns">
+                                    <h5>Returns:</h5>
+                                    <p><code>str</code> - The current URL</p>
+                                </div>
+                            </div>
+                            
+                            <div class="method-card">
+                                <div class="method-header">
+                                    <h4 class="method-name">screenshot()</h4>
+                                    <span class="method-type">async</span>
+                                </div>
+                                <div class="method-signature">
+                                    <code class="language-python">path = await agent.screenshot(filename="screenshot.png")</code>
+                                </div>
+                                <div class="method-description">
+                                    <p>Take a screenshot of the current page.</p>
+                                </div>
+                                <div class="method-params">
+                                    <h5>Parameters:</h5>
+                                    <table class="params-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Parameter</th>
+                                                <th>Type</th>
+                                                <th>Description</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><code>filename</code></td>
+                                                <td><code>str</code></td>
+                                                <td>Output filename (optional)</td>
+                                            </tr>
+                                            <tr>
+                                                <td><code>full_page</code></td>
+                                                <td><code>bool</code></td>
+                                                <td>Capture full page (default: True)</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="method-returns">
+                                    <h5>Returns:</h5>
+                                    <p><code>str</code> - Path to the saved screenshot</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Element Methods -->
+                        <div id="element-methods" class="api-group">
+                            <h3>Element Methods</h3>
+                            <p>Methods for finding and interacting with page elements.</p>
+                            
+                            <div class="method-card">
+                                <div class="method-header">
+                                    <h4 class="method-name">find_element()</h4>
+                                    <span class="method-type">async</span>
+                                </div>
+                                <div class="method-signature">
+                                    <code class="language-python">element = await agent.find_element(selector, timeout=30)</code>
+                                </div>
+                                <div class="method-description">
+                                    <p>Find a single element using CSS selector, XPath, or text content.</p>
+                                </div>
+                                <div class="method-params">
+                                    <h5>Parameters:</h5>
+                                    <table class="params-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Parameter</th>
+                                                <th>Type</th>
+                                                <th>Description</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><code>selector</code></td>
+                                                <td><code>str</code></td>
+                                                <td>CSS selector, XPath, or text to find</td>
+                                            </tr>
+                                            <tr>
+                                                <td><code>timeout</code></td>
+                                                <td><code>int</code></td>
+                                                <td>Timeout in seconds</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="method-example">
+                                    <h5>Example:</h5>
+                                    <div class="code-block">
+                                        <pre><code class="language-python"># CSS selector
+button = await agent.find_element("#submit-btn")
+
+# XPath
+input_field = await agent.find_element("//input[@type='email']")
+
+# Text content
+link = await agent.find_element("text=Click here")</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="method-card">
+                                <div class="method-header">
+                                    <h4 class="method-name">click()</h4>
+                                    <span class="method-type">async</span>
+                                </div>
+                                <div class="method-signature">
+                                    <code class="language-python">await agent.click(selector_or_element)</code>
+                                </div>
+                                <div class="method-description">
+                                    <p>Click on an element.</p>
+                                </div>
+                                <div class="method-example">
+                                    <h5>Example:</h5>
+                                    <div class="code-block">
+                                        <pre><code class="language-python"># Click by selector
+await agent.click("#submit-button")
+
+# Click element object
+button = await agent.find_element(".btn-primary")
+await agent.click(button)</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="method-card">
+                                <div class="method-header">
+                                    <h4 class="method-name">type()</h4>
+                                    <span class="method-type">async</span>
+                                </div>
+                                <div class="method-signature">
+                                    <code class="language-python">await agent.type(selector_or_element, text, clear=True)</code>
+                                </div>
+                                <div class="method-description">
+                                    <p>Type text into an input field.</p>
+                                </div>
+                                <div class="method-params">
+                                    <h5>Parameters:</h5>
+                                    <table class="params-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Parameter</th>
+                                                <th>Type</th>
+                                                <th>Description</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><code>selector_or_element</code></td>
+                                                <td><code>str|Element</code></td>
+                                                <td>Target element or selector</td>
+                                            </tr>
+                                            <tr>
+                                                <td><code>text</code></td>
+                                                <td><code>str</code></td>
+                                                <td>Text to type</td>
+                                            </tr>
+                                            <tr>
+                                                <td><code>clear</code></td>
+                                                <td><code>bool</code></td>
+                                                <td>Clear field before typing</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- AI Methods -->
+                        <div id="ai-methods" class="api-group">
+                            <h3>AI Methods</h3>
+                            <p>AI-powered automation methods for natural language interactions.</p>
+                            
+                            <div class="method-card">
+                                <div class="method-header">
+                                    <h4 class="method-name">ai_interact()</h4>
+                                    <span class="method-type">async</span>
+                                </div>
+                                <div class="method-signature">
+                                    <code class="language-python">result = await agent.ai_interact(instruction)</code>
+                                </div>
+                                <div class="method-description">
+                                    <p>Perform actions using natural language instructions.</p>
+                                </div>
+                                <div class="method-params">
+                                    <h5>Parameters:</h5>
+                                    <table class="params-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Parameter</th>
+                                                <th>Type</th>
+                                                <th>Description</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><code>instruction</code></td>
+                                                <td><code>str</code></td>
+                                                <td>Natural language instruction</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="method-example">
+                                    <h5>Example:</h5>
+                                    <div class="code-block">
+                                        <pre><code class="language-python"># Natural language automation
+result = await agent.ai_interact(
+    "Fill out the contact form with test data and submit it"
+)
+
+# Complex interactions
+result = await agent.ai_interact(
+    "Find the product with the highest rating and add it to cart"
+)</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="method-card">
+                                <div class="method-header">
+                                    <h4 class="method-name">ai_extract()</h4>
+                                    <span class="method-type">async</span>
+                                </div>
+                                <div class="method-signature">
+                                    <code class="language-python">data = await agent.ai_extract(instruction)</code>
+                                </div>
+                                <div class="method-description">
+                                    <p>Extract structured data using AI.</p>
+                                </div>
+                                <div class="method-example">
+                                    <h5>Example:</h5>
+                                    <div class="code-block">
+                                        <pre><code class="language-python"># Extract product information
+product_data = await agent.ai_extract(
+    "Get the product name, price, description, and availability"
+)
+
+# Extract table data
+table_data = await agent.ai_extract(
+    "Extract all rows from the data table as a list of dictionaries"
+)</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- REST API Section -->
+                    <section id="rest-api" class="api-section">
+                        <h2>🌐 REST API</h2>
+                        <p>HTTP API for browser automation accessible from any programming language.</p>
+                        
+                        <div class="api-info">
+                            <div class="info-card">
+                                <h3>Base URL</h3>
+                                <code>http://localhost:8080/api/v1</code>
+                            </div>
+                            <div class="info-card">
+                                <h3>Authentication</h3>
+                                <p>API Key in header: <code>X-API-Key: your-api-key</code></p>
+                            </div>
+                        </div>
+                        
+                        <div class="endpoint-group">
+                            <h3>Session Management</h3>
+                            
+                            <div class="endpoint-card">
+                                <div class="endpoint-header">
+                                    <span class="http-method post">POST</span>
+                                    <span class="endpoint-path">/sessions</span>
+                                </div>
+                                <div class="endpoint-description">
+                                    <p>Create a new browser session.</p>
+                                </div>
+                                <div class="endpoint-request">
+                                    <h5>Request Body:</h5>
+                                    <div class="code-block">
+                                        <pre><code class="language-json">{
+  "browser": "chrome",
+  "headless": false,
+  "ai_provider": "openai",
+  "timeout": 30
+}</code></pre>
+                                    </div>
+                                </div>
+                                <div class="endpoint-response">
+                                    <h5>Response:</h5>
+                                    <div class="code-block">
+                                        <pre><code class="language-json">{
+  "session_id": "sess_123456",
+  "status": "active",
+  "browser": "chrome",
+  "created_at": "2024-01-15T10:30:00Z"
+}</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="endpoint-card">
+                                <div class="endpoint-header">
+                                    <span class="http-method delete">DELETE</span>
+                                    <span class="endpoint-path">/sessions/{session_id}</span>
+                                </div>
+                                <div class="endpoint-description">
+                                    <p>Close a browser session.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="endpoint-group">
+                            <h3>Navigation</h3>
+                            
+                            <div class="endpoint-card">
+                                <div class="endpoint-header">
+                                    <span class="http-method post">POST</span>
+                                    <span class="endpoint-path">/sessions/{session_id}/navigate</span>
+                                </div>
+                                <div class="endpoint-description">
+                                    <p>Navigate to a URL.</p>
+                                </div>
+                                <div class="endpoint-request">
+                                    <h5>Request Body:</h5>
+                                    <div class="code-block">
+                                        <pre><code class="language-json">{
+  "url": "https://example.com",
+  "wait_for": "load"
+}</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="endpoint-group">
+                            <h3>AI Interactions</h3>
+                            
+                            <div class="endpoint-card">
+                                <div class="endpoint-header">
+                                    <span class="http-method post">POST</span>
+                                    <span class="endpoint-path">/sessions/{session_id}/ai/interact</span>
+                                </div>
+                                <div class="endpoint-description">
+                                    <p>Perform AI-powered interactions.</p>
+                                </div>
+                                <div class="endpoint-request">
+                                    <h5>Request Body:</h5>
+                                    <div class="code-block">
+                                        <pre><code class="language-json">{
+  "instruction": "Click the login button and fill the form",
+  "context": "optional context information"
+}</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="rest-example">
+                            <h3>Complete Example</h3>
+                            <div class="code-block">
+                                <div class="code-header">
+                                    <span class="code-title">Python requests example</span>
+                                    <button class="copy-button">
+                                        <span class="copy-icon">📋</span>
+                                        <span class="copy-text">Copy</span>
+                                    </button>
+                                </div>
+                                <pre><code class="language-python">import requests
+
+base_url = "http://localhost:8080/api/v1"
+headers = {"X-API-Key": "your-api-key"}
+
+# Create session
+response = requests.post(
+    f"{base_url}/sessions",
+    json={"browser": "chrome", "ai_provider": "openai"},
+    headers=headers
+)
+session_id = response.json()["session_id"]
+
+# Navigate
+requests.post(
+    f"{base_url}/sessions/{session_id}/navigate",
+    json={"url": "https://example.com"},
+    headers=headers
+)
+
+# AI interaction
+response = requests.post(
+    f"{base_url}/sessions/{session_id}/ai/interact",
+    json={"instruction": "Find and click the contact link"},
+    headers=headers
+)
+
+# Close session
+requests.delete(f"{base_url}/sessions/{session_id}", headers=headers)</code></pre>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- CLI Section -->
+                    <section id="cli" class="api-section">
+                        <h2>⌨️ CLI Reference</h2>
+                        <p>Command-line interface for browser automation and management.</p>
+                        
+                        <div class="cli-commands">
+                            <div class="command-group">
+                                <h3>Basic Commands</h3>
+                                
+                                <div class="command-card">
+                                    <div class="command-header">
+                                        <code class="command-name">browser-agent --version</code>
+                                    </div>
+                                    <div class="command-description">
+                                        <p>Show version information.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="command-card">
+                                    <div class="command-header">
+                                        <code class="command-name">browser-agent init</code>
+                                    </div>
+                                    <div class="command-description">
+                                        <p>Initialize configuration directory and files.</p>
+                                    </div>
+                                    <div class="command-options">
+                                        <h5>Options:</h5>
+                                        <ul>
+                                            <li><code>--config-dir</code> - Custom configuration directory</li>
+                                            <li><code>--force</code> - Overwrite existing configuration</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="command-card">
+                                    <div class="command-header">
+                                        <code class="command-name">browser-agent run &lt;script&gt;</code>
+                                    </div>
+                                    <div class="command-description">
+                                        <p>Run a Python automation script.</p>
+                                    </div>
+                                    <div class="command-options">
+                                        <h5>Options:</h5>
+                                        <ul>
+                                            <li><code>--browser</code> - Browser to use (chrome, firefox, safari, edge)</li>
+                                            <li><code>--headless</code> - Run in headless mode</li>
+                                            <li><code>--ai-provider</code> - AI provider (openai, claude, gemini)</li>
+                                            <li><code>--timeout</code> - Default timeout in seconds</li>
+                                        </ul>
+                                    </div>
+                                    <div class="command-example">
+                                        <h5>Example:</h5>
+                                        <div class="code-block">
+                                            <pre><code class="language-bash">browser-agent run my_script.py --browser chrome --headless</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="command-group">
+                                <h3>Server Commands</h3>
+                                
+                                <div class="command-card">
+                                    <div class="command-header">
+                                        <code class="command-name">browser-agent server start</code>
+                                    </div>
+                                    <div class="command-description">
+                                        <p>Start the REST API server.</p>
+                                    </div>
+                                    <div class="command-options">
+                                        <h5>Options:</h5>
+                                        <ul>
+                                            <li><code>--host</code> - Server host (default: localhost)</li>
+                                            <li><code>--port</code> - Server port (default: 8080)</li>
+                                            <li><code>--workers</code> - Number of worker processes</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="command-card">
+                                    <div class="command-header">
+                                        <code class="command-name">browser-agent gui</code>
+                                    </div>
+                                    <div class="command-description">
+                                        <p>Launch the graphical user interface.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="command-group">
+                                <h3>Utility Commands</h3>
+                                
+                                <div class="command-card">
+                                    <div class="command-header">
+                                        <code class="command-name">browser-agent check-drivers</code>
+                                    </div>
+                                    <div class="command-description">
+                                        <p>Check browser driver availability.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="command-card">
+                                    <div class="command-header">
+                                        <code class="command-name">browser-agent test-ai</code>
+                                    </div>
+                                    <div class="command-description">
+                                        <p>Test AI provider connectivity.</p>
+                                    </div>
+                                    <div class="command-options">
+                                        <h5>Options:</h5>
+                                        <ul>
+                                            <li><code>--provider</code> - AI provider to test</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Plugin Development Section -->
+                    <section id="plugins" class="api-section">
+                        <h2>🔧 Plugin Development</h2>
+                        <p>Create custom plugins to extend Browser Agent functionality.</p>
+                        
+                        <div class="plugin-guide">
+                            <h3>Plugin Structure</h3>
+                            <div class="code-block">
+                                <div class="code-header">
+                                    <span class="code-title">my_plugin.py</span>
+                                    <button class="copy-button">
+                                        <span class="copy-icon">📋</span>
+                                        <span class="copy-text">Copy</span>
+                                    </button>
+                                </div>
+                                <pre><code class="language-python">from browser_agent.plugins import BasePlugin
+from browser_agent.decorators import plugin_method
+
+class MyPlugin(BasePlugin):
+    """Custom plugin for Browser Agent."""
+    
+    name = "my_plugin"
+    version = "1.0.0"
+    description = "A custom plugin for special automation tasks"
+    
+    def __init__(self, agent):
+        super().__init__(agent)
+        self.config = self.load_config()
+    
+    @plugin_method
+    async def custom_action(self, parameter1, parameter2=None):
+        """Perform a custom automation action."""
+        # Access the browser agent
+        await self.agent.navigate("https://example.com")
+        
+        # Use plugin configuration
+        if self.config.get("enable_logging"):
+            self.logger.info(f"Performing action with {parameter1}")
+        
+        # Return results
+        return {"status": "success", "data": parameter1}
+    
+    @plugin_method
+    async def extract_special_data(self, selector):
+        """Extract data using custom logic."""
+        elements = await self.agent.find_elements(selector)
+        
+        data = []
+        for element in elements:
+            text = await element.get_text()
+            data.append(self.process_text(text))
+        
+        return data
+    
+    def process_text(self, text):
+        """Custom text processing logic."""
+        # Your custom processing here
+        return text.strip().upper()
+    
+    def on_load(self):
+        """Called when plugin is loaded."""
+        self.logger.info("My Plugin loaded successfully")
+    
+    def on_unload(self):
+        """Called when plugin is unloaded."""
+        self.logger.info("My Plugin unloaded")
+
+# Plugin registration
+def register_plugin():
+    return MyPlugin</code></pre>
+                            </div>
+                        </div>
+                        
+                        <div class="plugin-usage">
+                            <h3>Using Plugins</h3>
+                            <div class="code-block">
+                                <div class="code-header">
+                                    <span class="code-title">using_plugin.py</span>
+                                    <button class="copy-button">
+                                        <span class="copy-icon">📋</span>
+                                        <span class="copy-text">Copy</span>
+                                    </button>
+                                </div>
+                                <pre><code class="language-python">from browser_agent import BrowserAgent
+
+async def main():
+    agent = BrowserAgent()
+    
+    # Load plugin
+    await agent.load_plugin("my_plugin")
+    
+    # Use plugin methods
+    result = await agent.plugins.my_plugin.custom_action(
+        "test_parameter",
+        parameter2="optional"
+    )
+    
+    # Extract data using plugin
+    data = await agent.plugins.my_plugin.extract_special_data(".data-item")
+    
+    print(f"Result: {result}")
+    print(f"Data: {data}")</code></pre>
+                            </div>
+                        </div>
+                        
+                        <div class="plugin-config">
+                            <h3>Plugin Configuration</h3>
+                            <div class="code-block">
+                                <div class="code-header">
+                                    <span class="code-title">~/.browser-agent/plugins/my_plugin/config.yaml</span>
+                                </div>
+                                <pre><code class="language-yaml"># Plugin configuration
+enable_logging: true
+api_endpoint: "https://api.example.com"
+retry_attempts: 3
+timeout: 30
+
+# Custom settings
+custom_settings:
+  feature_enabled: true
+  max_items: 100</code></pre>
+                            </div>
+                        </div>
+                        
+                        <div class="plugin-best-practices">
+                            <h3>Best Practices</h3>
+                            <div class="best-practices-grid">
+                                <div class="practice-card">
+                                    <div class="practice-icon">📝</div>
+                                    <h4>Documentation</h4>
+                                    <p>Provide clear docstrings and examples for all plugin methods.</p>
+                                </div>
+                                
+                                <div class="practice-card">
+                                    <div class="practice-icon">🧪</div>
+                                    <h4>Testing</h4>
+                                    <p>Include comprehensive tests for your plugin functionality.</p>
+                                </div>
+                                
+                                <div class="practice-card">
+                                    <div class="practice-icon">⚙️</div>
+                                    <h4>Configuration</h4>
+                                    <p>Use configuration files for customizable behavior.</p>
+                                </div>
+                                
+                                <div class="practice-card">
+                                    <div class="practice-icon">🔒</div>
+                                    <h4>Error Handling</h4>
+                                    <p>Implement proper error handling and logging.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </article>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Browser Agent</h3>
+                    <p>AI-powered browser automation for the modern web</p>
+                    <div class="social-links">
+                        <a href="https://github.com/AryanVBW/brouser-agent" target="_blank" rel="noopener" aria-label="GitHub">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </a>
+                        <a href="https://twitter.com/AryanVBW" target="_blank" rel="noopener" aria-label="Twitter">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Documentation</h4>
+                    <ul>
+                        <li><a href="./quick-start.html">Quick Start</a></li>
+                        <li><a href="./installation.html">Installation</a></li>
+                        <li><a href="./features.html">Features</a></li>
+                        <li><a href="./api.html">API Reference</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="./examples.html">Examples</a></li>
+                        <li><a href="./faq.html">FAQ</a></li>
+                        <li><a href="./contributing.html">Contributing</a></li>
+                        <li><a href="https://github.com/AryanVBW/brouser-agent/discussions" target="_blank" rel="noopener">Discussions</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="./changelog.html">Changelog</a></li>
+                        <li><a href="https://github.com/AryanVBW/brouser-agent/releases" target="_blank" rel="noopener">Releases</a></li>
+                        <li><a href="https://github.com/AryanVBW/brouser-agent/issues" target="_blank" rel="noopener">Issues</a></li>
+                        <li><a href="mailto:contact@browser-agent.dev">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Browser Agent. Created by <a href="https://github.com/AryanVBW" target="_blank" rel="noopener">Vivek Wagdare (AryanVBW)</a>. Open source under MIT License.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/search.js"></script>
+    <script>
+        // API section navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            const navItems = document.querySelectorAll('.api-nav-item');
+            const sections = document.querySelectorAll('.api-section');
+            
+            navItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const targetSection = this.getAttribute('data-section');
+                    
+                    // Update navigation
+                    navItems.forEach(nav => nav.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Update sections
+                    sections.forEach(section => {
+                        section.classList.remove('active');
+                        if (section.id === targetSection) {
+                            section.classList.add('active');
+                        }
+                    });
+                });
+            });
+            
+            // Copy button functionality
+            const copyButtons = document.querySelectorAll('.copy-button');
+            copyButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const codeBlock = this.closest('.code-block').querySelector('code');
+                    const textToCopy = codeBlock.textContent;
+                    
+                    navigator.clipboard.writeText(textToCopy).then(() => {
+                        const copyText = this.querySelector('.copy-text');
+                        const originalText = copyText.textContent;
+                        copyText.textContent = 'Copied!';
+                        
+                        setTimeout(() => {
+                            copyText.textContent = originalText;
+                        }, 2000);
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

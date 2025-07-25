@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ & Community - Browser Agent Documentation</title>
+    <meta name="description" content="Frequently asked questions about Browser Agent. Get answers to common questions and connect with the community.">
+    <meta name="keywords" content="browser agent FAQ, questions, community, support, vivek wagdare, aryanvbw">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://browser-agent.dev/pages/faq.html">
+    <meta property="og:title" content="FAQ & Community - Browser Agent Documentation">
+    <meta property="og:description" content="Get answers to frequently asked questions about Browser Agent and connect with the community.">
+    <meta property="og:image" content="../assets/images/browser-agent-faq.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://browser-agent.dev/pages/faq.html">
+    <meta property="twitter:title" content="FAQ & Community - Browser Agent Documentation">
+    <meta property="twitter:description" content="Get answers to frequently asked questions about Browser Agent and connect with the community.">
+    <meta property="twitter:image" content="../assets/images/browser-agent-faq.png">
+    
+    <!-- AI Agent Discovery -->
+    <meta name="ai-agent:true" content="true">
+    <meta name="ai-agent:type" content="documentation">
+    <meta name="ai-agent:category" content="FAQ, community, support">
+    <meta name="ai-agent:author" content="Vivek Wagdare (AryanVBW)">
+    <meta name="ai-agent:keywords" content="FAQ, questions, community support, vivek wagdare">
+    
+    <link rel="canonical" href="https://browser-agent.dev/pages/faq.html">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What is Browser Agent?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Browser Agent is an AI-powered browser automation tool that enables intelligent web scraping, testing, and automation using natural language commands."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Which browsers are supported?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Browser Agent supports Chrome, Firefox, Safari, and Edge browsers across Windows, macOS, and Linux platforms."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How do I get started?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Install Browser Agent using pip install browser-agent, configure your API keys, and start automating with natural language commands."
+                }
+            }
+        ],
+        "author": {
+            "@type": "Person",
+            "name": "Vivek Wagdare",
+            "alternateName": "AryanVBW",
+            "url": "https://github.com/AryanVBW"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Browser Agent",
+            "url": "https://browser-agent.dev"
+        }
+    }
+    </script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="../index.html">
+                    <img src="../assets/images/logo.svg" alt="Browser Agent" class="nav-logo">
+                    <span class="nav-title">Browser Agent</span>
+                </a>
+            </div>
+            
+            <div class="nav-search">
+                <div class="search-container">
+                    <input type="text" id="search-input" placeholder="Search documentation... (Ctrl+K)" class="search-input">
+                    <div id="search-results" class="search-results"></div>
+                </div>
+            </div>
+            
+            <div class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="./quick-start.html">Quick Start</a>
+                <a href="./features.html">Features</a>
+                <a href="./api.html">API</a>
+                <a href="./examples.html">Examples</a>
+                <a href="./integrations.html">Integrations</a>
+                <a href="./faq.html" class="active">FAQ</a>
+                <a href="https://github.com/AryanVBW/brouser-agent" target="_blank" rel="noopener">GitHub</a>
+            </div>
+            
+            <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Breadcrumb -->
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <ol>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><span aria-current="page">FAQ & Community</span></li>
+                </ol>
+            </nav>
+
+            <!-- Page Header -->
+            <header class="page-header">
+                <div class="header-content">
+                    <h1 class="page-title">
+                        <span class="title-icon">❓</span>
+                        FAQ & Community
+                    </h1>
+                    <p class="page-description">
+                        Get answers to common questions and connect with the Browser Agent community.
+                    </p>
+                    <div class="header-meta">
+                        <span class="reading-time">⏱️ 15 min read</span>
+                        <span class="difficulty">📊 All Levels</span>
+                        <span class="last-updated">🔄 Updated Jan 15, 2024</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Quick Search -->
+            <section class="faq-search">
+                <div class="search-box">
+                    <input type="text" id="faq-search" placeholder="Search FAQ... (e.g., 'installation', 'API keys', 'troubleshooting')" class="faq-search-input">
+                    <div class="search-icon">🔍</div>
+                </div>
+                <div class="popular-topics">
+                    <span class="topic-label">Popular topics:</span>
+                    <button class="topic-tag" data-topic="installation">Installation</button>
+                    <button class="topic-tag" data-topic="api">API Keys</button>
+                    <button class="topic-tag" data-topic="browser">Browser Support</button>
+                    <button class="topic-tag" data-topic="ai">AI Integration</button>
+                    <button class="topic-tag" data-topic="troubleshooting">Troubleshooting</button>
+                </div>
+            </section>
+
+            <!-- Content -->
+            <div class="content-wrapper">
+                <!-- Table of Contents -->
+                <aside class="toc-sidebar">
+                    <div class="toc-container">
+                        <h3>Contents</h3>
+                        <ul class="toc-list">
+                            <li><a href="#getting-started">Getting Started</a></li>
+                            <li><a href="#installation">Installation</a></li>
+                            <li><a href="#configuration">Configuration</a></li>
+                            <li><a href="#usage">Usage</a></li>
+                            <li><a href="#troubleshooting">Troubleshooting</a></li>
+                            <li><a href="#integrations">Integrations</a></li>
+                            <li><a href="#performance">Performance</a></li>
+                            <li><a href="#community">Community</a></li>
+                        </ul>
+                    </div>
+                </aside>
+
+                <article class="documentation-content">
+                    <!-- Getting Started FAQ -->
+                    <section id="getting-started" class="faq-section">
+                        <h2>🚀 Getting Started</h2>
+                        
+                        <div class="faq-item" data-category="getting-started">
+                            <button class="faq-question" aria-expanded="false">
+                                <span class="question-text">What is Browser Agent?</span>
+                                <span class="question-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Browser Agent is an AI-powered browser automation tool that enables intelligent web scraping, testing, and automation using natural language commands. It combines the power of traditional browser automation with advanced AI capabilities to make web automation more intuitive and powerful.</p>
+                                <p><strong>Key features:</strong></p>
+                                <ul>
+                                    <li>Multi-browser support (Chrome, Firefox, Safari, Edge)</li>
+                                    <li>AI-powered natural language commands</li>
+                                    <li>Intelligent element detection and interaction</li>
+                                    <li>Built-in integrations with LLMs and workflow tools</li>
+                                    <li>Cross-platform compatibility</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item" data-category="getting-started">
+                            <button class="faq-question" aria-expanded="false">
+                                <span class="question-text">How is Browser Agent different from Selenium or Playwright?</span>
+                                <span class="question-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>While Selenium and Playwright are excellent traditional automation tools, Browser Agent adds AI intelligence on top of browser automation:</p>
+                                <div class="comparison-table">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Feature</th>
+                                                <th>Browser Agent</th>
+                                                <th>Selenium/Playwright</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Element Selection</td>
+                                                <td>Natural language + AI detection</td>
+                                                <td>CSS selectors, XPath</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Content Understanding</td>
+                                                <td>AI-powered content analysis</td>
+                                                <td>Manual parsing required</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Adaptive Automation</td>
+                                                <td>Adapts to page changes automatically</td>
+                                                <td>Requires manual script updates</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Learning Curve</td>
+                                                <td>Natural language commands</td>
+                                                <td>Programming knowledge required</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item" data-category="getting-started">
+                            <button class="faq-question" aria-expanded="false">
+                                <span class="question-text">Do I need programming experience to use Browser Agent?</span>
+                                <span class="question-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Browser Agent is designed to be accessible to users with varying levels of technical expertise:</p>
+                                <ul>
+                                    <li><strong>Beginners:</strong> Use natural language commands through the GUI or simple Python scripts</li>
+                                    <li><strong>Intermediate:</strong> Leverage the Python SDK for more complex automation workflows</li>
+                                    <li><strong>Advanced:</strong> Build custom integrations, plugins, and enterprise solutions</li>
+                                </ul>
+                                <p>The natural language interface makes it possible to start automating without deep programming knowledge, while the full API provides power users with complete control.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Installation FAQ -->
+                    <section id="installation" class="faq-section">
+                        <h2>📦 Installation</h2>
+                        
+                        <div class="faq-item" data-category="installation">
+                            <button class="faq-question" aria-expanded="false">
+                                <span class="question-text">What are the system requirements?</span>
+                                <span class="question-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p><strong>Minimum Requirements:</strong></p>
+                                <ul>
+                                    <li>Python 3.8 or higher</li>
+                                    <li>4GB RAM (8GB recommended)</li>
+                                    <li>1GB free disk space</li>
+                                    <li>Internet connection for AI API calls</li>
+                                </ul>
+                                <p><strong>Supported Platforms:</strong></p>
+                                <ul>
+                                    <li>Windows 10/11</li>
+                                    <li>macOS 10.15+ (Intel and Apple Silicon)</li>
+                                    <li>Linux (Ubuntu 18.04+, CentOS 7+, Debian 10+)</li>
+                                </ul>
+                                <p><strong>Supported Browsers:</strong></p>
+                                <ul>
+                                    <li>Google Chrome (recommended)</li>
+                                    <li>Mozilla Firefox</li>
+                                    <li>Microsoft Edge</li>
+                                    <li>Safari (macOS only)</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item" data-category="installation">
+                            <button class="faq-question" aria-expanded="false">
+                                <span class="question-text">How do I install Browser Agent?</span>
+                                <span class="question-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>There are several ways to install Browser Agent:</p>
+                                
+                                <h4>1. Using pip (Recommended)</h4>
+                                <div class="code-block">
+                                    <pre><code class="language-bash">pip install browser-agent</code></pre>
+                                </div>
+                                
+                                <h4>2. Using Docker</h4>
+                                <div class="code-block">
+                                    <pre><code class="language-bash">docker pull aryanvbw/browser-agent:latest
+docker run -it aryanvbw/browser-agent</code></pre>
+                                </div>
+                                
+                                <h4>3. From Source</h4>
+                                <div class="code-block">
+                                    <pre><code class="language-bash">git clone https://github.com/AryanVBW/brouser-agent.git
+cd brouser-agent
+pip install -e .</code></pre>
+                                </div>
+                                
+                                <p>After installation, verify it works:</p>
+                                <div class="code-block">
+                                    <pre><code class="language-bash">browser-agent --version</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item" data-category="installation">
+                            <button class="faq-question" aria-expanded="false">
+                                <span class="question-text">I'm getting installation errors. What should I do?</span>
+                                <span class="question-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Common installation issues and solutions:</p>
+                                
+                                <h4>Permission Errors</h4>
+                                <div class="code-block">
+                                    <pre><code class="language-bash"># Use --user flag
+pip install --user browser-agent
+
+# Or use virtual environment (recommended)
+python -m venv browser-agent-env
+source browser-agent-env/bin/activate  # On Windows: browser-agent-env\Scripts\activate
+pip install browser-agent</code></pre>
+                                </div>
+                                
+                                <h4>Python Version Issues</h4>
+                                <p>Ensure you're using Python 3.8+:</p>
+                                <div class="code-block">
+                                    <pre><code class="language-bash">python --version
+# If using Python 3.8+, try:
+python3 -m pip install browser-agent</code></pre>
+                                </div>
+                                
+                                <h4>Dependency Conflicts</h4>
+                                <div class="code-block">
+                                    <pre><code class="language-bash"># Create a fresh virtual environment
+python -m venv fresh-env
+source fresh-env/bin/activate
+pip install --upgrade pip
+pip install browser-agent</code></pre>
+                                </div>
+                                
+                                <p>If issues persist, please <a href="https://github.com/AryanVBW/brouser-agent/issues" target="_blank" rel="noopener">create an issue</a> with your error details.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Configuration FAQ -->
+                    <section id="configuration" class="faq-section">
+                        <h2>⚙️ Configuration</h2>
+                        
+                        <div class="faq-item" data-category="configuration">
+                            <button class="faq-question" aria-expanded="false">
+                                <span class="question-text">How do I set up API keys for AI providers?</span>
+                                <span class="question-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Browser Agent supports multiple AI providers. Here's how to configure them:</p>
+                                
+                                <h4>1. Create a .env file</h4>
+                                <div class="code-block">
+                                    <pre><code class="language-bash"># OpenAI
+OPENAI_API_KEY=your_openai_api_key_here
+
+# Anthropic Claude
+ANTHROPIC_API_KEY=your_claude_api_key_here
+
+# Google Gemini
+GOOGLE_API_KEY=your_gemini_api_key_here</code></pre>
+                                </div>
+                                
+                                <h4>2. Or set environment variables</h4>
+                                <div class="code-block">
+                                    <pre><code class="language-bash"># Linux/macOS
+export OPENAI_API_KEY="your_key_here"
+
+# Windows
+set OPENAI_API_KEY=your_key_here</code></pre>
+                                </div>
+                                
+                                <h4>3. Or configure programmatically</h4>
+                                <div class="code-block">
+                                    <pre><code class="language-python">from browser_agent import BrowserAgent
+
+agent = BrowserAgent(
+    ai_provider="openai",
+    ai_config={
+        "api_key": "your_api_key_here",
+        "model": "gpt-4"
+    }
+)</code></pre>
+                                </div>
+                                
+                                <p><strong>Getting API Keys:</strong></p>
+                                <ul>
+                                    <li><a href="https://platform.openai.com/api-keys" target="_blank" rel="noopener">OpenAI API Keys</a></li>
+                                    <li><a href="https://console.anthropic.com/" target="_blank" rel="noopener">Anthropic Console</a></li>
+                                    <li><a href="https://makersuite.google.com/app/apikey" target="_blank" rel="noopener">Google AI Studio</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item" data-category="configuration">
+                            <button class="faq-question" aria-expanded="false">
+                                <span class="question-text">Can I use Browser Agent without AI features?</span>
+                                <span class="question-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Yes! Browser Agent can work as a traditional browser automation tool without AI features:</p>
+                                
+                                <div class="code-block">
+                                    <pre><code class="language-python">from browser_agent import BrowserAgent
+
+# Initialize without AI provider
+agent = BrowserAgent(browser="chrome", ai_provider=None)
+await agent.start()
+
+# Use traditional automation methods
+await agent.navigate("https://example.com")
+element = await agent.find_element("#search-box")
+await element.type("search query")
+await agent.click("button[type='submit']")</code></pre>
+                                </div>
+                                
+                                <p>However, you'll miss out on the intelligent features like:</p>
+                                <ul>
+                                    <li>Natural language commands</li>
+                                    <li>Smart element detection</li>
+                                    <li>Content understanding and extraction</li>
+                                    <li>Adaptive automation</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item" data-category="configuration">
+                            <button class="faq-question" aria-expanded="false">
+                                <span class="question-text">How do I configure browser settings?</span>
+                                <span class="question-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>You can customize browser behavior through various configuration options:</p>
+                                
+                                <div class="code-block">
+                                    <pre><code class="language-python">from browser_agent import BrowserAgent
+
+agent = BrowserAgent(
+    browser="chrome",
+    headless=True,  # Run without GUI
+    window_size=(1920, 1080),
+    user_agent="custom-user-agent",
+    proxy="http://proxy:8080",
+    browser_args=[
+        "--disable-web-security",
+        "--disable-features=VizDisplayCompositor",
+        "--no-sandbox"
+    ],
+    downloads_path="/path/to/downloads",
+    timeout=30  # Default timeout in seconds
+)</code></pre>
+                                </div>
+                                
+                                <p><strong>Common Configuration Options:</strong></p>
+                                <ul>
+                                    <li><code>headless</code>: Run browser without GUI (default: False)</li>
+                                    <li><code>window_size</code>: Browser window dimensions</li>
+                                    <li><code>user_agent</code>: Custom user agent string</li>
+                                    <li><code>proxy</code>: Proxy server configuration</li>
+                                    <li><code>downloads_path</code>: Directory for downloaded files</li>
+                                    <li><code>timeout</code>: Default timeout for operations</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Usage FAQ -->
+                    <section id="usage" class="faq-section">
+                        <h2>🎯 Usage</h2>
+                        
+                        <div class="faq-item" data-category="usage">
+                            <button class="faq-question" aria-expanded="false">
+                                <span class="question-text">How do I write effective natural language commands?</span>
+                                <span class="question-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Writing effective natural language commands is key to getting the best results from Browser Agent:</p>
+                                
+                                <h4>✅ Good Commands</h4>
+                                <ul>
+                                    <li>"Click the blue 'Sign Up' button in the top right corner"</li>
+                                    <li>"Fill the email field with 'user@example.com'"</li>
+                                    <li>"Extract all product names and prices from this page"</li>
+                                    <li>"Scroll down until you find the 'Load More' button, then click it"</li>
+                                </ul>
+                                
+                                <h4>❌ Less Effective Commands</h4>
+                                <ul>
+                                    <li>"Click button" (too vague)</li>
+                                    <li>"Do something with the form" (unclear action)</li>
+                                    <li>"Get data" (no specifics about what data)</li>
+                                </ul>
+                                
+                                <h4>💡 Tips for Better Commands</h4>
+                                <ul>
+                                    <li><strong>Be specific:</strong> Include colors, positions, text content</li>
+                                    <li><strong>Use descriptive language:</strong> "the red 'Delete' button" vs "the button"</li>
+                                    <li><strong>Specify context:</strong> "in the navigation bar" or "in the footer"</li>
+                                    <li><strong>Break complex tasks:</strong> Split multi-step operations into smaller commands</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item" data-category="usage">
+                            <button class="faq-question" aria-expanded="false">
+                                <span class="question-text">Can I use Browser Agent for testing websites?</span>
+                                <span class="question-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Absolutely! Browser Agent is excellent for automated testing:</p>
+                                
+                                <h4>Test Types Supported</h4>
+                                <ul>
+                                    <li><strong>Functional Testing:</strong> User workflows, form submissions, navigation</li>
+                                    <li><strong>UI Testing:</strong> Element presence, layout validation, visual checks</li>
+                                    <li><strong>Regression Testing:</strong> Automated test suites for continuous integration</li>
+                                    <li><strong>Cross-browser Testing:</strong> Run same tests across different browsers</li>
+                                </ul>
+                                
+                                <h4>Example Test Script</h4>
+                                <div class="code-block">
+                                    <pre><code class="language-python">async def test_login_flow():
+    agent = BrowserAgent(browser="chrome")
+    await agent.start()
+    
+    try:
+        # Navigate to login page
+        await agent.navigate("https://myapp.com/login")
+        
+        # Test login with valid credentials
+        await agent.ai_interact("Fill the email field with 'test@example.com'")
+        await agent.ai_interact("Fill the password field with 'password123'")
+        await agent.ai_interact("Click the 'Login' button")
+        
+        # Verify successful login
+        result = await agent.ai_extract("Check if the user is logged in successfully")
+        assert "welcome" in result.lower() or "dashboard" in result.lower()
+        
+        print("✅ Login test passed")
+        
+    except Exception as e:
+        print(f"❌ Login test failed: {e}")
+    finally:
+        await agent.close()</code></pre>
+                                </div>
+                                
+                                <h4>Integration with Testing Frameworks</h4>
+                                <p>Browser Agent works well with popular testing frameworks:</p>
+                                <ul>
+                                    <li><strong>pytest:</strong> For Python test suites</li>
+                                    <li><strong>unittest:</strong> Built-in Python testing</li>
+                                    <li><strong>CI/CD:</strong> GitHub Actions, Jenkins, GitLab CI</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item" data-category="usage">
+                            <button class="faq-question" aria-expanded="false">
+                                <span class="question-text">How do I handle dynamic content and SPAs?</span>
+                                <span class="question-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Browser Agent handles dynamic content and Single Page Applications (SPAs) intelligently:</p>
+                                
+                                <h4>Automatic Waiting</h4>
+                                <p>Browser Agent automatically waits for elements to appear and content to load:</p>
+                                <div class="code-block">
+                                    <pre><code class="language-python"># Browser Agent automatically waits for dynamic content
+await agent.ai_interact("Click the 'Load More' button and wait for new items to appear")
+
+# Extract data after dynamic loading
+data = await agent.ai_extract("Get all product information from the dynamically loaded items")</code></pre>
+                                </div>
+                                
+                                <h4>Handling AJAX and API Calls</h4>
+                                <div class="code-block">
+                                    <pre><code class="language-python"># Wait for specific conditions
+await agent.wait_for_condition("The loading spinner disappears")
+
+# Or wait for specific elements
+await agent.wait_for_element("[data-testid='results-container']")
+
+# Handle infinite scroll
+await agent.ai_interact("Scroll down slowly until no more content loads")</code></pre>
+                                </div>
+                                
+                                <h4>SPA Navigation</h4>
+                                <div class="code-block">
+                                    <pre><code class="language-python"># Navigate within SPA
+await agent.ai_interact("Click on the 'Products' tab in the navigation")
+await agent.wait_for_url_change()
+
+# Handle route changes
+current_url = await agent.get_current_url()
+if "/products" in current_url:
+    await agent.ai_interact("Filter products by category 'Electronics'")</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Troubleshooting FAQ -->
+                    <section id="troubleshooting" class="faq-section">
+                        <h2>🔧 Troubleshooting</h2>
+                        
+                        <div class="faq-item" data-category="troubleshooting">
+                            <button class="faq-question" aria-expanded="false">
+                                <span class="question-text">Browser Agent is running slowly. How can I improve performance?</span>
+                                <span class="question-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Several strategies can improve Browser Agent performance:</p>
+                                
+                                <h4>1. Use Headless Mode</h4>
+                                <div class="code-block">
+                                    <pre><code class="language-python">agent = BrowserAgent(browser="chrome", headless=True)</code></pre>
+                                </div>
+                                
+                                <h4>2. Optimize Browser Settings</h4>
+                                <div class="code-block">
+                                    <pre><code class="language-python">agent = BrowserAgent(
+    browser="chrome",
+    headless=True,
+    browser_args=[
+        "--no-sandbox",
+        "--disable-dev-shm-usage",
+        "--disable-gpu",
+        "--disable-images",  # Skip image loading
+        "--disable-javascript",  # If JS not needed
+    ]
+)</code></pre>
+                                </div>
+                                
+                                <h4>3. Reduce AI API Calls</h4>
+                                <ul>
+                                    <li>Cache AI responses for repeated operations</li>
+                                    <li>Use traditional selectors for simple operations</li>
+                                    <li>Batch multiple operations in single AI calls</li>
+                                </ul>
+                                
+                                <h4>4. Optimize Network</h4>
+                                <ul>
+                                    <li>Use faster AI models (e.g., GPT-3.5 vs GPT-4)</li>
+                                    <li>Set appropriate timeouts</li>
+                                    <li>Use local AI models if available</li>
+                                </ul>
+                                
+                                <h4>5. Parallel Processing</h4>
+                                <div class="code-block">
+                                    <pre><code class="language-python">import asyncio
+
+async def process_multiple_pages(urls):
+    agents = [BrowserAgent(headless=True) for _ in urls]
+    
+    tasks = [
+        process_page(agent, url) 
+        for agent, url in zip(agents, urls)
+    ]
+    
+    results = await asyncio.gather(*tasks)
+    return results</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item" data-category="troubleshooting">
+                            <button class="faq-question" aria-expanded="false">
+                                <span class="question-text">I'm getting "Element not found" errors. What should I do?</span>
+                                <span class="question-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>"Element not found" errors are common in web automation. Here's how to handle them:</p>
+                                
+                                <h4>1. Improve Element Descriptions</h4>
+                                <div class="code-block">
+                                    <pre><code class="language-python"># ❌ Vague description
+await agent.ai_interact("Click the button")
+
+# ✅ Specific description
+await agent.ai_interact("Click the blue 'Submit' button at the bottom of the form")</code></pre>
+                                </div>
+                                
+                                <h4>2. Wait for Elements</h4>
+                                <div class="code-block">
+                                    <pre><code class="language-python"># Wait for element to appear
+await agent.wait_for_element("button[type='submit']")
+
+# Or use AI to wait
+await agent.ai_interact("Wait for the submit button to appear, then click it")</code></pre>
+                                </div>
+                                
+                                <h4>3. Handle Dynamic Content</h4>
+                                <div class="code-block">
+                                    <pre><code class="language-python"># Wait for page to fully load
+await agent.wait_for_condition("The page is fully loaded")
+
+# Handle lazy loading
+await agent.ai_interact("Scroll down to make the element visible")</code></pre>
+                                </div>
+                                
+                                <h4>4. Debug Element Location</h4>
+                                <div class="code-block">
+                                    <pre><code class="language-python"># Take screenshot to see current state
+await agent.take_screenshot("debug_screenshot.png")
+
+# Get page source for analysis
+page_source = await agent.get_page_source()
+print(page_source)</code></pre>
+                                </div>
+                                
+                                <h4>5. Use Fallback Strategies</h4>
+                                <div class="code-block">
+                                    <pre><code class="language-python">try:
+    await agent.ai_interact("Click the 'Submit' button")
+except ElementNotFoundError:
+    # Try alternative description
+    await agent.ai_interact("Click the button that submits the form")
+except Exception:
+    # Use traditional selector as fallback
+    await agent.click("button[type='submit']")</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item" data-category="troubleshooting">
+                            <button class="faq-question" aria-expanded="false">
+                                <span class="question-text">How do I handle websites that block automation?</span>
+                                <span class="question-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Some websites implement anti-automation measures. Here are strategies to handle them:</p>
+                                
+                                <h4>1. Use Stealth Mode</h4>
+                                <div class="code-block">
+                                    <pre><code class="language-python">agent = BrowserAgent(
+    browser="chrome",
+    stealth=True,  # Enable stealth mode
+    user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+)</code></pre>
+                                </div>
+                                
+                                <h4>2. Randomize Behavior</h4>
+                                <div class="code-block">
+                                    <pre><code class="language-python">import random
+import asyncio
+
+# Add random delays
+await asyncio.sleep(random.uniform(1, 3))
+
+# Randomize mouse movements
+await agent.move_mouse_randomly()
+
+# Vary typing speed
+await agent.type_text("search query", delay=random.uniform(0.1, 0.3))</code></pre>
+                                </div>
+                                
+                                <h4>3. Handle CAPTCHAs</h4>
+                                <div class="code-block">
+                                    <pre><code class="language-python"># Detect CAPTCHA presence
+captcha_present = await agent.ai_extract("Is there a CAPTCHA on this page?")
+
+if "yes" in captcha_present.lower():
+    # Pause for manual intervention
+    input("Please solve the CAPTCHA manually and press Enter...")
+    
+    # Or integrate with CAPTCHA solving service
+    # await solve_captcha_with_service()</code></pre>
+                                </div>
+                                
+                                <h4>4. Respect Rate Limits</h4>
+                                <div class="code-block">
+                                    <pre><code class="language-python"># Implement rate limiting
+from time import sleep
+
+for url in urls:
+    await agent.navigate(url)
+    # Process page
+    sleep(5)  # Wait between requests</code></pre>
+                                </div>
+                                
+                                <h4>5. Use Proxies</h4>
+                                <div class="code-block">
+                                    <pre><code class="language-python">agent = BrowserAgent(
+    browser="chrome",
+    proxy="http://proxy-server:8080",
+    # Rotate proxies for different requests
+)</code></pre>
+                                </div>
+                                
+                                <p><strong>⚠️ Important:</strong> Always respect websites' terms of service and robots.txt files. Use these techniques responsibly and ethically.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Community FAQ -->
+                    <section id="community" class="faq-section">
+                        <h2>👥 Community</h2>
+                        
+                        <div class="faq-item" data-category="community">
+                            <button class="faq-question" aria-expanded="false">
+                                <span class="question-text">How can I get help or support?</span>
+                                <span class="question-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>There are several ways to get help with Browser Agent:</p>
+                                
+                                <div class="support-options">
+                                    <div class="support-card">
+                                        <h4>📚 Documentation</h4>
+                                        <p>Start with our comprehensive documentation covering all features and use cases.</p>
+                                        <a href="../index.html" class="support-link">Browse Documentation</a>
+                                    </div>
+                                    
+                                    <div class="support-card">
+                                        <h4>💬 GitHub Discussions</h4>
+                                        <p>Join community discussions, ask questions, and share your experiences.</p>
+                                        <a href="https://github.com/AryanVBW/brouser-agent/discussions" target="_blank" rel="noopener" class="support-link">Join Discussions</a>
+                                    </div>
+                                    
+                                    <div class="support-card">
+                                        <h4>🐛 Issue Tracker</h4>
+                                        <p>Report bugs, request features, or get help with specific problems.</p>
+                                        <a href="https://github.com/AryanVBW/brouser-agent/issues" target="_blank" rel="noopener" class="support-link">Create Issue</a>
+                                    </div>
+                                    
+                                    <div class="support-card">
+                                        <h4>📧 Direct Contact</h4>
+                                        <p>For enterprise support or private inquiries, contact the maintainer directly.</p>
+                                        <a href="mailto:vivek.wagdare@example.com" class="support-link">Send Email</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item" data-category="community">
+                            <button class="faq-question" aria-expanded="false">
+                                <span class="question-text">How can I contribute to Browser Agent?</span>
+                                <span class="question-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>We welcome contributions from the community! Here's how you can help:</p>
+                                
+                                <h4>🔧 Code Contributions</h4>
+                                <ul>
+                                    <li>Fix bugs and implement new features</li>
+                                    <li>Improve performance and reliability</li>
+                                    <li>Add support for new browsers or platforms</li>
+                                    <li>Enhance AI integration capabilities</li>
+                                </ul>
+                                
+                                <h4>📝 Documentation</h4>
+                                <ul>
+                                    <li>Improve existing documentation</li>
+                                    <li>Add new examples and tutorials</li>
+                                    <li>Translate documentation to other languages</li>
+                                    <li>Create video tutorials or blog posts</li>
+                                </ul>
+                                
+                                <h4>🧪 Testing</h4>
+                                <ul>
+                                    <li>Test new features and report bugs</li>
+                                    <li>Add automated test cases</li>
+                                    <li>Test on different platforms and browsers</li>
+                                    <li>Performance testing and optimization</li>
+                                </ul>
+                                
+                                <h4>💡 Ideas and Feedback</h4>
+                                <ul>
+                                    <li>Suggest new features or improvements</li>
+                                    <li>Share use cases and success stories</li>
+                                    <li>Provide feedback on user experience</li>
+                                    <li>Help with project roadmap planning</li>
+                                </ul>
+                                
+                                <div class="contribution-steps">
+                                    <h4>Getting Started</h4>
+                                    <ol>
+                                        <li>Fork the repository on GitHub</li>
+                                        <li>Read the <a href="https://github.com/AryanVBW/brouser-agent/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener">Contributing Guidelines</a></li>
+                                        <li>Set up your development environment</li>
+                                        <li>Make your changes and add tests</li>
+                                        <li>Submit a pull request</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item" data-category="community">
+                            <button class="faq-question" aria-expanded="false">
+                                <span class="question-text">Is Browser Agent free to use?</span>
+                                <span class="question-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Yes! Browser Agent is open source and free to use under the MIT License:</p>
+                                
+                                <h4>✅ What's Free</h4>
+                                <ul>
+                                    <li>Core Browser Agent functionality</li>
+                                    <li>All browser automation features</li>
+                                    <li>Basic AI integration</li>
+                                    <li>Community support</li>
+                                    <li>Documentation and examples</li>
+                                </ul>
+                                
+                                <h4>💰 What Costs Money</h4>
+                                <ul>
+                                    <li>AI API usage (OpenAI, Claude, Gemini)</li>
+                                    <li>Cloud hosting for your applications</li>
+                                    <li>Premium support (if offered in the future)</li>
+                                </ul>
+                                
+                                <h4>🏢 Commercial Use</h4>
+                                <p>Browser Agent can be used freely in commercial projects. The MIT License allows:</p>
+                                <ul>
+                                    <li>Commercial use</li>
+                                    <li>Modification and distribution</li>
+                                    <li>Private use</li>
+                                    <li>Patent use</li>
+                                </ul>
+                                
+                                <p>See the full <a href="https://github.com/AryanVBW/brouser-agent/blob/main/LICENSE" target="_blank" rel="noopener">MIT License</a> for details.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Still Have Questions -->
+                    <section class="help-section">
+                        <div class="help-card">
+                            <h2>Still Have Questions?</h2>
+                            <p>Can't find what you're looking for? We're here to help!</p>
+                            
+                            <div class="help-actions">
+                                <a href="https://github.com/AryanVBW/brouser-agent/discussions" target="_blank" rel="noopener" class="help-button primary">
+                                    💬 Ask the Community
+                                </a>
+                                <a href="https://github.com/AryanVBW/brouser-agent/issues/new" target="_blank" rel="noopener" class="help-button secondary">
+                                    🐛 Report an Issue
+                                </a>
+                                <a href="mailto:vivek.wagdare@example.com" class="help-button secondary">
+                                    📧 Contact Support
+                                </a>
+                            </div>
+                            
+                            <div class="help-tips">
+                                <h3>💡 Before Asking for Help</h3>
+                                <ul>
+                                    <li>Search existing discussions and issues</li>
+                                    <li>Include your Browser Agent version and Python version</li>
+                                    <li>Provide a minimal code example that reproduces the issue</li>
+                                    <li>Include error messages and stack traces</li>
+                                    <li>Describe what you expected vs. what actually happened</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+                </article>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Documentation</h3>
+                    <ul>
+                        <li><a href="../index.html">Overview</a></li>
+                        <li><a href="./quick-start.html">Quick Start</a></li>
+                        <li><a href="./features.html">Features</a></li>
+                        <li><a href="./api.html">API Reference</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Examples</h3>
+                    <ul>
+                        <li><a href="./examples.html">Code Examples</a></li>
+                        <li><a href="./integrations.html">Integrations</a></li>
+                        <li><a href="./troubleshooting.html">Troubleshooting</a></li>
+                        <li><a href="./faq.html">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Community</h3>
+                    <ul>
+                        <li><a href="https://github.com/AryanVBW/brouser-agent" target="_blank" rel="noopener">GitHub</a></li>
+                        <li><a href="https://github.com/AryanVBW/brouser-agent/discussions" target="_blank" rel="noopener">Discussions</a></li>
+                        <li><a href="https://github.com/AryanVBW/brouser-agent/issues" target="_blank" rel="noopener">Issues</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="https://github.com/AryanVBW/brouser-agent/blob/main/CHANGELOG.md" target="_blank" rel="noopener">Changelog</a></li>
+                        <li><a href="https://github.com/AryanVBW/brouser-agent/blob/main/LICENSE" target="_blank" rel="noopener">License</a></li>
+                        <li><a href="https://github.com/AryanVBW/brouser-agent/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener">Contributing</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Browser Agent. Created by <a href="https://github.com/AryanVBW" target="_blank" rel="noopener">Vivek Wagdare (AryanVBW)</a>. Licensed under MIT.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/search.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // FAQ accordion functionality
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', () => {
+                    const faqItem = question.parentElement;
+                    const answer = faqItem.querySelector('.faq-answer');
+                    const icon = question.querySelector('.question-icon');
+                    const isExpanded = question.getAttribute('aria-expanded') === 'true';
+                    
+                    // Toggle current item
+                    question.setAttribute('aria-expanded', !isExpanded);
+                    faqItem.classList.toggle('active');
+                    icon.textContent = isExpanded ? '+' : '−';
+                    
+                    if (!isExpanded) {
+                        answer.style.maxHeight = answer.scrollHeight + 'px';
+                    } else {
+                        answer.style.maxHeight = '0';
+                    }
+                });
+            });
+            
+            // FAQ search functionality
+            const faqSearchInput = document.getElementById('faq-search');
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqSearchInput.addEventListener('input', (e) => {
+                const searchTerm = e.target.value.toLowerCase();
+                
+                faqItems.forEach(item => {
+                    const questionText = item.querySelector('.question-text').textContent.toLowerCase();
+                    const answerText = item.querySelector('.faq-answer').textContent.toLowerCase();
+                    const category = item.getAttribute('data-category');
+                    
+                    const matches = questionText.includes(searchTerm) || 
+                                  answerText.includes(searchTerm) || 
+                                  category.includes(searchTerm);
+                    
+                    item.style.display = matches ? 'block' : 'none';
+                });
+            });
+            
+            // Topic tag functionality
+            const topicTags = document.querySelectorAll('.topic-tag');
+            
+            topicTags.forEach(tag => {
+                tag.addEventListener('click', () => {
+                    const topic = tag.getAttribute('data-topic');
+                    faqSearchInput.value = topic;
+                    faqSearchInput.dispatchEvent(new Event('input'));
+                });
+            });
+        });
+    </script>
+</body>
+</html>

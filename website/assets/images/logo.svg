@@ -1,0 +1,46 @@
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="20" cy="20" r="18" fill="#2563eb" stroke="#1d4ed8" stroke-width="2"/>
+  
+  <!-- Browser window -->
+  <rect x="8" y="12" width="24" height="16" rx="2" fill="white" stroke="#e5e7eb" stroke-width="1"/>
+  
+  <!-- Browser header -->
+  <rect x="8" y="12" width="24" height="4" rx="2" fill="#f3f4f6"/>
+  
+  <!-- Browser dots -->
+  <circle cx="11" cy="14" r="0.8" fill="#ef4444"/>
+  <circle cx="13.5" cy="14" r="0.8" fill="#f59e0b"/>
+  <circle cx="16" cy="14" r="0.8" fill="#10b981"/>
+  
+  <!-- AI brain/circuit pattern -->
+  <g transform="translate(12, 18)">
+    <!-- Central node -->
+    <circle cx="8" cy="4" r="1.5" fill="#2563eb"/>
+    
+    <!-- Connected nodes -->
+    <circle cx="4" cy="2" r="1" fill="#3b82f6"/>
+    <circle cx="12" cy="2" r="1" fill="#3b82f6"/>
+    <circle cx="4" cy="6" r="1" fill="#3b82f6"/>
+    <circle cx="12" cy="6" r="1" fill="#3b82f6"/>
+    
+    <!-- Connection lines -->
+    <line x1="8" y1="4" x2="4" y2="2" stroke="#60a5fa" stroke-width="1" opacity="0.8"/>
+    <line x1="8" y1="4" x2="12" y2="2" stroke="#60a5fa" stroke-width="1" opacity="0.8"/>
+    <line x1="8" y1="4" x2="4" y2="6" stroke="#60a5fa" stroke-width="1" opacity="0.8"/>
+    <line x1="8" y1="4" x2="12" y2="6" stroke="#60a5fa" stroke-width="1" opacity="0.8"/>
+    
+    <!-- Horizontal connections -->
+    <line x1="4" y1="2" x2="12" y2="2" stroke="#93c5fd" stroke-width="0.5" opacity="0.6"/>
+    <line x1="4" y1="6" x2="12" y2="6" stroke="#93c5fd" stroke-width="0.5" opacity="0.6"/>
+  </g>
+  
+  <!-- Automation arrows -->
+  <g transform="translate(28, 8)">
+    <path d="M2 2 L6 4 L2 6" stroke="#10b981" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  
+  <g transform="translate(28, 26)">
+    <path d="M6 2 L2 4 L6 6" stroke="#10b981" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

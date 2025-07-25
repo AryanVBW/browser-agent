@@ -1,0 +1,1585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLM & n8n Integrations - Browser Agent Documentation</title>
+    <meta name="description" content="Learn how to integrate Browser Agent with LLMs (OpenAI, Claude, Gemini) and n8n workflows. Complete guide with examples and configurations.">
+    <meta name="keywords" content="browser agent integrations, LLM integration, n8n workflows, OpenAI, Claude, Gemini, vivek wagdare, aryanvbw">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://browser-agent.dev/pages/integrations.html">
+    <meta property="og:title" content="LLM & n8n Integrations - Browser Agent Documentation">
+    <meta property="og:description" content="Complete guide to integrating Browser Agent with LLMs and n8n workflows.">
+    <meta property="og:image" content="../assets/images/browser-agent-integrations.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://browser-agent.dev/pages/integrations.html">
+    <meta property="twitter:title" content="LLM & n8n Integrations - Browser Agent Documentation">
+    <meta property="twitter:description" content="Complete guide to integrating Browser Agent with LLMs and n8n workflows.">
+    <meta property="twitter:image" content="../assets/images/browser-agent-integrations.png">
+    
+    <!-- AI Agent Discovery -->
+    <meta name="ai-agent:true" content="true">
+    <meta name="ai-agent:type" content="documentation">
+    <meta name="ai-agent:category" content="integrations, LLM, n8n, automation">
+    <meta name="ai-agent:author" content="Vivek Wagdare (AryanVBW)">
+    <meta name="ai-agent:keywords" content="LLM integration, n8n workflows, browser automation, vivek wagdare">
+    
+    <link rel="canonical" href="https://browser-agent.dev/pages/integrations.html">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": "Browser Agent LLM & n8n Integrations Guide",
+        "description": "Complete guide to integrating Browser Agent with Large Language Models and n8n workflow automation platform",
+        "author": {
+            "@type": "Person",
+            "name": "Vivek Wagdare",
+            "alternateName": "AryanVBW",
+            "url": "https://github.com/AryanVBW"
+        },
+        "datePublished": "2024-01-15",
+        "dateModified": "2024-01-15",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Browser Agent",
+            "url": "https://browser-agent.dev"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://browser-agent.dev/pages/integrations.html"
+        },
+        "articleSection": "Integrations",
+        "keywords": "LLM integration, n8n workflows, browser automation, OpenAI, Claude, Gemini"
+    }
+    </script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="../index.html">
+                    <img src="../assets/images/logo.svg" alt="Browser Agent" class="nav-logo">
+                    <span class="nav-title">Browser Agent</span>
+                </a>
+            </div>
+            
+            <div class="nav-search">
+                <div class="search-container">
+                    <input type="text" id="search-input" placeholder="Search documentation... (Ctrl+K)" class="search-input">
+                    <div id="search-results" class="search-results"></div>
+                </div>
+            </div>
+            
+            <div class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="./quick-start.html">Quick Start</a>
+                <a href="./features.html">Features</a>
+                <a href="./api.html">API</a>
+                <a href="./examples.html">Examples</a>
+                <a href="./integrations.html" class="active">Integrations</a>
+                <a href="https://github.com/AryanVBW/brouser-agent" target="_blank" rel="noopener">GitHub</a>
+            </div>
+            
+            <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Breadcrumb -->
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <ol>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><span aria-current="page">Integrations</span></li>
+                </ol>
+            </nav>
+
+            <!-- Page Header -->
+            <header class="page-header">
+                <div class="header-content">
+                    <h1 class="page-title">
+                        <span class="title-icon">🔗</span>
+                        LLM & n8n Integrations
+                    </h1>
+                    <p class="page-description">
+                        Supercharge your browser automation with AI models and workflow platforms.
+                    </p>
+                    <div class="header-meta">
+                        <span class="reading-time">⏱️ 20 min read</span>
+                        <span class="difficulty">📊 Intermediate</span>
+                        <span class="last-updated">🔄 Updated Jan 15, 2024</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Integration Overview -->
+            <section class="integration-overview">
+                <div class="overview-grid">
+                    <div class="integration-card">
+                        <div class="card-icon">🤖</div>
+                        <h3>LLM Integration</h3>
+                        <p>Connect with OpenAI GPT, Claude, Gemini, and other language models for intelligent automation.</p>
+                        <ul class="feature-list">
+                            <li>Natural language commands</li>
+                            <li>Smart element detection</li>
+                            <li>Content understanding</li>
+                            <li>Adaptive workflows</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="integration-card">
+                        <div class="card-icon">⚡</div>
+                        <h3>n8n Workflows</h3>
+                        <p>Build powerful automation workflows with visual drag-and-drop interface.</p>
+                        <ul class="feature-list">
+                            <li>Visual workflow builder</li>
+                            <li>Trigger-based automation</li>
+                            <li>Data transformation</li>
+                            <li>Multi-service integration</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="integration-card">
+                        <div class="card-icon">🔄</div>
+                        <h3>MCP Protocol</h3>
+                        <p>Model Context Protocol for seamless AI tool integration and communication.</p>
+                        <ul class="feature-list">
+                            <li>Standardized AI communication</li>
+                            <li>Tool discovery</li>
+                            <li>Context sharing</li>
+                            <li>Plugin ecosystem</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Table of Contents -->
+            <aside class="toc-sidebar">
+                <div class="toc-container">
+                    <h3>Contents</h3>
+                    <ul class="toc-list">
+                        <li><a href="#llm-integration">LLM Integration</a>
+                            <ul>
+                                <li><a href="#openai-setup">OpenAI Setup</a></li>
+                                <li><a href="#claude-setup">Claude Setup</a></li>
+                                <li><a href="#gemini-setup">Gemini Setup</a></li>
+                                <li><a href="#llm-examples">Usage Examples</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#n8n-integration">n8n Integration</a>
+                            <ul>
+                                <li><a href="#n8n-setup">Setup & Configuration</a></li>
+                                <li><a href="#n8n-workflows">Creating Workflows</a></li>
+                                <li><a href="#n8n-examples">Workflow Examples</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#mcp-protocol">MCP Protocol</a>
+                            <ul>
+                                <li><a href="#mcp-overview">Overview</a></li>
+                                <li><a href="#mcp-setup">Setup</a></li>
+                                <li><a href="#mcp-usage">Usage</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#advanced-integrations">Advanced Integrations</a></li>
+                    </ul>
+                </div>
+            </aside>
+
+            <!-- Content -->
+            <div class="content-wrapper">
+                <article class="documentation-content">
+                    <!-- LLM Integration -->
+                    <section id="llm-integration">
+                        <h2>🤖 LLM Integration</h2>
+                        <p>Browser Agent supports multiple Large Language Models for intelligent automation. Configure your preferred AI provider and start using natural language commands.</p>
+                        
+                        <!-- OpenAI Setup -->
+                        <div id="openai-setup" class="integration-section">
+                            <h3>🔵 OpenAI Setup</h3>
+                            <p>Integrate with OpenAI's GPT models for powerful natural language processing.</p>
+                            
+                            <div class="setup-steps">
+                                <div class="step">
+                                    <h4>1. Get API Key</h4>
+                                    <p>Visit <a href="https://platform.openai.com/api-keys" target="_blank" rel="noopener">OpenAI API Keys</a> and create a new API key.</p>
+                                </div>
+                                
+                                <div class="step">
+                                    <h4>2. Configure Environment</h4>
+                                    <div class="code-block">
+                                        <div class="code-header">
+                                            <span class="code-title">.env</span>
+                                            <button class="copy-button">
+                                                <span class="copy-icon">📋</span>
+                                                <span class="copy-text">Copy</span>
+                                            </button>
+                                        </div>
+                                        <pre><code class="language-bash"># OpenAI Configuration
+OPENAI_API_KEY=your_openai_api_key_here
+OPENAI_MODEL=gpt-4  # or gpt-3.5-turbo
+OPENAI_MAX_TOKENS=2048
+OPENAI_TEMPERATURE=0.7</code></pre>
+                                    </div>
+                                </div>
+                                
+                                <div class="step">
+                                    <h4>3. Initialize with OpenAI</h4>
+                                    <div class="code-block">
+                                        <div class="code-header">
+                                            <span class="code-title">Python</span>
+                                            <button class="copy-button">
+                                                <span class="copy-icon">📋</span>
+                                                <span class="copy-text">Copy</span>
+                                            </button>
+                                        </div>
+                                        <pre><code class="language-python">from browser_agent import BrowserAgent
+import os
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
+
+# Initialize with OpenAI
+agent = BrowserAgent(
+    browser="chrome",
+    ai_provider="openai",
+    ai_config={
+        "api_key": os.getenv("OPENAI_API_KEY"),
+        "model": "gpt-4",
+        "max_tokens": 2048,
+        "temperature": 0.7
+    }
+)
+
+# Start the agent
+await agent.start()
+
+# Use natural language commands
+result = await agent.ai_interact(
+    "Find the search box and search for 'browser automation'"
+)
+print(result)</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Claude Setup -->
+                        <div id="claude-setup" class="integration-section">
+                            <h3>🟠 Claude Setup</h3>
+                            <p>Integrate with Anthropic's Claude for advanced reasoning and safety.</p>
+                            
+                            <div class="setup-steps">
+                                <div class="step">
+                                    <h4>1. Get API Key</h4>
+                                    <p>Visit <a href="https://console.anthropic.com/" target="_blank" rel="noopener">Anthropic Console</a> and create an API key.</p>
+                                </div>
+                                
+                                <div class="step">
+                                    <h4>2. Configure Environment</h4>
+                                    <div class="code-block">
+                                        <div class="code-header">
+                                            <span class="code-title">.env</span>
+                                            <button class="copy-button">
+                                                <span class="copy-icon">📋</span>
+                                                <span class="copy-text">Copy</span>
+                                            </button>
+                                        </div>
+                                        <pre><code class="language-bash"># Claude Configuration
+ANTHROPIC_API_KEY=your_claude_api_key_here
+CLAUDE_MODEL=claude-3-sonnet-20240229
+CLAUDE_MAX_TOKENS=4096</code></pre>
+                                    </div>
+                                </div>
+                                
+                                <div class="step">
+                                    <h4>3. Initialize with Claude</h4>
+                                    <div class="code-block">
+                                        <div class="code-header">
+                                            <span class="code-title">Python</span>
+                                            <button class="copy-button">
+                                                <span class="copy-icon">📋</span>
+                                                <span class="copy-text">Copy</span>
+                                            </button>
+                                        </div>
+                                        <pre><code class="language-python">from browser_agent import BrowserAgent
+import os
+
+# Initialize with Claude
+agent = BrowserAgent(
+    browser="chrome",
+    ai_provider="claude",
+    ai_config={
+        "api_key": os.getenv("ANTHROPIC_API_KEY"),
+        "model": "claude-3-sonnet-20240229",
+        "max_tokens": 4096
+    }
+)
+
+# Claude excels at complex reasoning
+result = await agent.ai_interact(
+    "Analyze this page and extract all the important information, "
+    "then summarize the key points in a structured format"
+)
+print(result)</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Gemini Setup -->
+                        <div id="gemini-setup" class="integration-section">
+                            <h3>🔴 Gemini Setup</h3>
+                            <p>Integrate with Google's Gemini for multimodal AI capabilities.</p>
+                            
+                            <div class="setup-steps">
+                                <div class="step">
+                                    <h4>1. Get API Key</h4>
+                                    <p>Visit <a href="https://makersuite.google.com/app/apikey" target="_blank" rel="noopener">Google AI Studio</a> and create an API key.</p>
+                                </div>
+                                
+                                <div class="step">
+                                    <h4>2. Configure Environment</h4>
+                                    <div class="code-block">
+                                        <div class="code-header">
+                                            <span class="code-title">.env</span>
+                                            <button class="copy-button">
+                                                <span class="copy-icon">📋</span>
+                                                <span class="copy-text">Copy</span>
+                                            </button>
+                                        </div>
+                                        <pre><code class="language-bash"># Gemini Configuration
+GOOGLE_API_KEY=your_gemini_api_key_here
+GEMINI_MODEL=gemini-pro
+GEMINI_VISION_MODEL=gemini-pro-vision</code></pre>
+                                    </div>
+                                </div>
+                                
+                                <div class="step">
+                                    <h4>3. Initialize with Gemini</h4>
+                                    <div class="code-block">
+                                        <div class="code-header">
+                                            <span class="code-title">Python</span>
+                                            <button class="copy-button">
+                                                <span class="copy-icon">📋</span>
+                                                <span class="copy-text">Copy</span>
+                                            </button>
+                                        </div>
+                                        <pre><code class="language-python">from browser_agent import BrowserAgent
+import os
+
+# Initialize with Gemini
+agent = BrowserAgent(
+    browser="chrome",
+    ai_provider="gemini",
+    ai_config={
+        "api_key": os.getenv("GOOGLE_API_KEY"),
+        "model": "gemini-pro",
+        "vision_model": "gemini-pro-vision"  # For image analysis
+    }
+)
+
+# Gemini can analyze images and text together
+result = await agent.ai_interact(
+    "Take a screenshot and describe what you see on this page, "
+    "then suggest the best way to navigate it"
+)
+print(result)</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- LLM Examples -->
+                        <div id="llm-examples" class="integration-section">
+                            <h3>💡 LLM Usage Examples</h3>
+                            <p>Practical examples of using LLMs with Browser Agent for intelligent automation.</p>
+                            
+                            <div class="example-tabs">
+                                <div class="tab-buttons">
+                                    <button class="tab-button active" data-tab="smart-navigation">Smart Navigation</button>
+                                    <button class="tab-button" data-tab="content-analysis">Content Analysis</button>
+                                    <button class="tab-button" data-tab="form-filling">Smart Form Filling</button>
+                                    <button class="tab-button" data-tab="data-extraction">Data Extraction</button>
+                                </div>
+                                
+                                <div class="tab-content">
+                                    <div id="smart-navigation" class="tab-pane active">
+                                        <h4>Smart Navigation</h4>
+                                        <p>Let AI understand and navigate complex websites naturally.</p>
+                                        <div class="code-block">
+                                            <div class="code-header">
+                                                <span class="code-title">Python</span>
+                                                <button class="copy-button">
+                                                    <span class="copy-icon">📋</span>
+                                                    <span class="copy-text">Copy</span>
+                                                </button>
+                                            </div>
+                                            <pre><code class="language-python">async def smart_navigation_example():
+    agent = BrowserAgent(ai_provider="openai")
+    await agent.start()
+    
+    # Navigate to a complex e-commerce site
+    await agent.navigate("https://amazon.com")
+    
+    # Use natural language to find and interact with elements
+    await agent.ai_interact(
+        "Search for 'wireless headphones under $100' and "
+        "filter by customer rating of 4 stars or higher"
+    )
+    
+    # AI will understand the page structure and perform actions
+    await agent.ai_interact(
+        "Sort the results by price from low to high and "
+        "click on the first product with free shipping"
+    )
+    
+    # Extract product information intelligently
+    product_info = await agent.ai_extract(
+        "Get the product name, price, rating, and key features"
+    )
+    
+    print(f"Found product: {product_info}")
+    await agent.close()</code></pre>
+                                        </div>
+                                    </div>
+                                    
+                                    <div id="content-analysis" class="tab-pane">
+                                        <h4>Content Analysis</h4>
+                                        <p>Analyze and understand web content using AI.</p>
+                                        <div class="code-block">
+                                            <div class="code-header">
+                                                <span class="code-title">Python</span>
+                                                <button class="copy-button">
+                                                    <span class="copy-icon">📋</span>
+                                                    <span class="copy-text">Copy</span>
+                                                </button>
+                                            </div>
+                                            <pre><code class="language-python">async def content_analysis_example():
+    agent = BrowserAgent(ai_provider="claude")
+    await agent.start()
+    
+    # Navigate to a news article
+    await agent.navigate("https://example-news-site.com/article")
+    
+    # Analyze the article content
+    analysis = await agent.ai_extract(
+        "Analyze this article and provide:"
+        "1. Main topic and key points"
+        "2. Author's perspective or bias"
+        "3. Factual claims that could be verified"
+        "4. Summary in 3 bullet points"
+    )
+    
+    # Check for related articles
+    related = await agent.ai_interact(
+        "Find and list any related articles or links on this page"
+    )
+    
+    # Generate a comprehensive report
+    report = {
+        "analysis": analysis,
+        "related_content": related,
+        "url": await agent.get_current_url(),
+        "timestamp": datetime.now().isoformat()
+    }
+    
+    return report</code></pre>
+                                        </div>
+                                    </div>
+                                    
+                                    <div id="form-filling" class="tab-pane">
+                                        <h4>Smart Form Filling</h4>
+                                        <p>Intelligently fill forms based on context and requirements.</p>
+                                        <div class="code-block">
+                                            <div class="code-header">
+                                                <span class="code-title">Python</span>
+                                                <button class="copy-button">
+                                                    <span class="copy-icon">📋</span>
+                                                    <span class="copy-text">Copy</span>
+                                                </button>
+                                            </div>
+                                            <pre><code class="language-python">async def smart_form_filling_example():
+    agent = BrowserAgent(ai_provider="gemini")
+    await agent.start()
+    
+    # Navigate to a job application form
+    await agent.navigate("https://company.com/careers/apply")
+    
+    # Define user profile
+    user_profile = {
+        "name": "John Doe",
+        "email": "john.doe@email.com",
+        "experience": "5 years in software development",
+        "skills": ["Python", "JavaScript", "React", "Node.js"],
+        "education": "BS Computer Science"
+    }
+    
+    # Let AI analyze the form and fill it intelligently
+    await agent.ai_interact(f"""
+        Analyze this job application form and fill it out using this profile:
+        {user_profile}
+        
+        Instructions:
+        1. Match skills to job requirements
+        2. Adapt experience description to the role
+        3. Fill all required fields appropriately
+        4. Don't submit the form, just fill it out
+    """)
+    
+    # Verify the form was filled correctly
+    form_data = await agent.ai_extract(
+        "Extract all the filled form data and verify it matches the profile"
+    )
+    
+    print(f"Form filled with: {form_data}")
+    await agent.close()</code></pre>
+                                        </div>
+                                    </div>
+                                    
+                                    <div id="data-extraction" class="tab-pane">
+                                        <h4>Intelligent Data Extraction</h4>
+                                        <p>Extract structured data from unstructured web content.</p>
+                                        <div class="code-block">
+                                            <div class="code-header">
+                                                <span class="code-title">Python</span>
+                                                <button class="copy-button">
+                                                    <span class="copy-icon">📋</span>
+                                                    <span class="copy-text">Copy</span>
+                                                </button>
+                                            </div>
+                                            <pre><code class="language-python">async def intelligent_data_extraction():
+    agent = BrowserAgent(ai_provider="openai")
+    await agent.start()
+    
+    # Navigate to a product listing page
+    await agent.navigate("https://ecommerce-site.com/products")
+    
+    # Extract structured product data
+    products = await agent.ai_extract("""
+        Extract all products from this page and return as JSON with:
+        {
+            "products": [
+                {
+                    "name": "product name",
+                    "price": "price as number",
+                    "currency": "currency code",
+                    "rating": "rating as number",
+                    "reviews_count": "number of reviews",
+                    "image_url": "product image URL",
+                    "availability": "in stock/out of stock",
+                    "features": ["list of key features"]
+                }
+            ]
+        }
+    """)
+    
+    # Process and validate the extracted data
+    import json
+    product_data = json.loads(products)
+    
+    # Filter and sort products
+    filtered_products = await agent.ai_extract(f"""
+        From this product data: {product_data}
+        
+        Filter and return only products that:
+        1. Are in stock
+        2. Have rating >= 4.0
+        3. Have at least 10 reviews
+        
+        Sort by rating (highest first), then by price (lowest first)
+    """)
+    
+    return json.loads(filtered_products)</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- n8n Integration -->
+                    <section id="n8n-integration">
+                        <h2>⚡ n8n Integration</h2>
+                        <p>Integrate Browser Agent with n8n for powerful visual workflow automation. Create complex automation pipelines with triggers, conditions, and actions.</p>
+                        
+                        <!-- n8n Setup -->
+                        <div id="n8n-setup" class="integration-section">
+                            <h3>🛠️ Setup & Configuration</h3>
+                            <p>Set up Browser Agent as an n8n node for workflow integration.</p>
+                            
+                            <div class="setup-steps">
+                                <div class="step">
+                                    <h4>1. Install n8n</h4>
+                                    <div class="code-block">
+                                        <div class="code-header">
+                                            <span class="code-title">Terminal</span>
+                                            <button class="copy-button">
+                                                <span class="copy-icon">📋</span>
+                                                <span class="copy-text">Copy</span>
+                                            </button>
+                                        </div>
+                                        <pre><code class="language-bash"># Install n8n globally
+npm install n8n -g
+
+# Or use Docker
+docker run -it --rm \
+  --name n8n \
+  -p 5678:5678 \
+  -v ~/.n8n:/home/node/.n8n \
+  n8nio/n8n</code></pre>
+                                    </div>
+                                </div>
+                                
+                                <div class="step">
+                                    <h4>2. Install Browser Agent MCP Server</h4>
+                                    <div class="code-block">
+                                        <div class="code-header">
+                                            <span class="code-title">Terminal</span>
+                                            <button class="copy-button">
+                                                <span class="copy-icon">📋</span>
+                                                <span class="copy-text">Copy</span>
+                                            </button>
+                                        </div>
+                                        <pre><code class="language-bash"># Install the n8n-mcp package
+npm install -g n8n-mcp
+
+# Or clone and install from source
+git clone https://github.com/AryanVBW/n8n-mcp.git
+cd n8n-mcp
+npm install
+npm run build</code></pre>
+                                    </div>
+                                </div>
+                                
+                                <div class="step">
+                                    <h4>3. Configure MCP Server</h4>
+                                    <div class="code-block">
+                                        <div class="code-header">
+                                            <span class="code-title">config/mcp_servers.json</span>
+                                            <button class="copy-button">
+                                                <span class="copy-icon">📋</span>
+                                                <span class="copy-text">Copy</span>
+                                            </button>
+                                        </div>
+                                        <pre><code class="language-json">{
+  "n8n-mcp": {
+    "command": "node",
+    "args": ["/path/to/n8n-mcp/dist/index.js"],
+    "env": {
+      "N8N_HOST": "http://localhost:5678",
+      "N8N_API_KEY": "your_n8n_api_key",
+      "BROWSER_AGENT_HOST": "http://localhost:8080"
+    },
+    "description": "n8n workflow automation integration",
+    "metadata": {
+      "version": "1.0.0",
+      "author": "Vivek Wagdare",
+      "capabilities": [
+        "workflow_execution",
+        "trigger_management",
+        "data_transformation"
+      ]
+    }
+  }
+}</code></pre>
+                                    </div>
+                                </div>
+                                
+                                <div class="step">
+                                    <h4>4. Start Services</h4>
+                                    <div class="code-block">
+                                        <div class="code-header">
+                                            <span class="code-title">Terminal</span>
+                                            <button class="copy-button">
+                                                <span class="copy-icon">📋</span>
+                                                <span class="copy-text">Copy</span>
+                                            </button>
+                                        </div>
+                                        <pre><code class="language-bash"># Start n8n
+n8n start
+
+# In another terminal, start Browser Agent MCP server
+browser-agent mcp start --config config/mcp_servers.json
+
+# Access n8n interface at http://localhost:5678</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- n8n Workflows -->
+                        <div id="n8n-workflows" class="integration-section">
+                            <h3>🔄 Creating Workflows</h3>
+                            <p>Build powerful automation workflows using Browser Agent nodes in n8n.</p>
+                            
+                            <div class="workflow-example">
+                                <h4>Basic Workflow Structure</h4>
+                                <div class="workflow-diagram">
+                                    <div class="workflow-node trigger">📅 Schedule Trigger</div>
+                                    <div class="workflow-arrow">→</div>
+                                    <div class="workflow-node browser">🌐 Browser Agent</div>
+                                    <div class="workflow-arrow">→</div>
+                                    <div class="workflow-node process">⚙️ Process Data</div>
+                                    <div class="workflow-arrow">→</div>
+                                    <div class="workflow-node output">📧 Send Email</div>
+                                </div>
+                            </div>
+                            
+                            <div class="code-block">
+                                <div class="code-header">
+                                    <span class="code-title">n8n Workflow JSON</span>
+                                    <button class="copy-button">
+                                        <span class="copy-icon">📋</span>
+                                        <span class="copy-text">Copy</span>
+                                    </button>
+                                </div>
+                                <pre><code class="language-json">{
+  "name": "Daily Price Monitoring",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 9 * * *"
+            }
+          ]
+        }
+      },
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "action": "navigate_and_extract",
+        "url": "https://example-store.com/product/123",
+        "extraction_prompt": "Extract the product price, availability, and any discount information",
+        "ai_provider": "openai"
+      },
+      "name": "Browser Agent",
+      "type": "n8n-nodes-browser-agent.browserAgent",
+      "typeVersion": 1,
+      "position": [450, 300]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{$json.price}}",
+              "operation": "smaller",
+              "value2": 100
+            }
+          ]
+        }
+      },
+      "name": "Price Check",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [650, 300]
+    },
+    {
+      "parameters": {
+        "subject": "Price Alert: Product Under $100!",
+        "message": "The product is now available for ${{$json.price}}. Check it out!",
+        "toEmail": "user@example.com"
+      },
+      "name": "Send Email",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 1,
+      "position": [850, 300]
+    }
+  ],
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Browser Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Browser Agent": {
+      "main": [
+        [
+          {
+            "node": "Price Check",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Price Check": {
+      "main": [
+        [
+          {
+            "node": "Send Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  }
+}</code></pre>
+                            </div>
+                        </div>
+                        
+                        <!-- n8n Examples -->
+                        <div id="n8n-examples" class="integration-section">
+                            <h3>📋 Workflow Examples</h3>
+                            <p>Real-world examples of Browser Agent workflows in n8n.</p>
+                            
+                            <div class="example-grid">
+                                <div class="example-card">
+                                    <h4>🛒 E-commerce Monitoring</h4>
+                                    <p>Monitor product prices, stock levels, and reviews across multiple sites.</p>
+                                    <ul class="example-features">
+                                        <li>Daily price checks</li>
+                                        <li>Stock availability alerts</li>
+                                        <li>Review sentiment analysis</li>
+                                        <li>Competitor comparison</li>
+                                    </ul>
+                                    <div class="code-block">
+                                        <div class="code-header">
+                                            <span class="code-title">Workflow Configuration</span>
+                                            <button class="copy-button">
+                                                <span class="copy-icon">📋</span>
+                                                <span class="copy-text">Copy</span>
+                                            </button>
+                                        </div>
+                                        <pre><code class="language-python"># Browser Agent node configuration
+{
+  "action": "multi_site_monitoring",
+  "sites": [
+    "https://amazon.com/dp/B08N5WRWNW",
+    "https://bestbuy.com/site/product/6428084",
+    "https://walmart.com/ip/product/123456789"
+  ],
+  "extraction_prompt": """
+    For each product, extract:
+    1. Current price and currency
+    2. Stock status (in stock/out of stock)
+    3. Customer rating and review count
+    4. Any promotional offers or discounts
+    5. Estimated delivery time
+  """,
+  "ai_provider": "claude",
+  "output_format": "json"
+}</code></pre>
+                                    </div>
+                                </div>
+                                
+                                <div class="example-card">
+                                    <h4>📰 News Aggregation</h4>
+                                    <p>Collect and analyze news from multiple sources with AI summarization.</p>
+                                    <ul class="example-features">
+                                        <li>Multi-source news collection</li>
+                                        <li>AI-powered summarization</li>
+                                        <li>Sentiment analysis</li>
+                                        <li>Duplicate detection</li>
+                                    </ul>
+                                    <div class="code-block">
+                                        <div class="code-header">
+                                            <span class="code-title">Workflow Configuration</span>
+                                            <button class="copy-button">
+                                                <span class="copy-icon">📋</span>
+                                                <span class="copy-text">Copy</span>
+                                            </button>
+                                        </div>
+                                        <pre><code class="language-python"># News aggregation workflow
+{
+  "action": "news_aggregation",
+  "sources": [
+    "https://news.ycombinator.com",
+    "https://techcrunch.com",
+    "https://arstechnica.com"
+  ],
+  "keywords": ["AI", "automation", "browser", "technology"],
+  "extraction_prompt": """
+    Extract articles related to the keywords and provide:
+    1. Article title and URL
+    2. Publication date and author
+    3. Brief summary (2-3 sentences)
+    4. Key topics and sentiment
+    5. Relevance score (1-10)
+  """,
+  "ai_provider": "gemini",
+  "max_articles": 20
+}</code></pre>
+                                    </div>
+                                </div>
+                                
+                                <div class="example-card">
+                                    <h4>🏢 Lead Generation</h4>
+                                    <p>Automate lead research and contact information gathering.</p>
+                                    <ul class="example-features">
+                                        <li>Company research</li>
+                                        <li>Contact discovery</li>
+                                        <li>Social media analysis</li>
+                                        <li>CRM integration</li>
+                                    </ul>
+                                    <div class="code-block">
+                                        <div class="code-header">
+                                            <span class="code-title">Workflow Configuration</span>
+                                            <button class="copy-button">
+                                                <span class="copy-icon">📋</span>
+                                                <span class="copy-text">Copy</span>
+                                            </button>
+                                        </div>
+                                        <pre><code class="language-python"># Lead generation workflow
+{
+  "action": "lead_research",
+  "company_list": "{{$json.companies}}",
+  "research_depth": "comprehensive",
+  "extraction_prompt": """
+    For each company, research and extract:
+    1. Company size and industry
+    2. Key decision makers and their roles
+    3. Contact information (email, LinkedIn)
+    4. Recent news or funding announcements
+    5. Technology stack and tools used
+    6. Potential pain points or opportunities
+  """,
+  "ai_provider": "openai",
+  "output_to_crm": true,
+  "crm_mapping": {
+    "company_name": "account_name",
+    "contact_email": "primary_contact",
+    "industry": "industry_field"
+  }
+}</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- MCP Protocol -->
+                    <section id="mcp-protocol">
+                        <h2>🔗 MCP Protocol</h2>
+                        <p>Model Context Protocol (MCP) enables seamless communication between AI models and external tools, including Browser Agent.</p>
+                        
+                        <!-- MCP Overview -->
+                        <div id="mcp-overview" class="integration-section">
+                            <h3>📋 Overview</h3>
+                            <p>MCP provides a standardized way for AI models to discover, connect to, and interact with external tools and services.</p>
+                            
+                            <div class="mcp-benefits">
+                                <div class="benefit-card">
+                                    <div class="benefit-icon">🔍</div>
+                                    <h4>Tool Discovery</h4>
+                                    <p>AI models can automatically discover available tools and their capabilities.</p>
+                                </div>
+                                
+                                <div class="benefit-card">
+                                    <div class="benefit-icon">🔄</div>
+                                    <h4>Standardized Communication</h4>
+                                    <p>Consistent protocol for tool interaction across different AI providers.</p>
+                                </div>
+                                
+                                <div class="benefit-card">
+                                    <div class="benefit-icon">🧩</div>
+                                    <h4>Plugin Ecosystem</h4>
+                                    <p>Extensible architecture for adding new tools and capabilities.</p>
+                                </div>
+                                
+                                <div class="benefit-card">
+                                    <div class="benefit-icon">🔒</div>
+                                    <h4>Secure Context</h4>
+                                    <p>Controlled access to tools with proper authentication and permissions.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- MCP Setup -->
+                        <div id="mcp-setup" class="integration-section">
+                            <h3>⚙️ MCP Setup</h3>
+                            <p>Configure Browser Agent to work with MCP-compatible AI systems.</p>
+                            
+                            <div class="setup-steps">
+                                <div class="step">
+                                    <h4>1. Install MCP Dependencies</h4>
+                                    <div class="code-block">
+                                        <div class="code-header">
+                                            <span class="code-title">Terminal</span>
+                                            <button class="copy-button">
+                                                <span class="copy-icon">📋</span>
+                                                <span class="copy-text">Copy</span>
+                                            </button>
+                                        </div>
+                                        <pre><code class="language-bash"># Install MCP server dependencies
+pip install mcp-server browser-agent-mcp
+
+# Or install from source
+git clone https://github.com/AryanVBW/browser-agent-mcp.git
+cd browser-agent-mcp
+pip install -e .</code></pre>
+                                    </div>
+                                </div>
+                                
+                                <div class="step">
+                                    <h4>2. Configure MCP Server</h4>
+                                    <div class="code-block">
+                                        <div class="code-header">
+                                            <span class="code-title">mcp_config.json</span>
+                                            <button class="copy-button">
+                                                <span class="copy-icon">📋</span>
+                                                <span class="copy-text">Copy</span>
+                                            </button>
+                                        </div>
+                                        <pre><code class="language-json">{
+  "server": {
+    "name": "browser-agent-mcp",
+    "version": "1.0.0",
+    "description": "Browser Agent MCP Server for AI tool integration"
+  },
+  "tools": [
+    {
+      "name": "navigate",
+      "description": "Navigate to a URL",
+      "parameters": {
+        "url": {
+          "type": "string",
+          "description": "The URL to navigate to"
+        }
+      }
+    },
+    {
+      "name": "extract_data",
+      "description": "Extract data from the current page using AI",
+      "parameters": {
+        "prompt": {
+          "type": "string",
+          "description": "Natural language prompt describing what to extract"
+        }
+      }
+    },
+    {
+      "name": "interact",
+      "description": "Interact with page elements using natural language",
+      "parameters": {
+        "instruction": {
+          "type": "string",
+          "description": "Natural language instruction for interaction"
+        }
+      }
+    }
+  ],
+  "resources": [
+    {
+      "name": "current_page",
+      "description": "Information about the currently loaded page",
+      "type": "text/html"
+    },
+    {
+      "name": "page_screenshot",
+      "description": "Screenshot of the current page",
+      "type": "image/png"
+    }
+  ]
+}</code></pre>
+                                    </div>
+                                </div>
+                                
+                                <div class="step">
+                                    <h4>3. Start MCP Server</h4>
+                                    <div class="code-block">
+                                        <div class="code-header">
+                                            <span class="code-title">Python</span>
+                                            <button class="copy-button">
+                                                <span class="copy-icon">📋</span>
+                                                <span class="copy-text">Copy</span>
+                                            </button>
+                                        </div>
+                                        <pre><code class="language-python">from browser_agent_mcp import MCPServer
+from browser_agent import BrowserAgent
+import asyncio
+
+async def start_mcp_server():
+    # Initialize Browser Agent
+    agent = BrowserAgent(
+        browser="chrome",
+        headless=True,
+        ai_provider="openai"
+    )
+    
+    # Create MCP server
+    server = MCPServer(
+        name="browser-agent-mcp",
+        version="1.0.0",
+        browser_agent=agent
+    )
+    
+    # Register tools
+    server.register_tool("navigate", agent.navigate)
+    server.register_tool("extract_data", agent.ai_extract)
+    server.register_tool("interact", agent.ai_interact)
+    
+    # Register resources
+    server.register_resource("current_page", agent.get_page_source)
+    server.register_resource("page_screenshot", agent.take_screenshot)
+    
+    # Start server
+    await server.start(host="localhost", port=8080)
+    print("MCP Server started on http://localhost:8080")
+
+if __name__ == "__main__":
+    asyncio.run(start_mcp_server())</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- MCP Usage -->
+                        <div id="mcp-usage" class="integration-section">
+                            <h3>🚀 MCP Usage</h3>
+                            <p>Use Browser Agent through MCP with AI assistants and other tools.</p>
+                            
+                            <div class="code-block">
+                                <div class="code-header">
+                                    <span class="code-title">MCP Client Example</span>
+                                    <button class="copy-button">
+                                        <span class="copy-icon">📋</span>
+                                        <span class="copy-text">Copy</span>
+                                    </button>
+                                </div>
+                                <pre><code class="language-python">from mcp_client import MCPClient
+import asyncio
+
+async def use_browser_agent_via_mcp():
+    # Connect to Browser Agent MCP server
+    client = MCPClient("http://localhost:8080")
+    await client.connect()
+    
+    # Discover available tools
+    tools = await client.list_tools()
+    print(f"Available tools: {[tool['name'] for tool in tools]}")
+    
+    # Use the navigate tool
+    result = await client.call_tool(
+        "navigate",
+        {"url": "https://example.com"}
+    )
+    print(f"Navigation result: {result}")
+    
+    # Extract data using AI
+    data = await client.call_tool(
+        "extract_data",
+        {"prompt": "Extract the main heading and all links from this page"}
+    )
+    print(f"Extracted data: {data}")
+    
+    # Interact with the page
+    interaction = await client.call_tool(
+        "interact",
+        {"instruction": "Click on the 'About' link if it exists"}
+    )
+    print(f"Interaction result: {interaction}")
+    
+    # Get page screenshot
+    screenshot = await client.get_resource("page_screenshot")
+    with open("page_screenshot.png", "wb") as f:
+        f.write(screenshot)
+    
+    await client.disconnect()
+
+if __name__ == "__main__":
+    asyncio.run(use_browser_agent_via_mcp())</code></pre>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Advanced Integrations -->
+                    <section id="advanced-integrations">
+                        <h2>🚀 Advanced Integrations</h2>
+                        <p>Explore advanced integration patterns and custom implementations.</p>
+                        
+                        <div class="advanced-grid">
+                            <div class="advanced-card">
+                                <h3>🔄 Multi-Agent Orchestration</h3>
+                                <p>Coordinate multiple Browser Agent instances for complex workflows.</p>
+                                <div class="code-block">
+                                    <div class="code-header">
+                                        <span class="code-title">Python</span>
+                                        <button class="copy-button">
+                                            <span class="copy-icon">📋</span>
+                                            <span class="copy-text">Copy</span>
+                                        </button>
+                                    </div>
+                                    <pre><code class="language-python">from browser_agent import BrowserAgent
+import asyncio
+
+class MultiAgentOrchestrator:
+    def __init__(self):
+        self.agents = {}
+        
+    async def create_agent(self, name, config):
+        agent = BrowserAgent(**config)
+        await agent.start()
+        self.agents[name] = agent
+        return agent
+    
+    async def parallel_execution(self, tasks):
+        results = await asyncio.gather(*[
+            self.execute_task(task) for task in tasks
+        ])
+        return results
+    
+    async def execute_task(self, task):
+        agent = self.agents[task['agent']]
+        return await agent.ai_interact(task['instruction'])
+
+# Usage
+orchestrator = MultiAgentOrchestrator()
+
+# Create specialized agents
+await orchestrator.create_agent('scraper', {
+    'browser': 'chrome',
+    'headless': True,
+    'ai_provider': 'openai'
+})
+
+await orchestrator.create_agent('tester', {
+    'browser': 'firefox',
+    'headless': False,
+    'ai_provider': 'claude'
+})
+
+# Execute parallel tasks
+tasks = [
+    {'agent': 'scraper', 'instruction': 'Scrape product data'},
+    {'agent': 'tester', 'instruction': 'Test checkout process'}
+]
+
+results = await orchestrator.parallel_execution(tasks)</code></pre>
+                                </div>
+                            </div>
+                            
+                            <div class="advanced-card">
+                                <h3>🧠 Custom AI Pipeline</h3>
+                                <p>Build custom AI processing pipelines with multiple models.</p>
+                                <div class="code-block">
+                                    <div class="code-header">
+                                        <span class="code-title">Python</span>
+                                        <button class="copy-button">
+                                            <span class="copy-icon">📋</span>
+                                            <span class="copy-text">Copy</span>
+                                        </button>
+                                    </div>
+                                    <pre><code class="language-python">class AIProcessingPipeline:
+    def __init__(self, agent):
+        self.agent = agent
+        self.models = {
+            'vision': 'gemini-pro-vision',
+            'reasoning': 'claude-3-sonnet',
+            'action': 'gpt-4'
+        }
+    
+    async def process_page(self, url):
+        await self.agent.navigate(url)
+        
+        # Step 1: Visual analysis
+        screenshot = await self.agent.take_screenshot()
+        visual_analysis = await self.agent.ai_extract(
+            "Analyze this screenshot and describe the page layout",
+            model=self.models['vision']
+        )
+        
+        # Step 2: Content reasoning
+        content_analysis = await self.agent.ai_extract(
+            f"Based on this visual analysis: {visual_analysis}, "
+            "reason about the best strategy to extract data",
+            model=self.models['reasoning']
+        )
+        
+        # Step 3: Execute actions
+        result = await self.agent.ai_interact(
+            f"Execute this strategy: {content_analysis}",
+            model=self.models['action']
+        )
+        
+        return {
+            'visual_analysis': visual_analysis,
+            'strategy': content_analysis,
+            'result': result
+        }</code></pre>
+                                </div>
+                            </div>
+                            
+                            <div class="advanced-card">
+                                <h3>📊 Real-time Monitoring</h3>
+                                <p>Implement real-time monitoring and alerting systems.</p>
+                                <div class="code-block">
+                                    <div class="code-header">
+                                        <span class="code-title">Python</span>
+                                        <button class="copy-button">
+                                            <span class="copy-icon">📋</span>
+                                            <span class="copy-text">Copy</span>
+                                        </button>
+                                    </div>
+                                    <pre><code class="language-python">import asyncio
+from datetime import datetime
+from browser_agent import BrowserAgent
+
+class RealTimeMonitor:
+    def __init__(self, targets, check_interval=300):
+        self.targets = targets
+        self.check_interval = check_interval
+        self.alerts = []
+        
+    async def start_monitoring(self):
+        while True:
+            for target in self.targets:
+                await self.check_target(target)
+            await asyncio.sleep(self.check_interval)
+    
+    async def check_target(self, target):
+        agent = BrowserAgent(headless=True)
+        try:
+            await agent.start()
+            await agent.navigate(target['url'])
+            
+            # Check for changes
+            current_data = await agent.ai_extract(
+                target['extraction_prompt']
+            )
+            
+            if self.has_significant_change(target, current_data):
+                await self.send_alert(target, current_data)
+                
+        finally:
+            await agent.close()
+    
+    def has_significant_change(self, target, current_data):
+        # Implement change detection logic
+        return True  # Simplified
+    
+    async def send_alert(self, target, data):
+        alert = {
+            'timestamp': datetime.now(),
+            'target': target['name'],
+            'data': data,
+            'url': target['url']
+        }
+        self.alerts.append(alert)
+        
+        # Send webhook notification
+        if target.get('webhook_url'):
+            await self.send_webhook(target['webhook_url'], alert)
+    
+    async def send_webhook(self, webhook_url, alert):
+        import aiohttp
+        async with aiohttp.ClientSession() as session:
+            await session.post(webhook_url, json=alert)
+
+# Usage
+monitor = RealTimeMonitor([
+    {
+        'name': 'Product Price',
+        'url': 'https://store.com/product/123',
+        'extraction_prompt': 'Extract current price and stock status',
+        'webhook_url': 'https://hooks.slack.com/services/...'
+    }
+])
+
+await monitor.start_monitoring()</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="integration-tips">
+                            <h3>💡 Integration Tips</h3>
+                            <div class="tips-grid">
+                                <div class="tip-card">
+                                    <h4>🔧 Performance Optimization</h4>
+                                    <ul>
+                                        <li>Use headless mode for production</li>
+                                        <li>Implement connection pooling</li>
+                                        <li>Cache frequently accessed data</li>
+                                        <li>Use parallel processing for multiple tasks</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="tip-card">
+                                    <h4>🛡️ Security Best Practices</h4>
+                                    <ul>
+                                        <li>Store API keys in environment variables</li>
+                                        <li>Use HTTPS for all communications</li>
+                                        <li>Implement rate limiting</li>
+                                        <li>Validate all input parameters</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="tip-card">
+                                    <h4>📊 Monitoring & Logging</h4>
+                                    <ul>
+                                        <li>Log all API calls and responses</li>
+                                        <li>Monitor resource usage</li>
+                                        <li>Set up health checks</li>
+                                        <li>Track performance metrics</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="tip-card">
+                                    <h4>🔄 Error Handling</h4>
+                                    <ul>
+                                        <li>Implement retry mechanisms</li>
+                                        <li>Handle network timeouts gracefully</li>
+                                        <li>Provide meaningful error messages</li>
+                                        <li>Set up alerting for failures</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Next Steps -->
+                    <section class="next-steps">
+                        <h2>🚀 Next Steps</h2>
+                        <div class="steps-grid">
+                            <a href="./api.html" class="step-card">
+                                <div class="step-icon">📚</div>
+                                <h3>API Reference</h3>
+                                <p>Explore the complete API documentation for advanced usage.</p>
+                            </a>
+                            
+                            <a href="./examples.html" class="step-card">
+                                <div class="step-icon">💡</div>
+                                <h3>More Examples</h3>
+                                <p>Check out practical examples and use cases.</p>
+                            </a>
+                            
+                            <a href="./troubleshooting.html" class="step-card">
+                                <div class="step-icon">🔧</div>
+                                <h3>Troubleshooting</h3>
+                                <p>Get help with common integration issues.</p>
+                            </a>
+                            
+                            <a href="https://github.com/AryanVBW/brouser-agent/discussions" target="_blank" rel="noopener" class="step-card">
+                                <div class="step-icon">💬</div>
+                                <h3>Community</h3>
+                                <p>Join the community discussions and get support.</p>
+                            </a>
+                        </div>
+                    </section>
+                </article>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Documentation</h3>
+                    <ul>
+                        <li><a href="../index.html">Overview</a></li>
+                        <li><a href="./quick-start.html">Quick Start</a></li>
+                        <li><a href="./features.html">Features</a></li>
+                        <li><a href="./api.html">API Reference</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Examples</h3>
+                    <ul>
+                        <li><a href="./examples.html">Code Examples</a></li>
+                        <li><a href="./integrations.html">Integrations</a></li>
+                        <li><a href="./troubleshooting.html">Troubleshooting</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Community</h3>
+                    <ul>
+                        <li><a href="https://github.com/AryanVBW/brouser-agent" target="_blank" rel="noopener">GitHub</a></li>
+                        <li><a href="https://github.com/AryanVBW/brouser-agent/discussions" target="_blank" rel="noopener">Discussions</a></li>
+                        <li><a href="https://github.com/AryanVBW/brouser-agent/issues" target="_blank" rel="noopener">Issues</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="https://github.com/AryanVBW/brouser-agent/blob/main/CHANGELOG.md" target="_blank" rel="noopener">Changelog</a></li>
+                        <li><a href="https://github.com/AryanVBW/brouser-agent/blob/main/LICENSE" target="_blank" rel="noopener">License</a></li>
+                        <li><a href="https://github.com/AryanVBW/brouser-agent/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener">Contributing</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Browser Agent. Created by <a href="https://github.com/AryanVBW" target="_blank" rel="noopener">Vivek Wagdare (AryanVBW)</a>. Licensed under MIT.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/search.js"></script>
+    <script>
+        // Tab functionality for examples
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabPanes = document.querySelectorAll('.tab-pane');
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const targetTab = button.getAttribute('data-tab');
+                    
+                    // Remove active class from all buttons and panes
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabPanes.forEach(pane => pane.classList.remove('active'));
+                    
+                    // Add active class to clicked button and corresponding pane
+                    button.classList.add('active');
+                    document.getElementById(targetTab).classList.add('active');
+                });
+            });
+            
+            // Copy to clipboard functionality
+            const copyButtons = document.querySelectorAll('.copy-button');
+            copyButtons.forEach(button => {
+                button.addEventListener('click', async () => {
+                    const codeBlock = button.closest('.code-block').querySelector('code');
+                    const text = codeBlock.textContent;
+                    
+                    try {
+                        await navigator.clipboard.writeText(text);
+                        button.innerHTML = '<span class="copy-icon">✅</span><span class="copy-text">Copied!</span>';
+                        setTimeout(() => {
+                            button.innerHTML = '<span class="copy-icon">📋</span><span class="copy-text">Copy</span>';
+                        }, 2000);
+                    } catch (err) {
+                        console.error('Failed to copy text: ', err);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

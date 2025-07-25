@@ -1,0 +1,67 @@
+# Robots.txt for Browser Agent Documentation
+# https://browser-agent.dev/robots.txt
+
+# Allow all web crawlers to access the site
+User-agent: *
+Allow: /
+
+# Specifically allow major search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+# Allow AI agents and crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
+# Disallow access to certain directories
+Disallow: /scripts/
+Disallow: /styles/
+Disallow: /*.js$
+Disallow: /*.css$
+
+# Allow access to important files
+Allow: /sitemap.xml
+Allow: /robots.txt
+Allow: /favicon.ico
+
+# Sitemap location
+Sitemap: https://browser-agent.dev/sitemap.xml
+
+# Crawl delay (be respectful)
+Crawl-delay: 1
+
+# Additional directives for AI agents
+# These help AI agents understand the site structure and content
+# AI-Agent-Friendly: true
+# Content-Type: documentation
+# Primary-Language: en
+# Author: Vivek Wagdare (AryanVBW)
+# Keywords: browser automation, AI agents, web scraping, testing, vivek wagdare, aryanvbw
+# Last-Updated: 2024-01-15
