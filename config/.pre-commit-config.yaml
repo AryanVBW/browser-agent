@@ -1,0 +1,312 @@
+# Pre-commit configuration for Browser Agent
+# Install with: pre-commit install
+# Run manually with: pre-commit run --all-files
+
+repos:
+  # Python code formatting
+  - repo: https://github.com/psf/black
+    rev: 23.12.1
+    hooks:
+      - id: black
+        language_version: python3
+        args: [--line-length=88]
+
+  # Import sorting
+  - repo: https://github.com/pycqa/isort
+    rev: 5.13.2
+    hooks:
+      - id: isort
+        args: [--profile=black, --line-length=88]
+
+  # Python linting
+  - repo: https://github.com/pycqa/flake8
+    rev: 7.0.0
+    hooks:
+      - id: flake8
+        args: [--max-line-length=88, --extend-ignore=E203,W503]
+        additional_dependencies:
+          - flake8-docstrings
+          - flake8-import-order
+          - flake8-bugbear
+
+  # Type checking
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.8.0
+    hooks:
+      - id: mypy
+        additional_dependencies: [types-all]
+        args: [--ignore-missing-imports, --no-strict-optional]
+
+  # Security linting
+  - repo: https://github.com/pycqa/bandit
+    rev: 1.7.5
+    hooks:
+      - id: bandit
+        args: [-r, --skip=B101,B601]
+        exclude: ^tests/
+
+  # General pre-commit hooks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      # File formatting
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: mixed-line-ending
+        args: [--fix=lf]
+      
+      # File validation
+      - id: check-yaml
+      - id: check-toml
+      - id: check-json
+      - id: check-xml
+      
+      # Python specific
+      - id: check-ast
+      - id: check-docstring-first
+      - id: debug-statements
+      - id: name-tests-test
+        args: [--pytest-test-first]
+      
+      # General checks
+      - id: check-added-large-files
+        args: [--maxkb=1000]
+      - id: check-case-conflict
+      - id: check-merge-conflict
+      - id: check-symlinks
+      - id: destroyed-symlinks
+      
+      # Security
+      - id: detect-private-key
+      - id: detect-aws-credentials
+        args: [--allow-missing-credentials]
+
+  # YAML formatting
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: v4.0.0-alpha.8
+    hooks:
+      - id: prettier
+        types: [yaml]
+        exclude: ^(.pre-commit-config.yaml|.github/)$
+
+  # Markdown formatting
+  - repo: https://github.com/igorshubovych/markdownlint-cli
+    rev: v0.38.0
+    hooks:
+      - id: markdownlint
+        args: [--fix]
+        exclude: ^(CHANGELOG.md)$
+
+  # Python dependency checking
+  - repo: https://github.com/Lucas-C/pre-commit-hooks-safety
+    rev: v1.3.2
+    hooks:
+      - id: python-safety-dependencies-check
+        args: [--ignore=70612]  # Ignore specific vulnerabilities if needed
+
+  # Dockerfile linting
+  - repo: https://github.com/hadolint/hadolint
+    rev: v2.12.0
+    hooks:
+      - id: hadolint
+        args: [--ignore, DL3008, --ignore, DL3009]
+
+  # Shell script linting
+  - repo: https://github.com/shellcheck-py/shellcheck-py
+    rev: v0.9.0.6
+    hooks:
+      - id: shellcheck
+        args: [-e, SC1091]
+
+  # Python upgrade syntax
+  - repo: https://github.com/asottile/pyupgrade
+    rev: v3.15.0
+    hooks:
+      - id: pyupgrade
+        args: [--py38-plus]
+
+  # Remove unused imports
+  - repo: https://github.com/pycqa/autoflake
+    rev: v2.2.1
+    hooks:
+      - id: autoflake
+        args:
+          - --in-place
+          - --remove-all-unused-imports
+          - --remove-unused-variables
+          - --remove-duplicate-keys
+          - --ignore-init-module-imports
+
+  # Check requirements.txt
+  - repo: https://github.com/Lucas-C/pre-commit-hooks-nodejs
+    rev: v1.1.2
+    hooks:
+      - id: dockerfile_lint
+        files: Dockerfile.*
+
+  # Local hooks for project-specific checks
+  - repo: local
+    hooks:
+      # Check for TODO/FIXME comments in production code
+      - id: check-todos
+        name: Check for TODO/FIXME in production code
+        entry: bash -c 'if grep -r "TODO\|FIXME" brouser_agent/ --exclude-dir=__pycache__ --exclude="*.pyc"; then echo "Found TODO/FIXME in production code"; exit 1; fi'
+        language: system
+        pass_filenames: false
+        
+      # Check for print statements in production code
+      - id: check-print-statements
+        name: Check for print statements in production code
+        entry: bash -c 'if grep -r "print(" brouser_agent/ --exclude-dir=__pycache__ --exclude="*.pyc" --exclude="*debug*" --exclude="*test*"; then echo "Found print statements in production code"; exit 1; fi'
+        language: system
+        pass_filenames: false
+        
+      # Check for hardcoded secrets
+      - id: check-secrets
+        name: Check for hardcoded secrets
+        entry: bash -c 'if grep -r -i "password\|secret\|key\|token" brouser_agent/ --include="*.py" | grep -v "# noqa" | grep -E "=\s*[\"\'][^\"\']" ; then echo "Potential hardcoded secrets found"; exit 1; fi'
+        language: system
+        pass_filenames: false
+        
+      # Validate Python imports
+      - id: validate-imports
+        name: Validate Python imports
+        entry: python -c "import ast, sys; [ast.parse(open(f).read()) for f in sys.argv[1:] if f.endswith('.py')]"
+        language: system
+        files: \.py$
+        
+      # Check for proper logging usage
+      - id: check-logging
+        name: Check for proper logging usage
+        entry: bash -c 'if grep -r "logging\." brouser_agent/ --include="*.py" | grep -v "logging_config" | grep -v "logger" | grep -v "# noqa"; then echo "Use logger instance instead of logging module directly"; exit 1; fi'
+        language: system
+        pass_filenames: false
+        
+      # Check for proper exception handling
+      - id: check-bare-except
+        name: Check for bare except clauses
+        entry: bash -c 'if grep -r "except:" brouser_agent/ --include="*.py"; then echo "Found bare except clauses"; exit 1; fi'
+        language: system
+        pass_filenames: false
+        
+      # Check for proper docstring format
+      - id: check-docstrings
+        name: Check for proper docstring format
+        entry: python -m pydocstyle brouser_agent/ --convention=google
+        language: system
+        pass_filenames: false
+        additional_dependencies: [pydocstyle]
+        
+      # Run tests before commit
+      - id: run-tests
+        name: Run unit tests
+        entry: python -m pytest tests/ -x --tb=short
+        language: system
+        pass_filenames: false
+        stages: [pre-push]
+        
+      # Check code complexity
+      - id: check-complexity
+        name: Check code complexity
+        entry: python -m radon cc brouser_agent/ --min B
+        language: system
+        pass_filenames: false
+        additional_dependencies: [radon]
+        
+      # Check for proper type hints
+      - id: check-type-hints
+        name: Check for type hints in new functions
+        entry: bash -c 'if git diff --cached --name-only | grep "\.py$" | xargs grep -l "def " | xargs grep "def " | grep -v "# type: ignore" | grep -v "->" | grep -v "__init__" | grep -v "test_"; then echo "New functions should have type hints"; exit 1; fi'
+        language: system
+        pass_filenames: false
+        
+      # Check for proper async/await usage
+      - id: check-async-usage
+        name: Check for proper async/await usage
+        entry: bash -c 'if grep -r "async def" brouser_agent/ --include="*.py" | grep -v "await" | head -5; then echo "Async functions should use await"; fi'
+        language: system
+        pass_filenames: false
+        
+      # Check for proper error messages
+      - id: check-error-messages
+        name: Check for descriptive error messages
+        entry: bash -c 'if grep -r "raise Exception(" brouser_agent/ --include="*.py"; then echo "Use specific exception types with descriptive messages"; exit 1; fi'
+        language: system
+        pass_filenames: false
+        
+      # Check for proper configuration usage
+      - id: check-config-usage
+        name: Check for proper configuration usage
+        entry: bash -c 'if grep -r "os\.environ" brouser_agent/ --include="*.py" | grep -v "config" | grep -v "# noqa"; then echo "Use configuration system instead of direct os.environ access"; exit 1; fi'
+        language: system
+        pass_filenames: false
+
+# Configuration for specific hooks
+ci:
+  autofix_commit_msg: |
+    [pre-commit.ci] auto fixes from pre-commit.com hooks
+    
+    for more information, see https://pre-commit.ci
+  autofix_prs: true
+  autoupdate_branch: ''
+  autoupdate_commit_msg: '[pre-commit.ci] pre-commit autoupdate'
+  autoupdate_schedule: weekly
+  skip: []
+  submodules: false
+
+# Exclude patterns
+exclude: |
+  (?x)^(
+      \.git/.*|
+      \.venv/.*|
+      venv/.*|
+      env/.*|
+      __pycache__/.*|
+      \.pytest_cache/.*|
+      \.mypy_cache/.*|
+      \.tox/.*|
+      build/.*|
+      dist/.*|
+      \.eggs/.*|
+      .*\.egg-info/.*|
+      node_modules/.*|
+      \.coverage.*|
+      htmlcov/.*|
+      \.DS_Store|
+      Thumbs\.db|
+      \.idea/.*|
+      \.vscode/.*|
+      temp/.*|
+      logs/.*|
+      screenshots/.*|
+      exports/.*|
+      cache/.*|
+      browser_profiles/.*|
+      test_.*\.png|
+      test_.*\.jpg|
+      test_.*\.jpeg|
+      test_.*\.gif|
+      test_.*\.pdf|
+      test_.*\.xlsx?|
+      test_.*\.docx?|
+      migrations/.*|
+      locale/.*|
+      static/.*|
+      media/.*
+  )$
+
+# Default language version
+default_language_version:
+  python: python3.8
+
+# Minimum pre-commit version
+minimum_pre_commit_version: 3.0.0
+
+# Fail fast - stop on first failure
+fail_fast: false
+
+# Default stages
+default_stages: [commit, push]
+
+# Repos to update
+repos_update_schedule: weekly

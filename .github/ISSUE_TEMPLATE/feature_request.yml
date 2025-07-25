@@ -1,0 +1,373 @@
+name: 🚀 Feature Request
+description: Suggest a new feature or enhancement
+title: "[Feature]: "
+labels: ["enhancement", "needs-triage"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to suggest a new feature! Please provide as much detail as possible to help us understand and evaluate your request.
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Pre-submission Checklist
+      description: Please confirm the following before submitting your feature request
+      options:
+        - label: I have searched existing issues to ensure this feature hasn't been requested before
+          required: true
+        - label: I have read the [documentation](https://browser-agent.readthedocs.io) and [roadmap](https://github.com/browser-agent/browser-agent/blob/main/ROADMAP.md)
+          required: true
+        - label: This feature aligns with the project's goals and scope
+          required: false
+        - label: I have considered if this could be implemented as a plugin
+          required: false
+
+  - type: dropdown
+    id: feature-type
+    attributes:
+      label: Feature Type
+      description: What type of feature are you requesting?
+      options:
+        - New Browser Automation Capability
+        - AI/ML Enhancement
+        - User Interface Improvement
+        - Performance Optimization
+        - Security Enhancement
+        - Developer Experience
+        - Integration/Plugin
+        - Documentation
+        - Testing/Quality Assurance
+        - Configuration/Settings
+        - Other (please specify in description)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: Component
+      description: Which component would this feature primarily affect?
+      options:
+        - Core Browser Engine
+        - AI Integration
+        - GUI Application
+        - Command Line Interface
+        - Web Interface
+        - Plugin System
+        - Configuration System
+        - Logging/Monitoring
+        - Documentation
+        - Testing Framework
+        - Build/Deployment
+        - Multiple Components
+        - Other (please specify in description)
+    validations:
+      required: true
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: Feature Summary
+      description: A clear and concise description of the feature you'd like to see
+      placeholder: Briefly describe the feature...
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem Statement
+      description: What problem does this feature solve? What pain point does it address?
+      placeholder: |
+        Describe the problem or limitation you're experiencing...
+        
+        For example:
+        - "Currently, it's difficult to..."
+        - "Users often struggle with..."
+        - "There's no way to..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed Solution
+      description: Describe the solution you'd like to see implemented
+      placeholder: |
+        Describe your proposed solution in detail...
+        
+        Consider including:
+        - How it would work
+        - User interface changes
+        - API changes
+        - Configuration options
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternative Solutions
+      description: Describe any alternative solutions or features you've considered
+      placeholder: |
+        What other approaches could solve this problem?
+        
+        For example:
+        - "Another option would be to..."
+        - "I also considered..."
+        - "A simpler approach might be..."
+
+  - type: textarea
+    id: use-cases
+    attributes:
+      label: Use Cases
+      description: Provide specific use cases where this feature would be valuable
+      placeholder: |
+        Describe specific scenarios where this feature would be useful:
+        
+        1. Use case 1: ...
+        2. Use case 2: ...
+        3. Use case 3: ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: user-stories
+    attributes:
+      label: User Stories
+      description: Write user stories that describe how different users would interact with this feature
+      placeholder: |
+        As a [type of user], I want [goal] so that [benefit].
+        
+        Examples:
+        - As a web scraper, I want to extract data from dynamic content so that I can automate data collection.
+        - As a QA engineer, I want to record test scenarios so that I can replay them later.
+        - As a developer, I want better error messages so that I can debug issues faster.
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: How important is this feature to you?
+      options:
+        - Critical (blocking my work)
+        - High (significantly improves my workflow)
+        - Medium (nice to have)
+        - Low (minor improvement)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: urgency
+    attributes:
+      label: Urgency
+      description: How urgently do you need this feature?
+      options:
+        - Immediate (needed within days)
+        - Soon (needed within weeks)
+        - Eventually (needed within months)
+        - Someday (no specific timeline)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: complexity
+    attributes:
+      label: Estimated Complexity
+      description: How complex do you think this feature would be to implement?
+      options:
+        - Simple (small change, few lines of code)
+        - Medium (moderate change, some new code)
+        - Complex (significant change, new architecture)
+        - Very Complex (major feature, extensive changes)
+        - Unknown (not sure about complexity)
+    validations:
+      required: false
+
+  - type: textarea
+    id: mockups
+    attributes:
+      label: Mockups/Wireframes
+      description: If this involves UI changes, provide mockups, wireframes, or sketches
+      placeholder: |
+        Drag and drop images here, or describe the UI changes...
+        
+        You can also link to external mockup tools like:
+        - Figma
+        - Sketch
+        - Adobe XD
+        - Hand-drawn sketches
+
+  - type: textarea
+    id: api-example
+    attributes:
+      label: API Example
+      description: If this involves API changes, provide example code showing how it would be used
+      placeholder: |
+        # Example of how the new API would be used
+        from brouser_agent import BrowserAgent
+        
+        agent = BrowserAgent()
+        # Your example code here...
+      render: python
+
+  - type: textarea
+    id: config-example
+    attributes:
+      label: Configuration Example
+      description: If this involves configuration changes, provide example configuration
+      placeholder: |
+        # Example configuration
+        new_feature:
+          enabled: true
+          option1: value1
+          option2: value2
+      render: yaml
+
+  - type: dropdown
+    id: breaking-changes
+    attributes:
+      label: Breaking Changes
+      description: Would this feature require breaking changes to existing APIs?
+      options:
+        - "No breaking changes"
+        - "Minor breaking changes (with migration path)"
+        - "Major breaking changes (significant migration required)"
+        - "Not sure"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: backward-compatibility
+    attributes:
+      label: Backward Compatibility
+      description: How important is backward compatibility for this feature?
+      options:
+        - "Must maintain full backward compatibility"
+        - "Some breaking changes acceptable with deprecation warnings"
+        - "Breaking changes acceptable for major version"
+        - "Not applicable"
+    validations:
+      required: true
+
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Dependencies
+      description: Would this feature require new dependencies or external services?
+      placeholder: |
+        List any new dependencies this feature might require:
+        
+        - New Python packages
+        - External services
+        - System requirements
+        - Browser extensions
+        - etc.
+
+  - type: textarea
+    id: testing
+    attributes:
+      label: Testing Considerations
+      description: How should this feature be tested?
+      placeholder: |
+        Describe testing requirements:
+        
+        - Unit tests needed
+        - Integration tests
+        - End-to-end tests
+        - Performance tests
+        - Security tests
+        - Manual testing scenarios
+
+  - type: textarea
+    id: documentation
+    attributes:
+      label: Documentation Requirements
+      description: What documentation would be needed for this feature?
+      placeholder: |
+        Documentation that would need to be created or updated:
+        
+        - User guide sections
+        - API documentation
+        - Configuration reference
+        - Examples and tutorials
+        - Migration guides
+
+  - type: dropdown
+    id: target-users
+    attributes:
+      label: Target Users
+      description: Who would primarily benefit from this feature?
+      options:
+        - End Users (GUI/CLI users)
+        - Developers (API users)
+        - Plugin Developers
+        - System Administrators
+        - QA Engineers
+        - Data Scientists
+        - All Users
+        - Other (please specify in additional context)
+    validations:
+      required: true
+
+  - type: textarea
+    id: research
+    attributes:
+      label: Research
+      description: Have you researched how other tools handle this? Include links to relevant resources
+      placeholder: |
+        Links to similar features in other tools:
+        
+        - Tool 1: [link and description]
+        - Tool 2: [link and description]
+        - Research papers: [links]
+        - Standards/specifications: [links]
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Add any other context, screenshots, or examples about the feature request
+      placeholder: |
+        Any additional information that might be helpful:
+        
+        - Related issues or discussions
+        - External resources
+        - Community feedback
+        - Business justification
+
+  - type: checkboxes
+    id: contribution
+    attributes:
+      label: Contribution
+      description: Would you like to contribute to implementing this feature?
+      options:
+        - label: I would like to work on implementing this feature
+          required: false
+        - label: I can help with design and planning
+          required: false
+        - label: I can provide testing and feedback
+          required: false
+        - label: I can help with documentation
+          required: false
+        - label: I can provide funding or sponsorship
+          required: false
+
+  - type: checkboxes
+    id: community
+    attributes:
+      label: Community Impact
+      description: How do you think this feature would impact the community?
+      options:
+        - label: This would benefit many users
+          required: false
+        - label: This addresses a common pain point
+          required: false
+        - label: This would attract new users to the project
+          required: false
+        - label: This would improve developer experience
+          required: false
+        - label: This would enhance project reputation
+          required: false

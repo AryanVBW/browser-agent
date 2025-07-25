@@ -1,0 +1,425 @@
+# Docker Compose configuration for Browser Agent
+# Provides multiple service configurations for different use cases
+
+version: '3.8'
+
+services:
+  # Main Browser Agent application
+  browser-agent:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+      args:
+        BUILD_DATE: ${BUILD_DATE:-$(date -u +'%Y-%m-%dT%H:%M:%SZ')}
+        VERSION: ${VERSION:-latest}
+        VCS_REF: ${VCS_REF:-$(git rev-parse --short HEAD)}
+    image: browser-agent:${VERSION:-latest}
+    container_name: browser-agent-app
+    restart: unless-stopped
+    environment:
+      # Application settings
+      - BROWSER_AGENT_ENV=production
+      - BROWSER_AGENT_LOG_LEVEL=${LOG_LEVEL:-INFO}
+      - BROWSER_AGENT_DEBUG=${DEBUG:-false}
+      - BROWSER_AGENT_HEADLESS=${HEADLESS:-true}
+      
+      # Browser settings
+      - BROWSER_AGENT_DEFAULT_BROWSER=${DEFAULT_BROWSER:-chrome}
+      - BROWSER_AGENT_TIMEOUT=${TIMEOUT:-30}
+      - BROWSER_AGENT_MAX_WORKERS=${MAX_WORKERS:-4}
+      
+      # Feature flags
+      - BROWSER_AGENT_ENABLE_LOGGING=true
+      - BROWSER_AGENT_ENABLE_SCREENSHOTS=true
+      - BROWSER_AGENT_ENABLE_EXPORTS=true
+      
+      # AI Provider settings (set via .env file)
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+      
+      # Display settings
+      - DISPLAY=:99
+      - XVFB_RESOLUTION=${XVFB_RESOLUTION:-1920x1080x24}
+    ports:
+      - "${APP_PORT:-8080}:8080"  # Application port
+      - "${VNC_PORT:-5900}:5900"  # VNC port for remote access
+      - "${WEB_VNC_PORT:-6080}:6080"  # Web VNC port
+    volumes:
+      # Persistent data
+      - browser-agent-data:/app/data
+      - browser-agent-logs:/app/logs
+      - browser-agent-screenshots:/app/screenshots
+      - browser-agent-exports:/app/exports
+      - browser-agent-cache:/app/cache
+      - browser-agent-profiles:/app/browser_profiles
+      
+      # Configuration (optional)
+      - ./config:/app/config:ro
+      
+      # Shared memory for browsers
+      - /dev/shm:/dev/shm
+    networks:
+      - browser-agent-network
+    healthcheck:
+      test: ["/healthcheck.sh"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+    security_opt:
+      - seccomp:unconfined  # Required for Chrome
+    cap_add:
+      - SYS_ADMIN  # Required for Chrome sandbox
+    depends_on:
+      - redis
+      - postgres
+
+  # Development version with hot reload
+  browser-agent-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    image: browser-agent:dev
+    container_name: browser-agent-dev
+    environment:
+      - BROWSER_AGENT_ENV=development
+      - BROWSER_AGENT_LOG_LEVEL=DEBUG
+      - BROWSER_AGENT_DEBUG=true
+      - BROWSER_AGENT_HEADLESS=false
+      - DISPLAY=:99
+    ports:
+      - "8081:8080"
+      - "5901:5900"
+      - "6081:6080"
+    volumes:
+      # Mount source code for development
+      - .:/app
+      - browser-agent-dev-data:/app/data
+      - browser-agent-dev-logs:/app/logs
+      - /dev/shm:/dev/shm
+    networks:
+      - browser-agent-network
+    profiles:
+      - development
+    command: ["development"]
+
+  # Testing service
+  browser-agent-test:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: testing
+    image: browser-agent:test
+    container_name: browser-agent-test
+    environment:
+      - BROWSER_AGENT_ENV=testing
+      - BROWSER_AGENT_LOG_LEVEL=DEBUG
+      - PYTHONPATH=/app
+    volumes:
+      - .:/app
+      - browser-agent-test-data:/app/data
+      - /dev/shm:/dev/shm
+    networks:
+      - browser-agent-network
+    profiles:
+      - testing
+    command: ["pytest", "-v", "--cov=brouser_agent"]
+
+  # Redis for caching and session storage
+  redis:
+    image: redis:7-alpine
+    container_name: browser-agent-redis
+    restart: unless-stopped
+    ports:
+      - "${REDIS_PORT:-6379}:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - browser-agent-network
+    command: redis-server --appendonly yes --maxmemory 256mb --maxmemory-policy allkeys-lru
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  # PostgreSQL for persistent data storage
+  postgres:
+    image: postgres:15-alpine
+    container_name: browser-agent-postgres
+    restart: unless-stopped
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB:-browser_agent}
+      - POSTGRES_USER=${POSTGRES_USER:-browser_agent}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-browser_agent_password}
+      - POSTGRES_INITDB_ARGS=--encoding=UTF-8 --lc-collate=C --lc-ctype=C
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./docker/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    networks:
+      - browser-agent-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-browser_agent}"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  # Nginx reverse proxy
+  nginx:
+    image: nginx:alpine
+    container_name: browser-agent-nginx
+    restart: unless-stopped
+    ports:
+      - "${NGINX_PORT:-80}:80"
+      - "${NGINX_SSL_PORT:-443}:443"
+    volumes:
+      - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./docker/nginx/ssl:/etc/nginx/ssl:ro
+      - nginx-logs:/var/log/nginx
+    networks:
+      - browser-agent-network
+    depends_on:
+      - browser-agent
+    profiles:
+      - production
+      - nginx
+
+  # Monitoring with Prometheus
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: browser-agent-prometheus
+    restart: unless-stopped
+    ports:
+      - "${PROMETHEUS_PORT:-9090}:9090"
+    volumes:
+      - ./docker/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus-data:/prometheus
+    networks:
+      - browser-agent-network
+    profiles:
+      - monitoring
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--storage.tsdb.retention.time=200h'
+      - '--web.enable-lifecycle'
+
+  # Grafana for visualization
+  grafana:
+    image: grafana/grafana:latest
+    container_name: browser-agent-grafana
+    restart: unless-stopped
+    ports:
+      - "${GRAFANA_PORT:-3000}:3000"
+    environment:
+      - GF_SECURITY_ADMIN_USER=${GRAFANA_USER:-admin}
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PASSWORD:-admin}
+      - GF_USERS_ALLOW_SIGN_UP=false
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - ./docker/grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./docker/grafana/dashboards:/var/lib/grafana/dashboards:ro
+    networks:
+      - browser-agent-network
+    depends_on:
+      - prometheus
+    profiles:
+      - monitoring
+
+  # Log aggregation with ELK stack
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.8.0
+    container_name: browser-agent-elasticsearch
+    restart: unless-stopped
+    environment:
+      - discovery.type=single-node
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+      - xpack.security.enabled=false
+    ports:
+      - "${ELASTICSEARCH_PORT:-9200}:9200"
+    volumes:
+      - elasticsearch-data:/usr/share/elasticsearch/data
+    networks:
+      - browser-agent-network
+    profiles:
+      - logging
+
+  logstash:
+    image: docker.elastic.co/logstash/logstash:8.8.0
+    container_name: browser-agent-logstash
+    restart: unless-stopped
+    volumes:
+      - ./docker/logstash/pipeline:/usr/share/logstash/pipeline:ro
+      - ./docker/logstash/config:/usr/share/logstash/config:ro
+    ports:
+      - "${LOGSTASH_PORT:-5044}:5044"
+    networks:
+      - browser-agent-network
+    depends_on:
+      - elasticsearch
+    profiles:
+      - logging
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:8.8.0
+    container_name: browser-agent-kibana
+    restart: unless-stopped
+    ports:
+      - "${KIBANA_PORT:-5601}:5601"
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+    networks:
+      - browser-agent-network
+    depends_on:
+      - elasticsearch
+    profiles:
+      - logging
+
+  # File browser for managing exports and screenshots
+  filebrowser:
+    image: filebrowser/filebrowser:latest
+    container_name: browser-agent-filebrowser
+    restart: unless-stopped
+    ports:
+      - "${FILEBROWSER_PORT:-8082}:80"
+    volumes:
+      - browser-agent-screenshots:/srv/screenshots
+      - browser-agent-exports:/srv/exports
+      - browser-agent-logs:/srv/logs
+      - ./docker/filebrowser/filebrowser.json:/.filebrowser.json:ro
+    networks:
+      - browser-agent-network
+    profiles:
+      - utilities
+
+  # Backup service
+  backup:
+    image: alpine:latest
+    container_name: browser-agent-backup
+    restart: "no"
+    volumes:
+      - browser-agent-data:/data/app:ro
+      - browser-agent-logs:/data/logs:ro
+      - browser-agent-screenshots:/data/screenshots:ro
+      - browser-agent-exports:/data/exports:ro
+      - postgres-data:/data/postgres:ro
+      - redis-data:/data/redis:ro
+      - ./backups:/backups
+      - ./docker/backup/backup.sh:/backup.sh:ro
+    networks:
+      - browser-agent-network
+    profiles:
+      - backup
+    command: ["/backup.sh"]
+
+# Named volumes for persistent data
+volumes:
+  # Application data
+  browser-agent-data:
+    driver: local
+  browser-agent-logs:
+    driver: local
+  browser-agent-screenshots:
+    driver: local
+  browser-agent-exports:
+    driver: local
+  browser-agent-cache:
+    driver: local
+  browser-agent-profiles:
+    driver: local
+  
+  # Development data
+  browser-agent-dev-data:
+    driver: local
+  browser-agent-dev-logs:
+    driver: local
+  browser-agent-test-data:
+    driver: local
+  
+  # Database data
+  postgres-data:
+    driver: local
+  redis-data:
+    driver: local
+  
+  # Monitoring data
+  prometheus-data:
+    driver: local
+  grafana-data:
+    driver: local
+  
+  # Logging data
+  elasticsearch-data:
+    driver: local
+  
+  # Web server logs
+  nginx-logs:
+    driver: local
+
+# Networks
+networks:
+  browser-agent-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+
+# Extension fields for reusability
+x-common-variables: &common-variables
+  BROWSER_AGENT_CONFIG_DIR: /app/config
+  BROWSER_AGENT_DATA_DIR: /app/data
+  BROWSER_AGENT_LOG_DIR: /app/logs
+  BROWSER_AGENT_CACHE_DIR: /app/cache
+  BROWSER_AGENT_TEMP_DIR: /app/temp
+  BROWSER_AGENT_SCREENSHOTS_DIR: /app/screenshots
+  BROWSER_AGENT_EXPORTS_DIR: /app/exports
+  BROWSER_AGENT_BROWSER_PROFILES_DIR: /app/browser_profiles
+
+x-common-volumes: &common-volumes
+  - /dev/shm:/dev/shm
+  - browser-agent-data:/app/data
+  - browser-agent-logs:/app/logs
+  - browser-agent-cache:/app/cache
+
+x-common-security: &common-security
+  security_opt:
+    - seccomp:unconfined
+  cap_add:
+    - SYS_ADMIN
+
+# Override configurations for different environments
+# Use with: docker-compose -f docker-compose.yml -f docker-compose.override.yml up
+
+# Development override example:
+# Create docker-compose.override.yml with:
+# version: '3.8'
+# services:
+#   browser-agent:
+#     environment:
+#       - BROWSER_AGENT_ENV=development
+#       - BROWSER_AGENT_DEBUG=true
+#     volumes:
+#       - .:/app
+
+# Production override example:
+# Create docker-compose.prod.yml with:
+# version: '3.8'
+# services:
+#   browser-agent:
+#     deploy:
+#       replicas: 3
+#       resources:
+#         limits:
+#           cpus: '2'
+#           memory: 2G
+#         reservations:
+#           cpus: '1'
+#           memory: 1G

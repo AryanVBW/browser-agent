@@ -1,0 +1,167 @@
+{
+  "servers": [
+    {
+      "name": "n8n-mcp",
+      "command": "npx",
+      "args": ["n8n-mcp"],
+      "env": {
+        "MCP_MODE": "stdio",
+        "LOG_LEVEL": "error",
+        "DISABLE_CONSOLE_OUTPUT": "true",
+        "N8N_API_URL": "",
+        "N8N_API_KEY": ""
+      },
+      "description": "A MCP for Claude Desktop / Claude Code / Windsurf / Cursor to build n8n workflows for you. Provides comprehensive access to n8n node documentation, properties, and operations.",
+      "category": "automation",
+      "author": "czlonkowski",
+      "version": "1.0.0",
+      "homepage": "https://github.com/czlonkowski/n8n-mcp",
+      "repository": "https://github.com/czlonkowski/n8n-mcp",
+      "license": "MIT",
+      "tags": ["n8n", "workflow", "automation", "nodes", "documentation"]
+    },
+    {
+      "name": "cursor-talk-to-figma-mcp",
+      "command": "bunx",
+      "args": ["cursor-talk-to-figma-mcp@latest"],
+      "env": {
+        "FIGMA_ACCESS_TOKEN": "",
+        "WEBSOCKET_URL": "ws://localhost:3001"
+      },
+      "description": "Model Context Protocol (MCP) integration between Cursor AI and Figma, allowing communication with Figma for reading designs and modifying them programmatically.",
+      "category": "design",
+      "author": "sonnylazuardi",
+      "version": "1.0.0",
+      "homepage": "https://github.com/sonnylazuardi/cursor-talk-to-figma-mcp",
+      "repository": "https://github.com/sonnylazuardi/cursor-talk-to-figma-mcp",
+      "license": "MIT",
+      "tags": ["figma", "design", "ui", "prototyping", "automation"]
+    },
+    {
+      "name": "brouser-agent-custom-mcp",
+      "command": "python",
+      "args": ["/Users/vivek-w/Desktop/brouser-agent/mcp_custom_server.py"],
+      "env": {
+        "BROUSER_AGENT_API_KEY": "",
+        "CUSTOM_MCP_PORT": "8080",
+        "LOG_LEVEL": "INFO"
+      },
+      "description": "Custom MCP server for Browser Agent with enhanced web automation, AI processing, and task management capabilities.",
+      "category": "automation",
+      "author": "Browser Agent Team",
+      "version": "1.0.0",
+      "homepage": "https://github.com/AryanVBW/brouser-agent",
+      "repository": "https://github.com/AryanVBW/brouser-agent",
+      "license": "MIT",
+      "tags": ["browser", "automation", "ai", "web", "custom", "tasks"]
+    },
+    {
+      "name": "filesystem",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/tmp"],
+      "env": {},
+      "description": "File system operations - read, write, create, delete files and directories",
+      "category": "system",
+      "author": "Anthropic",
+      "version": "1.0.0",
+      "homepage": "https://github.com/modelcontextprotocol/servers",
+      "repository": "https://github.com/modelcontextprotocol/servers",
+      "license": "MIT",
+      "tags": ["filesystem", "files", "directories"]
+    },
+    {
+      "name": "brave-search",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-brave-search"],
+      "env": {
+        "BRAVE_API_KEY": ""
+      },
+      "description": "Web search using Brave Search API",
+      "category": "web",
+      "author": "Anthropic",
+      "version": "1.0.0",
+      "homepage": "https://github.com/modelcontextprotocol/servers",
+      "repository": "https://github.com/modelcontextprotocol/servers",
+      "license": "MIT",
+      "tags": ["search", "web", "brave"]
+    },
+    {
+      "name": "github",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": ""
+      },
+      "description": "GitHub repository operations - search, read files, create issues",
+      "category": "development",
+      "author": "Anthropic",
+      "version": "1.0.0",
+      "homepage": "https://github.com/modelcontextprotocol/servers",
+      "repository": "https://github.com/modelcontextprotocol/servers",
+      "license": "MIT",
+      "tags": ["github", "git", "development"]
+    },
+    {
+      "name": "memory",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-memory"],
+      "env": {},
+      "description": "Persistent memory for conversations and context retention",
+      "category": "ai",
+      "author": "Anthropic",
+      "version": "1.0.0",
+      "homepage": "https://github.com/modelcontextprotocol/servers",
+      "repository": "https://github.com/modelcontextprotocol/servers",
+      "license": "MIT",
+      "tags": ["memory", "persistence", "ai", "context"]
+    }
+  ],
+  "claude_desktop_config": {
+    "mcpServers": {
+      "n8n-mcp": {
+        "command": "npx",
+        "args": ["n8n-mcp"],
+        "env": {
+          "MCP_MODE": "stdio",
+          "LOG_LEVEL": "error",
+          "DISABLE_CONSOLE_OUTPUT": "true"
+        }
+      },
+      "cursor-talk-to-figma-mcp": {
+        "command": "bunx",
+        "args": ["cursor-talk-to-figma-mcp@latest"]
+      },
+      "brouser-agent-custom-mcp": {
+        "command": "python",
+        "args": ["/Users/vivek-w/Desktop/brouser-agent/mcp_custom_server.py"],
+        "env": {
+          "BROUSER_AGENT_API_KEY": "your-api-key-here",
+          "CUSTOM_MCP_PORT": "8080",
+          "LOG_LEVEL": "INFO"
+        }
+      },
+      "filesystem": {
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-filesystem", "/tmp"]
+      },
+      "brave-search": {
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-brave-search"],
+        "env": {
+          "BRAVE_API_KEY": "your-brave-api-key"
+        }
+      },
+      "github": {
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-github"],
+        "env": {
+          "GITHUB_PERSONAL_ACCESS_TOKEN": "your-github-token"
+        }
+      },
+      "memory": {
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-memory"]
+      }
+    }
+  }
+}

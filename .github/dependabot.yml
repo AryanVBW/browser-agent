@@ -1,0 +1,236 @@
+# Dependabot configuration for automated dependency updates
+# Keeps dependencies secure and up-to-date across multiple ecosystems
+
+version: 2
+updates:
+  # Python dependencies
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "UTC"
+    open-pull-requests-limit: 10
+    target-branch: "develop"
+    reviewers:
+      - "browser-agent/maintainers"
+    assignees:
+      - "browser-agent/maintainers"
+    labels:
+      - "dependencies"
+      - "python"
+      - "automated"
+    commit-message:
+      prefix: "deps"
+      prefix-development: "deps-dev"
+      include: "scope"
+    rebase-strategy: "auto"
+    allow:
+      - dependency-type: "direct"
+      - dependency-type: "indirect"
+    ignore:
+      # Ignore major version updates for stable dependencies
+      - dependency-name: "selenium"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "playwright"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "pydantic"
+        update-types: ["version-update:semver-major"]
+      # Ignore specific versions with known issues
+      - dependency-name: "openai"
+        versions: ["1.0.0", "1.1.0"]
+    groups:
+      # Group related dependencies together
+      testing:
+        patterns:
+          - "pytest*"
+          - "coverage*"
+          - "mock*"
+          - "factory-boy"
+          - "faker"
+      linting:
+        patterns:
+          - "black"
+          - "isort"
+          - "flake8*"
+          - "pylint"
+          - "mypy"
+          - "bandit"
+      ai-providers:
+        patterns:
+          - "openai"
+          - "anthropic"
+          - "google-generativeai"
+          - "cohere"
+          - "transformers"
+      web-frameworks:
+        patterns:
+          - "fastapi"
+          - "uvicorn"
+          - "starlette"
+          - "websockets"
+      database:
+        patterns:
+          - "sqlalchemy"
+          - "alembic"
+          - "asyncpg"
+          - "redis"
+          - "motor"
+      cloud:
+        patterns:
+          - "boto3"
+          - "azure-*"
+          - "google-cloud-*"
+          - "kubernetes"
+      monitoring:
+        patterns:
+          - "prometheus-*"
+          - "opentelemetry-*"
+          - "sentry-sdk"
+
+  # GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "tuesday"
+      time: "10:00"
+      timezone: "UTC"
+    open-pull-requests-limit: 5
+    target-branch: "develop"
+    reviewers:
+      - "browser-agent/maintainers"
+    assignees:
+      - "browser-agent/maintainers"
+    labels:
+      - "dependencies"
+      - "github-actions"
+      - "automated"
+    commit-message:
+      prefix: "ci"
+      include: "scope"
+    rebase-strategy: "auto"
+    groups:
+      actions:
+        patterns:
+          - "actions/*"
+          - "github/*"
+
+  # Docker dependencies
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "wednesday"
+      time: "11:00"
+      timezone: "UTC"
+    open-pull-requests-limit: 3
+    target-branch: "develop"
+    reviewers:
+      - "browser-agent/maintainers"
+    assignees:
+      - "browser-agent/maintainers"
+    labels:
+      - "dependencies"
+      - "docker"
+      - "automated"
+    commit-message:
+      prefix: "docker"
+      include: "scope"
+    rebase-strategy: "auto"
+    ignore:
+      # Pin base images to specific versions for stability
+      - dependency-name: "python"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "node"
+        update-types: ["version-update:semver-major"]
+
+  # NPM dependencies (if any JavaScript/Node.js components)
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "thursday"
+      time: "12:00"
+      timezone: "UTC"
+    open-pull-requests-limit: 5
+    target-branch: "develop"
+    reviewers:
+      - "browser-agent/maintainers"
+    assignees:
+      - "browser-agent/maintainers"
+    labels:
+      - "dependencies"
+      - "javascript"
+      - "automated"
+    commit-message:
+      prefix: "deps"
+      prefix-development: "deps-dev"
+      include: "scope"
+    rebase-strategy: "auto"
+    groups:
+      dev-dependencies:
+        dependency-type: "development"
+        patterns:
+          - "@types/*"
+          - "eslint*"
+          - "prettier"
+          - "typescript"
+      build-tools:
+        patterns:
+          - "webpack*"
+          - "babel*"
+          - "rollup*"
+          - "vite*"
+
+  # Terraform dependencies (if using Infrastructure as Code)
+  - package-ecosystem: "terraform"
+    directory: "/terraform"
+    schedule:
+      interval: "weekly"
+      day: "friday"
+      time: "13:00"
+      timezone: "UTC"
+    open-pull-requests-limit: 3
+    target-branch: "develop"
+    reviewers:
+      - "browser-agent/maintainers"
+    assignees:
+      - "browser-agent/maintainers"
+    labels:
+      - "dependencies"
+      - "terraform"
+      - "infrastructure"
+      - "automated"
+    commit-message:
+      prefix: "infra"
+      include: "scope"
+    rebase-strategy: "auto"
+
+  # Kubernetes manifests (if using Kubernetes)
+  - package-ecosystem: "gitsubmodule"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+      day: "1"
+      time: "14:00"
+      timezone: "UTC"
+    open-pull-requests-limit: 2
+    target-branch: "develop"
+    reviewers:
+      - "browser-agent/maintainers"
+    assignees:
+      - "browser-agent/maintainers"
+    labels:
+      - "dependencies"
+      - "submodules"
+      - "automated"
+    commit-message:
+      prefix: "deps"
+      include: "scope"
+    rebase-strategy: "auto"
+
+# Additional configuration for security updates
+# Dependabot will automatically create PRs for security vulnerabilities
+# regardless of the schedule above

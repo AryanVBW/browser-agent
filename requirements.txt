@@ -1,19 +1,35 @@
+# Core dependencies
 selenium>=4.15.0
 webdriver-manager>=4.0.0
 playwright>=1.40.0
 beautifulsoup4>=4.12.0
 requests>=2.31.0
+
+# AI/LLM providers
 openai>=1.3.0
+anthropic>=0.7.0
+google-generativeai>=0.3.0
+
+# Configuration and utilities
 python-dotenv>=1.0.0
+appdirs>=1.4.4
 schedule>=1.2.0
 psutil>=5.9.0
 colorama>=0.4.0
 pydantic>=2.5.0
 typing-extensions>=4.8.0
-pillow>=10.0.0
+
+# GUI and imaging
 customtkinter>=5.2.0
-google-generativeai>=0.3.0
-anthropic>=0.7.0
-aiofiles>=23.0.0
+pillow>=10.0.0
 pyautogui>=0.9.54
 opencv-python>=4.8.0
+
+# Async and file handling
+aiofiles>=23.0.0
+aiohttp>=3.9.0
+
+# MCP (Model Context Protocol) dependencies
+mcp>=1.0.0
+jsonrpc-requests>=0.4.0
+websockets>=12.0

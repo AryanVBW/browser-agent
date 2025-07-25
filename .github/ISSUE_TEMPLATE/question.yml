@@ -1,0 +1,372 @@
+name: ❓ Question
+description: Ask a question or get help
+title: "[Question]: "
+labels: ["question", "needs-triage"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reaching out! We're here to help answer your questions about Browser Agent.
+        
+        **Before submitting:** Please check if your question has already been answered in:
+        - [Documentation](https://browser-agent.readthedocs.io)
+        - [FAQ](https://browser-agent.readthedocs.io/en/latest/faq.html)
+        - [Existing Issues](https://github.com/browser-agent/browser-agent/issues)
+        - [Discussions](https://github.com/browser-agent/browser-agent/discussions)
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Pre-submission Checklist
+      description: Please confirm the following before asking your question
+      options:
+        - label: I have searched existing issues and discussions
+          required: true
+        - label: I have read the relevant documentation
+          required: true
+        - label: This is not a bug report (use the bug report template instead)
+          required: true
+        - label: This is not a feature request (use the feature request template instead)
+          required: true
+
+  - type: dropdown
+    id: question-type
+    attributes:
+      label: Question Type
+      description: What type of question are you asking?
+      options:
+        - How to use a feature
+        - Configuration help
+        - Installation/Setup
+        - Best practices
+        - Performance optimization
+        - Troubleshooting
+        - Integration guidance
+        - API usage
+        - Plugin development
+        - Architecture/Design
+        - Comparison with other tools
+        - General usage
+        - Other (please specify in question)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: experience-level
+    attributes:
+      label: Experience Level
+      description: What's your experience level with browser automation?
+      options:
+        - Beginner (new to browser automation)
+        - Intermediate (some experience)
+        - Advanced (experienced user)
+        - Expert (very experienced)
+    validations:
+      required: true
+
+  - type: textarea
+    id: question
+    attributes:
+      label: Your Question
+      description: Ask your question clearly and provide as much context as possible
+      placeholder: |
+        Please describe your question in detail:
+        
+        - What are you trying to accomplish?
+        - What specific help do you need?
+        - What have you tried so far?
+        - What results are you expecting?
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Provide context about your use case and environment
+      placeholder: |
+        Help us understand your situation:
+        
+        - What is your overall goal?
+        - What type of website/application are you working with?
+        - What constraints or requirements do you have?
+        - Are there any specific challenges you're facing?
+    validations:
+      required: true
+
+  - type: textarea
+    id: what-tried
+    attributes:
+      label: What You've Tried
+      description: Describe what you've already attempted
+      placeholder: |
+        What have you tried so far?
+        
+        - Code examples you've tested
+        - Documentation you've read
+        - Solutions you've attempted
+        - Error messages you've encountered
+
+  - type: textarea
+    id: current-code
+    attributes:
+      label: Current Code
+      description: Share your current code (remove any sensitive information)
+      placeholder: |
+        # Your current code here
+        from brouser_agent import BrowserAgent
+        
+        # Please remove any sensitive information like API keys
+        agent = BrowserAgent()
+        # Your code...
+      render: python
+
+  - type: textarea
+    id: current-config
+    attributes:
+      label: Current Configuration
+      description: Share your current configuration (remove any sensitive information)
+      placeholder: |
+        # Your configuration here
+        # Please remove any sensitive information like API keys
+        browser:
+          type: chrome
+          headless: false
+      render: yaml
+
+  - type: textarea
+    id: expected-outcome
+    attributes:
+      label: Expected Outcome
+      description: Describe what you expect to happen or what you want to achieve
+      placeholder: |
+        What outcome are you looking for?
+        
+        - What should the code do?
+        - What behavior do you expect?
+        - What results should you see?
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual-outcome
+    attributes:
+      label: Actual Outcome
+      description: Describe what's actually happening (if applicable)
+      placeholder: |
+        What's actually happening?
+        
+        - Current behavior
+        - Error messages
+        - Unexpected results
+        - Performance issues
+
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating System
+      description: What operating system are you using?
+      options:
+        - Windows 10
+        - Windows 11
+        - macOS (Intel)
+        - macOS (Apple Silicon)
+        - Ubuntu 20.04
+        - Ubuntu 22.04
+        - Other Linux
+        - Other (please specify in additional context)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: python-version
+    attributes:
+      label: Python Version
+      description: What version of Python are you using?
+      options:
+        - "3.12"
+        - "3.11"
+        - "3.10"
+        - "3.9"
+        - "3.8"
+        - Other (please specify in additional context)
+    validations:
+      required: true
+
+  - type: input
+    id: browser-agent-version
+    attributes:
+      label: Browser Agent Version
+      description: What version of Browser Agent are you using?
+      placeholder: "1.0.0"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: browser
+    attributes:
+      label: Browser
+      description: Which browser are you using?
+      options:
+        - Chrome/Chromium
+        - Firefox
+        - Safari/WebKit
+        - Edge
+        - Multiple browsers
+        - Not applicable
+        - Other (please specify in additional context)
+    validations:
+      required: false
+
+  - type: dropdown
+    id: interface
+    attributes:
+      label: Interface
+      description: How are you using Browser Agent?
+      options:
+        - GUI Application
+        - Command Line Interface
+        - Python API
+        - Web Interface
+        - Multiple interfaces
+        - Not applicable
+        - Other (please specify in additional context)
+    validations:
+      required: false
+
+  - type: textarea
+    id: error-logs
+    attributes:
+      label: Error Messages/Logs
+      description: If you're encountering errors, please share the error messages or logs
+      placeholder: |
+        Paste any error messages or relevant log output here...
+      render: shell
+
+  - type: textarea
+    id: research
+    attributes:
+      label: Research Done
+      description: What research have you done to try to answer this question?
+      placeholder: |
+        What resources have you consulted?
+        
+        - Documentation sections you've read
+        - Stack Overflow posts you've found
+        - Blog posts or tutorials you've tried
+        - Similar tools you've compared
+        - Community discussions you've participated in
+
+  - type: dropdown
+    id: urgency
+    attributes:
+      label: Urgency
+      description: How urgent is getting an answer to this question?
+      options:
+        - Critical (blocking my work)
+        - High (significantly impacts my progress)
+        - Medium (would help my workflow)
+        - Low (general curiosity)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: complexity
+    attributes:
+      label: Question Complexity
+      description: How complex do you think this question is?
+      options:
+        - Simple (basic usage question)
+        - Medium (requires some explanation)
+        - Complex (involves multiple concepts)
+        - Very Complex (architectural or design question)
+        - Unknown (not sure about complexity)
+    validations:
+      required: false
+
+  - type: textarea
+    id: ideal-answer
+    attributes:
+      label: Ideal Answer Format
+      description: What format would be most helpful for the answer?
+      placeholder: |
+        What would be most helpful?
+        
+        - Code example with explanation
+        - Step-by-step instructions
+        - Link to documentation
+        - Conceptual explanation
+        - Video tutorial
+        - Live demo
+        - Multiple examples
+
+  - type: textarea
+    id: follow-up
+    attributes:
+      label: Follow-up Questions
+      description: Are there related questions you might have?
+      placeholder: |
+        Related questions that might come up:
+        
+        - What else would you like to understand?
+        - What are your next steps after getting this answer?
+        - Are there related concepts you'd like to learn about?
+
+  - type: textarea
+    id: use-case
+    attributes:
+      label: Use Case Details
+      description: Provide more details about your specific use case
+      placeholder: |
+        Tell us more about what you're building:
+        
+        - Type of project (web scraping, testing, automation, etc.)
+        - Scale (personal project, enterprise, etc.)
+        - Constraints (performance, security, etc.)
+        - Timeline (when do you need this working?)
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Any other information that might be helpful
+      placeholder: |
+        Any other relevant information:
+        
+        - Screenshots
+        - Links to related resources
+        - Team or organizational context
+        - Budget or resource constraints
+
+  - type: checkboxes
+    id: help-others
+    attributes:
+      label: Helping Others
+      description: How can this question and answer help others?
+      options:
+        - label: This is likely a common question that others would benefit from
+          required: false
+        - label: The answer should be added to the FAQ
+          required: false
+        - label: The answer should be added to the documentation
+          required: false
+        - label: This could become a tutorial or example
+          required: false
+
+  - type: checkboxes
+    id: contribution
+    attributes:
+      label: Contribution
+      description: How would you like to contribute back?
+      options:
+        - label: I can help improve documentation based on the answer
+          required: false
+        - label: I can create an example or tutorial
+          required: false
+        - label: I can help answer similar questions from other users
+          required: false
+        - label: I can provide feedback on the answer quality
+          required: false
+        - label: I can test proposed solutions
+          required: false

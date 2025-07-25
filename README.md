@@ -1,19 +1,75 @@
-# 🤖 Browser Agent - AI-Powered Web Automation
+# Browser Agent
 
-<div align="center">
+A powerful, production-ready browser automation platform that combines multi-browser support with AI-driven automation capabilities. Built for developers, QA engineers, and automation enthusiasts who need reliable, scalable web automation solutions.
 
-![Browser Agent Logo](img/Brouser_agent.png)
+## 🚀 Features
 
-[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![GUI](https://img.shields.io/badge/Interface-GUI-green.svg)](#gui-interface)
-[![Multi-LLM](https://img.shields.io/badge/AI-Multi--LLM-purple.svg)](#multi-llm-support)
+### Core Capabilities
+- **🌐 Multi-Browser Support** - Chrome, Firefox, Safari, and Edge with unified API
+- **🤖 AI-Powered Automation** - Intelligent web interaction and task execution
+- **🔌 MCP Integration** - Model Context Protocol support for enhanced AI capabilities
+- **🖥️ Dual Interface** - Both GUI and CLI for different use cases
+- **🧩 Plugin Architecture** - Extensible system with custom plugins
+- **☁️ Cloud Ready** - Docker and Kubernetes deployment support
+- **🔒 Enterprise Security** - Secure credential management and audit logging
 
-*A powerful Python-based AI agent with a modern GUI that intelligently automates web browsers using natural language commands. Features multi-LLM support (OpenAI, Claude, Gemini) and an intuitive graphical interface.*
+### Platform Support
+- ✅ **Windows** (10, 11)
+- ✅ **macOS** (10.15+)
+- ✅ **Linux** (Ubuntu 18.04+, CentOS 7+)
+- ✅ **Docker** containers
+- ✅ **Kubernetes** clusters
 
-[🚀 Quick Start](#quick-start) • [📖 Documentation](#documentation) • [🖼️ Screenshots](#screenshots) • [🔧 Features](#features)
+[![Python Version](https://img.shields.io/badge/python-3.8%2B-blue.svg)](https://python.org)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey.svg)]()
+[![Code Style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
-</div>
+## 📁 Project Structure
+
+This project follows a production-ready directory structure:
+
+```
+brouser-agent/
+├── 📂 brouser_agent/           # Main application source code
+│   ├── browsers/               # Browser implementations
+│   ├── cli/                   # Command-line interface
+│   ├── config/                # Configuration management
+│   ├── core/                  # Core functionality
+│   ├── gui/                   # Graphical user interface
+│   ├── mcp/                   # MCP integration
+│   ├── plugins/               # Plugin system
+│   └── utils/                 # Utility functions
+├── 📂 docs/                   # 📚 Documentation
+│   ├── README.md              # Documentation overview
+│   ├── CONTRIBUTING.md        # Contributor guidelines
+│   ├── CHANGELOG.md           # Version history
+│   └── *.md                   # Feature & technical docs
+├── 📂 tests/                  # 🧪 Test suite
+│   ├── README.md              # Testing guidelines
+│   ├── pytest.ini            # Test configuration
+│   └── test_*.py              # Test files
+├── 📂 scripts/                # 🔧 Utility scripts
+│   ├── README.md              # Script documentation
+│   ├── run_gui.py             # GUI launcher
+│   └── *.py                   # Setup & maintenance scripts
+├── 📂 config/                 # ⚙️ Configuration files
+│   ├── README.md              # Configuration guide
+│   ├── .env.example           # Environment template
+│   └── *.json                 # App configurations
+├── 📂 assets/                 # 🎨 Static assets
+│   ├── README.md              # Asset guidelines
+│   ├── img/                   # Images and icons
+│   └── *.png                  # Screenshots
+├── 📂 deployment/             # 🚀 Deployment configs
+│   ├── README.md              # Deployment guide
+│   ├── Dockerfile             # Container definition
+│   └── docker-compose.yml     # Multi-container setup
+├── 📂 examples/               # 💡 Example scripts
+└── 📂 .github/                # 🔄 GitHub workflows & templates
+    ├── ISSUE_TEMPLATE/        # Issue templates
+    └── workflows/             # CI/CD pipelines
+```
 
 ---
 
@@ -101,590 +157,180 @@ Browser Agent is a next-generation web automation tool that combines the power o
 
 ## 🚀 Quick Start
 
-### 📋 Prerequisites
-
-- **Python 3.8+** (3.12+ recommended)
-- **Modern Browser** (Chrome, Firefox, Edge, or Safari)
-- **Internet Connection** (for AI API access)
-
-### ⚡ One-Command Installation
+### Option 1: Local Installation
 
 ```bash
 # Clone the repository
-git clone https://github.com/AryanVBW/brouser-agent.git
-cd brouser-agent
+git clone https://github.com/your-username/browser-agent.git
+cd browser-agent
 
-# Automatic setup (installs dependencies and checks environment)
-python run_gui.py setup
+# Quick setup with make (recommended)
+make install
+make run
 
-# Launch the GUI
-python run_gui.py
+# Or manual setup
+pip install -r requirements.txt
+python -m brouser_agent
 ```
 
-### 🔑 API Configuration
-
-1. **Get API Keys** from one or more providers:
-   - [OpenAI API Key](https://platform.openai.com/api-keys)
-   - [Claude API Key](https://console.anthropic.com/)
-   - [Gemini API Key](https://makersuite.google.com/app/apikey)
-
-2. **Configure in GUI**:
-   - Launch the application: `python run_gui.py`
-   - Go to the "🧠 Brain/LLM" tab
-   - Enter your API keys and test connectivity
-
-3. **Or use Environment Variables**:
-   ```bash
-   export OPENAI_API_KEY="your-openai-api-key"
-   export CLAUDE_API_KEY="your-claude-api-key" 
-   export GEMINI_API_KEY="your-gemini-api-key"
-   ```
-
-### 🎯 First Steps
-
-1. **Launch GUI**: `python run_gui.py`
-2. **Configure AI**: Add API keys in the "🧠 Brain/LLM" tab
-3. **Start Chatting**: Go to "💬 Chat" tab and try: *"Search Google for Python tutorials"*
-4. **Monitor Progress**: Watch live automation in "🌐 Browser Agent" tab
-5. **Check History**: View completed tasks in "📜 Task Log" tab
-
----
-
-## 📱 GUI Interface Guide
-
-### 💬 **Chat Tab - Main Interaction Hub**
-
-The chat interface is your primary way to interact with the AI agent:
-
-- **Natural Commands**: Type requests like *"Go to Amazon and find wireless headphones under $50"*
-- **Animated Responses**: Watch AI responses appear with realistic typing effects
-- **Quick Actions**: Pre-built buttons for common tasks (Search Google, Check Email, etc.)
-- **Status Indicators**: Real-time feedback showing when AI is thinking or executing
-- **Chat History**: Scroll through previous conversations and responses
-
-**Example Commands:**
-```
-"Search YouTube for Python programming tutorials"
-"Go to Amazon, search for laptop, and add the first result to cart"
-"Fill out the contact form with my information"
-"Navigate to news.ycombinator.com and extract top story titles"
-```
-
-### 🧠 **Brain/LLM Tab - AI Configuration Center**
-
-Configure and manage your AI models:
-
-- **Provider Selection**: Choose between OpenAI, Claude, and Gemini
-- **Model Selection**: Pick specific models (GPT-4, Claude Opus, Gemini Pro, etc.)
-- **API Key Management**: Securely store and test API credentials
-- **Performance Metrics**: Monitor response times, token usage, and costs
-- **Model Testing**: Test AI responses before using in automation
-- **Advanced Settings**: Temperature, max tokens, and model-specific options
-
-### 🌐 **Browser Agent Tab - Automation Control**
-
-Monitor and control browser automation:
-
-- **Browser Detection**: Automatically discovers installed browsers
-- **Live Control Panel**: Launch, close, and manage browser instances
-- **Automation Logs**: Real-time feed of all browser actions and decisions
-- **Manual Override**: Direct browser control for testing and debugging
-- **Screenshot Capture**: Automatic screenshots during task execution
-- **Performance Stats**: Execution times and success rates
-
-### 📜 **Task Log Tab - History & Analytics**
-
-Complete task management and analysis:
-
-- **Execution History**: Every task with timestamps, prompts, and results
-- **Advanced Filtering**: Filter by date, status, success rate, or AI model
-- **Search Functionality**: Find specific tasks using keywords
-- **Export Options**: Save history as JSON, CSV, or detailed reports
-- **Performance Analytics**: Success rates, average execution times, and trends
-- **Task Replay**: Re-run successful tasks or debug failures
-
-### ⚙️ **Settings Tab - System Configuration**
-
-Customize every aspect of the browser agent:
-
-**General Settings:**
-- Default browser selection
-- Theme preferences (dark/light)
-- Logging levels and output formats
-
-**Browser Configuration:**
-- Window sizes and positions
-- Timeout values and retry attempts
-- Headless mode and privacy settings
-
-**Automation Behavior:**
-- Human-like delays and interaction patterns
-- Scroll speeds and click timings
-- Error recovery strategies
-
-**Security & Performance:**
-- Permission controls and access restrictions
-- Memory limits and resource management
-- Container and sandbox options
-
----
-
-## 🔧 Configuration
-
-### 🌍 Environment Variables
-
-Create a `.env` file or set environment variables:
+### Option 2: Docker (Recommended for Production)
 
 ```bash
-# AI Provider API Keys
-OPENAI_API_KEY=sk-your-openai-key-here
-CLAUDE_API_KEY=sk-ant-your-claude-key-here
-GEMINI_API_KEY=your-gemini-api-key-here
+# Quick start with Docker Compose
+docker-compose -f deployment/docker-compose.yml up -d
 
-# Browser Settings
-DEFAULT_BROWSER=chrome
-HEADLESS_MODE=false
-AUTOMATION_FRAMEWORK=selenium
-
-# Logging
-LOG_LEVEL=INFO
-LOG_FILE=logs/browser_agent.log
+# Or build and run manually
+docker build -f deployment/Dockerfile -t browser-agent .
+docker run -p 8080:8080 -e API_KEY="your-key" browser-agent
 ```
 
-### ⚙️ Programmatic Configuration
-
-```python
-from brouser_agent import Config, BrowserAgent
-
-# Create custom configuration
-config = Config(
-    openai_api_key="your-api-key",
-    default_browser="chrome",
-    headless=False,
-    automation_framework="selenium",
-    max_retry_attempts=3,
-    human_like_delays=True
-)
-
-# Initialize agent with config
-agent = BrowserAgent(config)
-```
-
-### 🎛️ Advanced Settings
-
-```python
-# Performance tuning
-config.performance.max_memory_mb = 2048
-config.performance.max_concurrent_tasks = 3
-config.performance.enable_gpu_acceleration = True
-
-# Security settings
-config.security.use_container = True
-config.security.allow_file_downloads = False
-config.security.enable_javascript = True
-
-# Browser behavior
-config.browser.window_size = (1920, 1080)
-config.browser.page_load_timeout = 30
-config.browser.implicit_wait = 10
-```
-
----
-
-## 💡 Usage Examples
-
-### 🛒 **E-commerce Automation**
-
-```python
-import asyncio
-from brouser_agent import BrowserAgent
-
-async def shop_for_headphones():
-    agent = BrowserAgent()
-    
-    result = await agent.execute_task(
-        """Go to Amazon and search for 'wireless noise cancelling headphones'.
-        Filter results by price (under $200) and rating (4+ stars).
-        Add the top-rated product to cart and proceed to checkout."""
-    )
-    
-    print(f"Shopping task completed: {result.success}")
-    print(f"Screenshots saved: {result.screenshots}")
-
-# Run the task
-asyncio.run(shop_for_headphones())
-```
-
-### 📝 **Form Automation**
-
-```python
-async def fill_contact_form():
-    agent = BrowserAgent()
-    
-    # Fill out a contact form with specific information
-    await agent.execute_task(
-        """Navigate to the contact page and fill out the form:
-        - Name: John Smith
-        - Email: john.smith@email.com
-        - Phone: (555) 123-4567
-        - Subject: Product Inquiry
-        - Message: I'm interested in learning more about your services.
-        
-        Review the information and submit the form."""
-    )
-
-asyncio.run(fill_contact_form())
-```
-
-### 📊 **Data Extraction**
-
-```python
-async def extract_news_headlines():
-    agent = BrowserAgent()
-    
-    result = await agent.execute_task(
-        """Go to news.ycombinator.com and extract:
-        1. Titles of the top 10 stories
-        2. Number of points and comments for each
-        3. Save the data in a structured format
-        
-        Take a screenshot of the homepage."""
-    )
-    
-    # Access extracted data
-    extracted_data = result.data
-    print(f"Found {len(extracted_data['headlines'])} headlines")
-
-asyncio.run(extract_news_headlines())
-```
-
-### 🔍 **Research Automation**
-
-```python
-async def research_competitors():
-    agent = BrowserAgent()
-    
-    await agent.execute_task(
-        """Research competitors for 'project management software':
-        
-        1. Search Google for 'best project management software 2024'
-        2. Visit the top 3 websites from search results
-        3. For each site, collect:
-           - Pricing information
-           - Key features mentioned
-           - Customer reviews/ratings
-        4. Take screenshots of pricing pages
-        5. Compile findings into a summary
-        
-        Focus on features like team collaboration, time tracking, and integrations."""
-    )
-
-asyncio.run(research_competitors())
-```
-
-### 📧 **Email & Social Media**
-
-```python
-async def check_social_media():
-    agent = BrowserAgent()
-    
-    # Multi-platform social media check
-    await agent.execute_task(
-        """Check my social media accounts:
-        
-        1. Go to LinkedIn and check for new messages/connections
-        2. Visit Twitter and check mentions and DMs
-        3. Check Facebook for notifications
-        4. Take screenshots of each platform's main feed
-        
-        Summarize any important updates or messages."""
-    )
-
-asyncio.run(check_social_media())
-```
-
----
-
-## 🔌 Plugin System
-
-Browser Agent features a powerful plugin architecture for extending functionality:
-
-### 🔧 **Built-in Plugins**
-
-- **🛒 E-commerce Plugin**: Shopping cart management, price comparison
-- **📝 Form Filler Plugin**: Intelligent form completion with validation
-- **📊 Data Extractor Plugin**: Advanced web scraping and data collection
-- **📱 Social Media Plugin**: Social platform automation and monitoring
-- **📧 Email Plugin**: Email management and automation
-
-### 🚀 **Creating Custom Plugins**
-
-```python
-from brouser_agent.plugins.base import BasePlugin, PluginMetadata
-
-class CustomShoppingPlugin(BasePlugin):
-    @property
-    def metadata(self):
-        return PluginMetadata(
-            name="custom_shopping",
-            version="1.0.0",
-            description="Advanced shopping automation",
-            author="Your Name",
-            tags=["ecommerce", "shopping", "automation"]
-        )
-    
-    def can_handle(self, task_type: str, context: dict) -> bool:
-        """Determine if this plugin can handle the task"""
-        shopping_keywords = ["buy", "purchase", "shop", "cart", "checkout"]
-        return any(keyword in task_type.lower() for keyword in shopping_keywords)
-    
-    async def execute(self, task_data: dict, browser_session):
-        """Execute the custom shopping logic"""
-        # Your custom shopping automation logic
-        result = await self.perform_shopping_task(task_data, browser_session)
-        
-        return {
-            "success": True,
-            "data": result,
-            "screenshots": ["shopping_cart.png", "checkout.png"]
-        }
-    
-    async def perform_shopping_task(self, task_data, browser):
-        # Implement your shopping logic here
-        pass
-
-# Register the plugin
-from brouser_agent.plugins.registry import PluginRegistry
-registry = PluginRegistry()
-registry.register_plugin(CustomShoppingPlugin())
-```
-
-### 📦 **Plugin Installation**
+### Option 3: Development Setup
 
 ```bash
-# Install a plugin from file
-brouser-agent plugin install ./my_custom_plugin.py
+# Development environment with all tools
+make dev-install
+make dev-setup
+make test
 
-# List installed plugins
-brouser-agent plugin list
-
-# Enable/disable plugins
-brouser-agent plugin enable custom_shopping
-brouser-agent plugin disable form_filler
+# Start development server
+make dev-run
 ```
 
----
+## 📚 Documentation
 
-## 🛠️ Troubleshooting
+Comprehensive documentation is available in the [`docs/`](docs/) directory:
 
-### 🚨 **Common Issues & Solutions**
+### 🎯 Getting Started
+- **[Installation Guide](docs/installation.md)** - Detailed setup instructions
+- **[User Guide](docs/user-guide.md)** - How to use Browser Agent
+- **[Quick Start Examples](examples/)** - Ready-to-run examples
 
-#### **Browser Not Detected**
-```bash
-# Check available browsers
-python -c "from brouser_agent.browsers.detector import BrowserDetector; print(BrowserDetector().detect_browsers())"
+### 🔧 Development
+- **[Contributing Guide](docs/CONTRIBUTING.md)** - How to contribute
+- **[API Documentation](docs/api.md)** - API reference
+- **[Plugin Development](docs/plugins.md)** - Creating custom plugins
 
-# Install Chrome if missing (recommended)
-# Windows: Download from google.com/chrome
-# macOS: brew install --cask google-chrome
-# Linux: sudo apt install google-chrome-stable
-```
+### 🚀 Deployment
+- **[Docker Guide](deployment/README.md)** - Container deployment
+- **[Kubernetes Guide](deployment/kubernetes/)** - K8s deployment
+- **[Cloud Deployment](docs/cloud-deployment.md)** - AWS, GCP, Azure
 
-#### **WebDriver Issues** 
-```bash
-# Clear WebDriver cache
-rm -rf ~/.wdm/
+### 📋 Reference
+- **[Configuration Reference](config/README.md)** - All configuration options
+- **[Testing Guide](tests/README.md)** - Running and writing tests
+- **[Troubleshooting](docs/troubleshooting.md)** - Common issues & solutions
 
-# Force WebDriver update
-python -c "from webdriver_manager.chrome import ChromeDriverManager; ChromeDriverManager().install()"
-```
+## 🛠️ Development
 
-#### **API Key Errors**
-```bash
-# Test API connectivity
-python -c "
-from brouser_agent.core.multi_llm_processor import MultiLLMProcessor
-processor = MultiLLMProcessor()
-print(processor.test_api_keys())
-"
-```
+### Prerequisites
+- Python 3.8+ (3.11 recommended)
+- Node.js 16+ (for web components)
+- Docker (for containerized development)
+- Git
 
-#### **Permission Errors**
-```bash
-# macOS: Grant Terminal access to control browsers
-# Go to System Preferences > Security & Privacy > Privacy > Accessibility
-
-# Linux: Add user to required groups
-sudo usermod -a -G audio,video $USER
-```
-
-#### **Memory Issues**
-```bash
-# Reduce memory usage in settings
-# Set max_concurrent_tasks = 1
-# Enable headless mode
-# Reduce screenshot quality
-```
-
-### 🔍 **Debug Mode**
-
-Enable detailed logging for troubleshooting:
+### Development Workflow
 
 ```bash
-# Run with verbose output
-python run_gui.py --debug
+# 1. Fork and clone the repository
+git clone https://github.com/your-username/browser-agent.git
+cd browser-agent
 
-# Check specific logs
-tail -f logs/browser_agent.log
-tail -f logs/automation.log
-tail -f logs/llm_processor.log
+# 2. Set up development environment
+make dev-install
+
+# 3. Create feature branch
+git checkout -b feature/your-feature-name
+
+# 4. Make changes and test
+make test
+make lint
+
+# 5. Submit pull request
+git push origin feature/your-feature-name
 ```
 
-### 📋 **System Requirements Check**
+### Available Make Commands
 
-```python
-# Run system diagnostics
-python -c "
-from brouser_agent.utils.diagnostics import SystemDiagnostics
-diag = SystemDiagnostics()
-diag.run_full_check()
-"
+```bash
+make install        # Install dependencies
+make dev-install    # Install dev dependencies
+make test          # Run test suite
+make lint          # Run code linting
+make format        # Format code
+make docs          # Build documentation
+make clean         # Clean build artifacts
+make docker-build  # Build Docker image
+make docker-run    # Run in Docker
 ```
-
-### 🆘 **Getting Help**
-
-1. **Check Logs**: Look in `logs/` directory for detailed error messages
-2. **GitHub Issues**: Report bugs at [GitHub Issues](https://github.com/AryanVBW/brouser-agent/issues)
-3. **Discussions**: Join community discussions for help and tips
-4. **Documentation**: Full API docs available at [documentation link]
-
----
 
 ## 🤝 Contributing
 
-We welcome contributions from the community! Here's how to get started:
+We welcome contributions from the community! Here's how you can help:
 
-### 🔄 **Development Workflow**
+### Ways to Contribute
+- 🐛 **Report bugs** - Use our [bug report template](.github/ISSUE_TEMPLATE/bug_report.yml)
+- 💡 **Suggest features** - Use our [feature request template](.github/ISSUE_TEMPLATE/feature_request.yml)
+- 📝 **Improve documentation** - Help make our docs better
+- 🔧 **Submit code** - Fix bugs or implement features
+- 🧪 **Write tests** - Improve test coverage
+- 🎨 **Design improvements** - UI/UX enhancements
 
-```bash
-# Fork and clone the repository
-git clone https://github.com/AryanVBW/brouser-agent.git
-cd brouser-agent
+### Getting Started
+1. Read our [Contributing Guide](docs/CONTRIBUTING.md)
+2. Check out [good first issues](https://github.com/your-username/browser-agent/labels/good%20first%20issue)
+3. Join our [community discussions](https://github.com/your-username/browser-agent/discussions)
 
-# Create virtual environment
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+## 📊 Project Status
 
-# Install development dependencies
-pip install -r requirements-dev.txt
-pip install -e .
+![Build Status](https://github.com/your-username/browser-agent/workflows/CI/badge.svg)
+![Test Coverage](https://codecov.io/gh/your-username/browser-agent/branch/main/graph/badge.svg)
+![License](https://img.shields.io/github/license/your-username/browser-agent)
+![Python Version](https://img.shields.io/badge/python-3.8%2B-blue)
+![Docker Pulls](https://img.shields.io/docker/pulls/your-username/browser-agent)
 
-# Run tests
-pytest tests/ -v
+## 🔒 Security
 
-# Run linting
-flake8 brouser_agent/
-black brouser_agent/
-isort brouser_agent/
-
-# Create feature branch
-git checkout -b feature/amazing-new-feature
-
-# Make changes and commit
-git commit -m "Add amazing new feature"
-git push origin feature/amazing-new-feature
-```
-
-### 🧪 **Testing**
-
-```bash
-# Run all tests
-pytest
-
-# Run specific test categories
-pytest tests/test_browser_automation.py
-pytest tests/test_llm_integration.py
-pytest tests/test_gui_interface.py
-
-# Run with coverage
-pytest --cov=brouser_agent tests/
-
-# Test specific browser
-pytest tests/ --browser=chrome
-pytest tests/ --browser=firefox
-```
-
-### 📝 **Code Standards**
-
-- **Python Style**: Follow PEP 8 and use `black` for formatting
-- **Documentation**: Add docstrings to all public methods
-- **Type Hints**: Use type annotations for better code clarity
-- **Tests**: Write tests for new features and bug fixes
-- **Commit Messages**: Use conventional commits (feat:, fix:, docs:, etc.)
-
-### 🎯 **Areas for Contribution**
-
-- **🔌 Plugin Development**: Create specialized automation plugins
-- **🌐 Browser Support**: Add support for additional browsers
-- **🧠 AI Integration**: Integrate new LLM providers
-- **🎨 UI/UX**: Improve the graphical interface
-- **📚 Documentation**: Improve docs and examples
-- **🧪 Testing**: Expand test coverage
-- **🐛 Bug Fixes**: Fix reported issues
-
----
+Security is a top priority. Please see our [Security Policy](docs/SECURITY.md) for:
+- Reporting security vulnerabilities
+- Security best practices
+- Supported versions
 
 ## 📄 License
 
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
----
+## 🆘 Support
+
+### Getting Help
+1. 📖 **Check the documentation** in [`docs/`](docs/)
+2. 🔍 **Search existing issues** on GitHub
+3. 💬 **Join discussions** in our community forum
+4. 🐛 **Report bugs** using issue templates
+5. 💡 **Request features** using our feature template
+
+### Community
+- **GitHub Discussions** - General questions and community chat
+- **Issues** - Bug reports and feature requests
+- **Pull Requests** - Code contributions
+- **Wiki** - Community-maintained documentation
 
 ## 🙏 Acknowledgments
 
-- **OpenAI** for GPT models and API
-- **Anthropic** for Claude models
-- **Google** for Gemini AI models  
-- **Selenium** and **Playwright** teams for browser automation frameworks
-- **CustomTkinter** for the modern GUI framework
-- **Contributors** who make this project better
+- **Contributors** - Thanks to all our amazing contributors!
+- **Open Source Community** - Built on the shoulders of giants
+- **Browser Vendors** - For providing excellent automation APIs
+- **AI Community** - For advancing the field of intelligent automation
+
+
 
 ---
-
-## 🗺️ Roadmap
-
-### 🔮 **Upcoming Features**
-
-- [ ] **Visual AI**: Computer vision for element detection
-- [ ] **Multi-Tab Support**: Handle multiple browser tabs simultaneously  
-- [ ] **Mobile Browser**: Support for mobile browser automation
-- [ ] **Cloud Deployment**: Deploy agents to cloud platforms
-- [ ] **Marketplace**: Plugin marketplace and community sharing
-- [ ] **Advanced Analytics**: ML-powered performance optimization
-- [ ] **Voice Control**: Voice commands for hands-free operation
-- [ ] **Collaboration**: Multi-user and team features
-
-### 📊 **Version History**
-
-- **v1.0.0** - Initial release with GUI and multi-LLM support
-- **v1.1.0** - Added plugin system and advanced browser automation
-- **v1.2.0** - Enhanced GUI with real-time monitoring
-- **v1.3.0** - Added task scheduling and performance analytics
 
 ---
 
 <div align="center">
 
-## 🚀 Ready to Automate?
+**[📚 Documentation](docs/) • [🚀 Quick Start](#-quick-start) • [🤝 Contributing](docs/CONTRIBUTING.md) • [🐛 Issues](https://github.com/your-username/browser-agent/issues) • [💬 Discussions](https://github.com/your-username/browser-agent/discussions)**
 
-**[⬇️ Download Now](https://github.com/AryanVBW/brouser-agent/releases)** • **[📖 Read Docs](#documentation)** • **[🎮 Try Demo](#quick-start)**
-
----
-
-**Browser Agent** - *Bringing AI-powered automation to web browsing* 🤖✨
-
-Made with ❤️ by the Browser Agent team
-
-[⭐ Star us on GitHub](https://github.com/AryanVBW/brouser-agent) • [🐛 Report Issues](https://github.com/AryanVBW/brouser-agent/issues) • [💬 Join Discussion](https://github.com/AryanVBW/brouser-agent/discussions)
+*Built with ❤️ for the automation community*
 
 </div>

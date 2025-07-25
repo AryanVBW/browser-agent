@@ -7,7 +7,9 @@
     "multi_llm": true,
     "browser_automation": true,
     "task_logging": true,
-    "settings_management": true
+    "settings_management": true,
+    "mcp_integration": true,
+    "custom_mcp_servers": true
   },
   "supported_llms": [
     "OpenAI (GPT-3.5, GPT-4, GPT-4 Turbo)",
@@ -20,5 +22,48 @@
     "Edge",
     "Safari"
   ],
+  "mcp_configuration": {
+    "status": "configured",
+    "config_file": "mcp_servers.json",
+    "custom_servers": [
+      {
+        "name": "n8n-mcp",
+        "description": "N8N workflow automation MCP server",
+        "repository": "https://github.com/czlonkowski/n8n-mcp",
+        "status": "configured"
+      },
+      {
+        "name": "cursor-talk-to-figma-mcp",
+        "description": "Figma integration MCP server for design automation",
+        "repository": "https://github.com/sonnylazuardi/cursor-talk-to-figma-mcp",
+        "status": "configured"
+      },
+      {
+        "name": "brouser-agent-custom-mcp",
+        "description": "Custom Browser Agent MCP server with enhanced automation capabilities",
+        "implementation": "mcp_custom_server.py",
+        "status": "implemented"
+      }
+    ],
+    "default_servers": [
+      "filesystem",
+      "brave-search",
+      "github",
+      "memory"
+    ],
+    "features": {
+      "browser_automation": true,
+      "ai_content_analysis": true,
+      "task_management": true,
+      "session_management": true,
+      "workflow_integration": true,
+      "design_automation": true
+    },
+    "installation_notes": {
+      "n8n_mcp": "Requires: npm install -g n8n-mcp. Configure N8N_API_URL and N8N_API_KEY environment variables.",
+      "figma_mcp": "Requires: bun install cursor-talk-to-figma-mcp. Configure FIGMA_ACCESS_TOKEN environment variable.",
+      "custom_mcp": "Requires: pip install mcp. Custom implementation with full Browser Agent integration."
+    }
+  },
   "last_updated": "2024-01-20"
 }

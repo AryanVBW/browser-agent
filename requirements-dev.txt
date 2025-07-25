@@ -1,0 +1,355 @@
+# Development Dependencies for Browser Agent
+# Install with: pip install -r requirements-dev.txt
+
+# Testing Framework
+pytest>=7.0.0
+pytest-cov>=4.0.0
+pytest-mock>=3.10.0
+pytest-asyncio>=0.21.0
+pytest-xdist>=3.0.0  # Parallel test execution
+pytest-html>=3.1.0  # HTML test reports
+pytest-benchmark>=4.0.0  # Performance testing
+
+# Code Quality and Formatting
+black>=23.0.0
+flake8>=6.0.0
+flake8-docstrings>=1.7.0
+flake8-import-order>=0.18.0
+flake8-bugbear>=23.0.0
+isort>=5.12.0
+mypy>=1.0.0
+pylint>=2.17.0
+
+# Pre-commit Hooks
+pre-commit>=3.0.0
+
+# Documentation
+sphinx>=6.0.0
+sphinx-rtd-theme>=1.2.0
+sphinx-autodoc-typehints>=1.22.0
+myst-parser>=1.0.0  # Markdown support for Sphinx
+
+# Security
+bandit>=1.7.0  # Security linting
+safety>=2.3.0  # Dependency vulnerability checking
+
+# Performance and Profiling
+memory-profiler>=0.60.0
+line-profiler>=4.0.0
+py-spy>=0.3.0  # Sampling profiler
+
+# Development Utilities
+ipython>=8.0.0  # Enhanced Python shell
+ipdb>=0.13.0  # Enhanced debugger
+watchdog>=3.0.0  # File system monitoring
+tox>=4.0.0  # Testing across Python versions
+
+# Type Checking
+types-requests>=2.28.0
+types-setuptools>=67.0.0
+types-toml>=0.10.0
+
+# Build and Packaging
+build>=0.10.0
+twine>=4.0.0
+wheel>=0.40.0
+setuptools-scm>=7.0.0
+
+# Environment Management
+python-dotenv>=1.0.0
+
+# Database (for testing)
+sqlite3  # Usually included with Python
+
+# Mock and Testing Utilities
+responses>=0.23.0  # HTTP request mocking
+factory-boy>=3.2.0  # Test data generation
+faker>=18.0.0  # Fake data generation
+
+# Async Testing
+aioresponses>=0.7.0  # Async HTTP mocking
+pytest-asyncio>=0.21.0
+
+# Browser Testing
+selenium-wire>=5.1.0  # Enhanced Selenium with request/response capture
+playwright-pytest>=0.3.0  # Playwright pytest plugin
+
+# API Testing
+httpx>=0.24.0  # Modern HTTP client for testing
+
+# Configuration Testing
+pydantic>=1.10.0  # For configuration validation testing
+
+# Logging and Monitoring
+structlog>=23.0.0  # Structured logging for development
+
+# Development Server
+werkzeug>=2.3.0  # WSGI utilities for development
+
+# Code Analysis
+radon>=6.0.0  # Code complexity analysis
+xenon>=0.9.0  # Code complexity monitoring
+
+# Git Hooks and Automation
+gitpython>=3.1.0  # Git repository interaction
+
+# JSON and YAML utilities
+pyyaml>=6.0.0
+jsonschema>=4.17.0
+
+# Development CLI tools
+click>=8.1.0  # For development scripts
+rich>=13.0.0  # Rich text and beautiful formatting
+
+# Notebook support (optional)
+jupyter>=1.0.0
+nbconvert>=7.0.0
+
+# Performance monitoring
+psutil>=5.9.0  # System and process utilities
+
+# Development database
+sqlalchemy>=2.0.0  # For development database testing
+
+# Mock services
+wiremock>=2.0.0  # API mocking
+
+# Load testing
+locust>=2.15.0  # Load testing framework
+
+# Development proxy
+mitmproxy>=9.0.0  # HTTP proxy for development and testing
+
+# Code coverage visualization
+coverage[toml]>=7.0.0
+
+# Development dependencies for specific features
+# GUI development
+tkinter-tooltip>=2.0.0  # Enhanced tkinter tooltips
+
+# Plugin development
+pluggy>=1.0.0  # Plugin framework
+
+# Development configuration
+toml>=0.10.0  # TOML file handling
+configparser>=5.3.0  # INI file handling
+
+# Development logging
+coloredlogs>=15.0.0  # Colored logging output
+
+# Development utilities
+more-itertools>=9.1.0  # Additional iteration utilities
+click-completion>=0.5.0  # CLI auto-completion
+
+# Development server utilities
+uvicorn>=0.22.0  # ASGI server for development
+fastapi>=0.100.0  # For development API endpoints
+
+# Development monitoring
+prometheus-client>=0.16.0  # Metrics collection
+
+# Development caching
+redis>=4.5.0  # For development caching
+
+# Development message queues
+celery>=5.2.0  # For development task queues
+
+# Development file handling
+watchfiles>=0.19.0  # Fast file watching
+
+# Development encryption
+cryptography>=41.0.0  # For development security features
+
+# Development compression
+zstandard>=0.21.0  # Fast compression
+
+# Development image processing
+Pillow>=10.0.0  # Image processing for development
+
+# Development PDF handling
+PyPDF2>=3.0.0  # PDF processing for development
+
+# Development Excel handling
+openpyxl>=3.1.0  # Excel file handling
+
+# Development CSV handling
+pandas>=2.0.0  # Data analysis and CSV handling
+
+# Development XML handling
+lxml>=4.9.0  # XML processing
+
+# Development HTML parsing
+beautifulsoup4>=4.12.0  # HTML parsing
+
+# Development URL handling
+furl>=2.1.0  # URL manipulation
+
+# Development date/time handling
+python-dateutil>=2.8.0  # Date utilities
+arrow>=1.2.0  # Better date/time handling
+
+# Development string handling
+unidecode>=1.3.0  # Unicode to ASCII conversion
+
+# Development validation
+cerberus>=1.3.0  # Data validation
+
+# Development serialization
+marshmallow>=3.19.0  # Object serialization
+
+# Development caching
+diskcache>=5.6.0  # Disk-based caching
+
+# Development rate limiting
+ratelimit>=2.2.0  # Rate limiting utilities
+
+# Development retry logic
+retrying>=1.3.0  # Retry decorators
+tenacity>=8.2.0  # Advanced retry logic
+
+# Development progress bars
+tqdm>=4.65.0  # Progress bars
+
+# Development CLI enhancements
+colorama>=0.4.0  # Cross-platform colored terminal text
+termcolor>=2.3.0  # Terminal color utilities
+
+# Development file system utilities
+pathlibutil>=0.2.0  # Enhanced pathlib utilities
+
+# Development environment detection
+platform-system>=0.1.0  # System detection utilities
+
+# Development process management
+psutil>=5.9.0  # Process and system monitoring
+
+# Development network utilities
+netifaces>=0.11.0  # Network interface information
+
+# Development system information
+py-cpuinfo>=9.0.0  # CPU information
+
+# Development memory utilities
+memory-profiler>=0.60.0  # Memory usage profiling
+
+# Development disk utilities
+shutil>=3.11.0  # High-level file operations (built-in)
+
+# Development compression utilities
+zipfile>=3.11.0  # ZIP file handling (built-in)
+tarfile>=3.11.0  # TAR file handling (built-in)
+
+# Development temporary file utilities
+tempfile>=3.11.0  # Temporary file handling (built-in)
+
+# Development threading utilities
+threading>=3.11.0  # Threading support (built-in)
+concurrent.futures>=3.11.0  # High-level threading (built-in)
+
+# Development async utilities
+asyncio>=3.11.0  # Async programming (built-in)
+aiofiles>=23.1.0  # Async file operations
+aiohttp>=3.8.0  # Async HTTP client/server
+
+# Development queue utilities
+queue>=3.11.0  # Queue data structures (built-in)
+
+# Development collection utilities
+collections>=3.11.0  # Specialized container datatypes (built-in)
+
+# Development iteration utilities
+itertools>=3.11.0  # Iterator functions (built-in)
+
+# Development functional utilities
+functools>=3.11.0  # Higher-order functions (built-in)
+
+# Development operator utilities
+operator>=3.11.0  # Standard operators as functions (built-in)
+
+# Development copy utilities
+copy>=3.11.0  # Shallow and deep copy operations (built-in)
+
+# Development pickle utilities
+pickle>=3.11.0  # Python object serialization (built-in)
+
+# Development JSON utilities
+json>=3.11.0  # JSON encoder and decoder (built-in)
+
+# Development CSV utilities
+csv>=3.11.0  # CSV file reading and writing (built-in)
+
+# Development configuration utilities
+configparser>=3.11.0  # Configuration file parser (built-in)
+
+# Development logging utilities
+logging>=3.11.0  # Logging facility (built-in)
+
+# Development argument parsing
+argparse>=3.11.0  # Command-line argument parsing (built-in)
+
+# Development option parsing
+optparse>=3.11.0  # Command-line option parsing (built-in)
+
+# Development getopt utilities
+getopt>=3.11.0  # C-style parser for command line options (built-in)
+
+# Development shell utilities
+shlex>=3.11.0  # Simple lexical analysis (built-in)
+
+# Development subprocess utilities
+subprocess>=3.11.0  # Subprocess management (built-in)
+
+# Development signal utilities
+signal>=3.11.0  # Set handlers for asynchronous events (built-in)
+
+# Development socket utilities
+socket>=3.11.0  # Low-level networking interface (built-in)
+
+# Development SSL utilities
+ssl>=3.11.0  # TLS/SSL wrapper for socket objects (built-in)
+
+# Development HTTP utilities
+http>=3.11.0  # HTTP modules (built-in)
+urllib>=3.11.0  # URL handling modules (built-in)
+
+# Development email utilities
+email>=3.11.0  # Email handling package (built-in)
+
+# Development MIME utilities
+mimetypes>=3.11.0  # Map filenames to MIME types (built-in)
+
+# Development base64 utilities
+base64>=3.11.0  # Base16, Base32, Base64 encoding (built-in)
+
+# Development binascii utilities
+binascii>=3.11.0  # Convert between binary and ASCII (built-in)
+
+# Development hashlib utilities
+hashlib>=3.11.0  # Secure hashes and message digests (built-in)
+
+# Development hmac utilities
+hmac>=3.11.0  # Keyed-Hashing for Message Authentication (built-in)
+
+# Development secrets utilities
+secrets>=3.11.0  # Generate secure random numbers (built-in)
+
+# Development random utilities
+random>=3.11.0  # Generate random numbers (built-in)
+
+# Development statistics utilities
+statistics>=3.11.0  # Mathematical statistics functions (built-in)
+
+# Development math utilities
+math>=3.11.0  # Mathematical functions (built-in)
+
+# Development decimal utilities
+decimal>=3.11.0  # Decimal fixed point and floating point arithmetic (built-in)
+
+# Development fractions utilities
+fractions>=3.11.0  # Rational numbers (built-in)
+
+# Development numbers utilities
+numbers>=3.11.0  # Numeric abstract base classes (built-in)
+
+# Development cmath utilities
+cmath>=3.11.0  # Mathematical functions for complex numbers (built-in)

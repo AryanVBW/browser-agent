@@ -12,10 +12,13 @@ from .brain_tab import BrainTab
 from .enhanced_browser_tab import EnhancedBrowserTab
 from .desktop_automation_tab import DesktopAutomationTab
 from .task_log_tab import TaskLogTab
+from .mcp_tab import MCPTab
 from ..core.config import Config
 from ..core.agent import BrowserAgent
 from ..core.multi_llm_processor import MultiLLMProcessor, LLMProvider
 from ..browsers.manager import BrowserManager
+from ..mcp.server_manager import MCPServerManager
+from ..mcp.chat_integration import MCPChatIntegration
 
 
 class MainWindow:
@@ -38,6 +41,10 @@ class MainWindow:
         self.agent = None
         self.llm_processor = None
         self.task_history = []
+        
+        # Initialize MCP components
+        self.mcp_server_manager = MCPServerManager()
+        self.mcp_chat_integration = MCPChatIntegration(self.mcp_server_manager)
         
         # Create GUI elements
         self.setup_styles()
@@ -121,6 +128,14 @@ class MainWindow:
             font=ctk.CTkFont(size=12)
         )
         self.browser_status_label.pack(side="top", anchor="e")
+        
+        # MCP Status
+        self.mcp_status_label = ctk.CTkLabel(
+            self.status_frame,
+            text="🔌 MCP: 0 servers",
+            font=ctk.CTkFont(size=12)
+        )
+        self.mcp_status_label.pack(side="top", anchor="e")
     
     def create_tab_system(self):
         """Create the tabbed interface"""
@@ -146,6 +161,10 @@ class MainWindow:
         # Task Log Tab
         self.task_log_tab = self.tab_view.add("📜 Task Log")
         self.task_log_interface = TaskLogTab(self.task_log_tab, self)
+        
+        # MCP Tab
+        self.mcp_tab = self.tab_view.add("🔌 MCP")
+        self.mcp_interface = MCPTab(self.mcp_tab, self)
         
         # Settings Tab
         self.settings_tab = self.tab_view.add("⚙️ Settings")
@@ -219,6 +238,15 @@ class MainWindow:
         
         # Update browser tab with available browsers
         self.browser_interface.refresh_browsers()
+        
+        # Setup MCP chat integration callbacks
+        self.mcp_chat_integration.set_callbacks(
+            message_callback=self.chat_interface.add_message,
+            status_callback=self.update_status
+        )
+        
+        # Update MCP status
+        self.update_mcp_status()
     
     def on_initialization_error(self, error_message: str):
         """Called when agent initialization fails"""
@@ -350,6 +378,19 @@ class MainWindow:
             self.ai_status_label.configure(text=f"🧠 AI: {model} ({status})")
         else:
             self.ai_status_label.configure(text=f"🧠 AI: {status}")
+    
+    def update_mcp_status(self):
+        """Update MCP status in header"""
+        connected_count = len(self.mcp_server_manager.get_connected_servers())
+        self.mcp_status_label.configure(text=f"🔌 MCP: {connected_count} servers")
+    
+    def get_mcp_server_manager(self):
+        """Get MCP server manager instance"""
+        return self.mcp_server_manager
+    
+    def get_mcp_chat_integration(self):
+        """Get MCP chat integration instance"""
+        return self.mcp_chat_integration
     
     def run(self):
         """Start the GUI application"""
